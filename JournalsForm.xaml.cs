@@ -30,6 +30,8 @@ namespace WPFCashier
             InitializeComponent();
         }
 
+        #region Client_History
+
         public async Task Create()
         {
             //Console.WriteLine("create function");
@@ -150,13 +152,13 @@ namespace WPFCashier
         {
             using (DBAccess context = new DBAccess())
             {
-                Client selectedClient = ItemList.SelectedItem as Client;
+                JournalMod selectedJournal = ItemList.SelectedItem as JournalMod;
 
-                if (selectedClient != null)
+                if (selectedJournal != null)
                 {
-                    Client client = context.Clients.Single(x => x.Id == selectedClient.Id);
+                    Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
 
-                    context.Remove(client);
+                    context.Remove(journal);
 
                     await context.SaveChangesAsync();
                 }
@@ -235,5 +237,117 @@ namespace WPFCashier
         {
             Read();
         }
+
+        #endregion
+
+        #region Expences
+
+        public async Task ExpencesCreate()
+        {
+            //Console.WriteLine("create function");
+            using (DBAccess context = new DBAccess())
+            {
+                var date = ExpencesDateTextBox.Text;
+                var type = ExpencesTypeTextBox.Text;
+                var amount = ExpencesAmountTextBox.Text;
+
+                if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount))
+                {
+                    context.Expences.Add(new Expences()
+                    {
+                        Date = date,
+                        Type = type,
+                        Amount = amount.StringtoDecimal(),
+                    });
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        public Task ExpencesRead()
+        {
+            using (DBAccess context = new DBAccess())
+            {
+                ExpencesItemList.ItemsSource = context.Expences.ToList();
+            }
+            return Task.CompletedTask;
+        }
+
+        public Task ExpencesRead(string name)
+        {
+            using (DBAccess context = new DBAccess())
+            {
+                DbClient = context.Clients.Where(x => x.Name.ToLower().Contains(name)).ToList();
+                DbJournals = new List<Journal>();
+
+                foreach (Client client in DbClient)
+                {
+                    var journals = context.Journals.Where(x => x.ClientId == client.Id).ToList();
+                    foreach (Journal journal in journals)
+                        DbJournals.Add(journal);
+                }
+
+
+                var result = from j in DbJournals
+                             join c in context.Clients on j.ClientId equals c.Id
+                             where j.ClientId == c.Id
+                             select new { Id = j.Id, ClientId = j.ClientId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+
+                ItemList.ItemsSource = result.ToList();
+            }
+            return Task.CompletedTask;
+        }
+
+        public async Task ExpencesUpdate()
+        {
+            using (DBAccess context = new DBAccess())
+            {
+                var selectedJournal = ItemList.SelectedItem as JournalMod;
+                var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
+                var date = DateTextBox.Text;
+                var type = TypeTextBox.Text;
+                var amount = AmountTextBox.Text;
+                var receipt = ReceiptTextBox.Text;
+
+                if (!String.IsNullOrEmpty(ClientTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount) && !String.IsNullOrEmpty(receipt))
+                {
+                    Journal journal = context.Journals.Find(selectedJournal.Id);
+
+                    journal.ClientId = clientId;
+                    journal.Date = date;
+                    journal.Type = type;
+                    journal.Amount = amount.StringtoDecimal();
+
+                    if (type.Equals("payment"))
+                        journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
+                    else
+                        journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
+
+                    context.Clients.Single(x => x.Id == clientId).Credit = journal.NewCredit;
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        public async Task ExpencesDelete()
+        {
+            using (DBAccess context = new DBAccess())
+            {
+                Client selectedClient = ExpencesItemList.SelectedItem as Client;
+
+                if (selectedClient != null)
+                {
+                    Client client = context.Clients.Single(x => x.Id == selectedClient.Id);
+
+                    context.Remove(client);
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        #endregion
     }
 }
