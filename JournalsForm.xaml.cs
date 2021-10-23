@@ -274,27 +274,11 @@ namespace WPFCashier
             return Task.CompletedTask;
         }
 
-        public Task ExpencesRead(string name)
+        public Task ExpencesRead(string from, string to)
         {
             using (DBAccess context = new DBAccess())
             {
-                DbClient = context.Clients.Where(x => x.Name.ToLower().Contains(name)).ToList();
-                DbJournals = new List<Journal>();
-
-                foreach (Client client in DbClient)
-                {
-                    var journals = context.Journals.Where(x => x.ClientId == client.Id).ToList();
-                    foreach (Journal journal in journals)
-                        DbJournals.Add(journal);
-                }
-
-
-                var result = from j in DbJournals
-                             join c in context.Clients on j.ClientId equals c.Id
-                             where j.ClientId == c.Id
-                             select new { Id = j.Id, ClientId = j.ClientId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
-
-                ItemList.ItemsSource = result.ToList();
+                ItemList.ItemsSource = context.Expences.Where(x => DateTime.Parse(x.Date) > DateTime.Parse(from) && DateTime.Parse(x.Date) < DateTime.Parse(to)).ToList();
             }
             return Task.CompletedTask;
         }
@@ -303,28 +287,18 @@ namespace WPFCashier
         {
             using (DBAccess context = new DBAccess())
             {
-                var selectedJournal = ItemList.SelectedItem as JournalMod;
-                var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
-                var date = DateTextBox.Text;
-                var type = TypeTextBox.Text;
-                var amount = AmountTextBox.Text;
-                var receipt = ReceiptTextBox.Text;
+                var selectedExpence = ItemList.SelectedItem as Expences;
+                var date = ExpencesDateTextBox.Text;
+                var type = ExpencesTypeTextBox.Text;
+                var amount = ExpencesAmountTextBox.Text;
 
-                if (!String.IsNullOrEmpty(ClientTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount) && !String.IsNullOrEmpty(receipt))
+                if (!String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount))
                 {
-                    Journal journal = context.Journals.Find(selectedJournal.Id);
+                    Expences expence = context.Expences.Find(selectedExpence.Id);
 
-                    journal.ClientId = clientId;
-                    journal.Date = date;
-                    journal.Type = type;
-                    journal.Amount = amount.StringtoDecimal();
-
-                    if (type.Equals("payment"))
-                        journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
-                    else
-                        journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
-
-                    context.Clients.Single(x => x.Id == clientId).Credit = journal.NewCredit;
+                    expence.Date = date;
+                    expence.Type = type;
+                    expence.Amount = amount.StringtoDecimal();
 
                     await context.SaveChangesAsync();
                 }
@@ -335,13 +309,13 @@ namespace WPFCashier
         {
             using (DBAccess context = new DBAccess())
             {
-                Client selectedClient = ExpencesItemList.SelectedItem as Client;
+                Expences selectedExpence = ExpencesItemList.SelectedItem as Expences;
 
-                if (selectedClient != null)
+                if (selectedExpence != null)
                 {
-                    Client client = context.Clients.Single(x => x.Id == selectedClient.Id);
+                    Expences expence = context.Expences.Single(x => x.Id == selectedExpence.Id);
 
-                    context.Remove(client);
+                    context.Remove(expence);
 
                     await context.SaveChangesAsync();
                 }
