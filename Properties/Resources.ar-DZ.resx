@@ -192,6 +192,9 @@
   <data name="ReceiptNumber" xml:space="preserve">
     <value>رقم الوصل</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
   </data>

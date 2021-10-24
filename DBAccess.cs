@@ -19,5 +19,7 @@ namespace WPFCashier
         public DbSet<Journal> Journals { get; set; }
 
         public DbSet<Expences> Expences { get; set; }
+        
+        public DbSet<AppSettings> AppSettings { get; set; }
     }
 }

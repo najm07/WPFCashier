@@ -286,6 +286,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="SettingsForm.xaml.cs">
       <DependentUpon>SettingsForm.xaml</DependentUpon>
     </Compile>
