@@ -20,133 +20,28 @@ namespace WPFCashier
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Client> DbClient { get; private set; }
-
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public async Task Create()
+        private void ClientsButton_Click(object sender, RoutedEventArgs e)
         {
-            using(DBAccess context = new DBAccess())
-            {
-                var name = NameTextBox.Text;
-                var address = AddressTextBox.Text;
-                var phone = PhoneTextBox.Text;
-                var credit = CreditTextBox.Text;
-
-                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(address) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(credit))
-                {
-                    context.Clients.Add(new Client() { Name = name, Address = address, Phone = phone, Credit = credit.StringtoDecimal() });
-                    await context.SaveChangesAsync();
-                }
-            }
+            ClientsForm clientsForm = new ClientsForm();
+            clientsForm.Show();
         }
 
-        public Task Read()
-        {
-            using (DBAccess context = new DBAccess())
-            {
-                DbClient = context.Clients.ToList();
-                ItemList.ItemsSource = DbClient;
-            }
-            return Task.CompletedTask;
-        }
-
-        public Task Read(string name)
-        {
-            using (DBAccess context = new DBAccess())
-            {
-                DbClient = context.Clients.Where(x => x.Name.ToLower().Contains(name)).ToList();
-                ItemList.ItemsSource = DbClient;
-            }
-            return Task.CompletedTask;
-        }
-
-        public async Task Update()
-        {
-            using (DBAccess context = new DBAccess())
-            {
-                Client selectedClient = ItemList.SelectedItem as Client;
-                var name = NameTextBox.Text;
-                var address = AddressTextBox.Text;
-                var phone = PhoneTextBox.Text;
-                var credit = CreditTextBox.Text;
-
-                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(address) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(credit))
-                {
-                    Client client = context.Clients.Find(selectedClient.Id);
-
-                    client.Name = name;
-                    client.Address = name;
-                    client.Phone = name;
-                    client.Credit = credit.StringtoDecimal();
-
-                    await context.SaveChangesAsync();
-                }
-            }
-        }
-
-        public async Task Delete()
-        {
-            using (DBAccess context = new DBAccess())
-            {
-                Client selectedClient = ItemList.SelectedItem as Client;
-
-                if (selectedClient != null)
-                {
-                    Client client = context.Clients.Single(x => x.Id == selectedClient.Id);
-
-                    context.Remove(client);
-
-                    await context.SaveChangesAsync();
-                }
-            }
-        }
-
-        private async void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Create();
-        }
-
-        private async void ReadButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Read();
-        }
-
-        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Update();
-        }
-
-        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Delete();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            ItemList.SelectedItem = null; //.Items.Clear();
-        }
-
-        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (SearchTextBox.Text.Length == 0)
-                Read();
-            else
-                Read(SearchTextBox.Text);
-        }
-
-        private void JournalButton_Click(object sender, RoutedEventArgs e)
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
         {
             JournalsForm journalsForm = new JournalsForm();
             journalsForm.Show();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            Read();
+            SettingsForm settings = new SettingsForm();
+            settings.Show();
         }
     }
 }

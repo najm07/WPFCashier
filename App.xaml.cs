@@ -19,5 +19,11 @@ namespace WPFCashier
             DatabaseFacade facade = new DatabaseFacade(new DBAccess());
             facade.EnsureCreated();
         }
+
+        App()
+        {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ar-DZ");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en"); 
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace WPFCashier
     public static class Entities
     {
         public static List<string> receiptType = new List<string>() { "payment", "loan" };
+        public static List<string> Languages = new List<string>() { "English", "Arabic" };
 
         public static decimal StringtoDecimal(this string text)
         {

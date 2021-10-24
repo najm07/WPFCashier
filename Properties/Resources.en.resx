@@ -165,9 +165,6 @@
   <data name="JournalsFormTitle" xml:space="preserve">
     <value>Journals</value>
   </data>
-  <data name="Language" xml:space="preserve">
-    <value>Language</value>
-  </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>
   </data>
@@ -196,9 +193,6 @@
     <value>Search</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="SettingsFormTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="Type" xml:space="preserve">
