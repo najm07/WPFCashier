@@ -12,6 +12,10 @@ namespace WPFCashier
         [Key]
         public int Id { get; set; }
 
+        public int LangIndex { get; set; }
+
+        public string Code { get; set; }
+
         public string Language { get; set; }
 
         public string Theme { get; set; }
