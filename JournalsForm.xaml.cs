@@ -220,12 +220,12 @@ namespace WPFCashier
             ItemList.Items.Clear();
         }
 
-        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (SearchTextBox.Text.Length == 0)
-                Read();
+                await Read();
             else
-                Read(SearchTextBox.Text);
+                await Read(SearchTextBox.Text);
         }
 
         private async void CreateButton_Click(object sender, RoutedEventArgs e)
