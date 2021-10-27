@@ -31,7 +31,7 @@
 		            c-0.828,0-1.5-0.672-1.5-1.5v-4.125c0-0.828,0.672-1.5,1.5-1.5h24.5c0.828,0,1.5,0.672,1.5,1.5V37.816z M86.566,24.816
 		            c0,0.828-0.672,1.5-1.5,1.5h-37.5c-0.828,0-1.5-0.672-1.5-1.5v-12.5c0-0.828,0.672-1.5,1.5-1.5h37.5c0.828,0,1.5,0.672,1.5,1.5
 		            V24.816z" Fill="#FF17314F" Width="100" Height="100" Margin="3,0,0,0"/>
-                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.Clients}" FontSize="18" FontWeight="Bold"/>
+                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.Dealers}" FontSize="18" FontWeight="Bold"/>
             </StackPanel>
         </Button>
         <Button x:Name="HistoryButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Click="HistoryButton_Click" >

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:WPFCashier.Properties"
-        Title="{x:Static p:Resources.ClientsFormTitle}" Height="500" Width="800" Loaded="Window_Loaded">
+        Title="{x:Static p:Resources.DealersFormTitle}" Height="500" Width="800" Loaded="Window_Loaded">
     <Grid>
         <TabControl>
             <TabItem Header="{x:Static p:Resources.Clients}">

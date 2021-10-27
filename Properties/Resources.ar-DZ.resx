@@ -129,9 +129,6 @@
   <data name="Clients" xml:space="preserve">
     <value>الزبائن</value>
   </data>
-  <data name="ClientsFormTitle" xml:space="preserve">
-    <value>الزبائن</value>
-  </data>
   <data name="ClientsHistory" xml:space="preserve">
     <value>سجل الزبائن</value>
   </data>
@@ -143,6 +140,15 @@
   </data>
   <data name="Date" xml:space="preserve">
     <value>التاريخ</value>
+  </data>
+  <data name="Dealer" xml:space="preserve">
+    <value>المتعامل</value>
+  </data>
+  <data name="Dealers" xml:space="preserve">
+    <value>المتعاملين</value>
+  </data>
+  <data name="DealersFormTitle" xml:space="preserve">
+    <value>المتعاملين</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
@@ -191,6 +197,12 @@
   </data>
   <data name="ReceiptNumber" xml:space="preserve">
     <value>رقم الوصل</value>
+  </data>
+  <data name="RestartCaption" xml:space="preserve">
+    <value>تم حفظ الإعدادات</value>
+  </data>
+  <data name="RestartMessage" xml:space="preserve">
+    <value>هل تود اعادة تشغيل البرنامج؟</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>

@@ -97,15 +97,6 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clients.
-        /// </summary>
-        public static string ClientsFormTitle {
-            get {
-                return ResourceManager.GetString("ClientsFormTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Clients History.
         /// </summary>
         public static string ClientsHistory {
@@ -138,6 +129,33 @@ namespace WPFCashier.Properties {
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dealer.
+        /// </summary>
+        public static string Dealer {
+            get {
+                return ResourceManager.GetString("Dealer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dealers.
+        /// </summary>
+        public static string Dealers {
+            get {
+                return ResourceManager.GetString("Dealers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dealers.
+        /// </summary>
+        public static string DealersFormTitle {
+            get {
+                return ResourceManager.GetString("DealersFormTitle", resourceCulture);
             }
         }
         
@@ -282,6 +300,24 @@ namespace WPFCashier.Properties {
         public static string ReceiptNumber {
             get {
                 return ResourceManager.GetString("ReceiptNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes saved.
+        /// </summary>
+        public static string RestartCaption {
+            get {
+                return ResourceManager.GetString("RestartCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to restart the application?.
+        /// </summary>
+        public static string RestartMessage {
+            get {
+                return ResourceManager.GetString("RestartMessage", resourceCulture);
             }
         }
         

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,18 @@ namespace WPFCashier
                 appSettings.Language = LanguagesTextBox.DisplayMemberPath.ToString();
 
                 await context.SaveChangesAsync();
+            }
+
+            var res = MessageBox.Show(Properties.Resources.RestartMessage, Properties.Resources.RestartCaption, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+
+            switch(res)
+            {
+                case MessageBoxResult.OK:
+                    Process.Start(Application.ResourceAssembly.Location);
+                    Application.Current.Shutdown();
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
             }
         }
     }
