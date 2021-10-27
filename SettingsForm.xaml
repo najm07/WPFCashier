@@ -9,7 +9,7 @@
         Title="{x:Static p:Resources.SettingsFormTitle}" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="LanguagesTextBox" SelectedValue="{Binding Code}" SelectedValuePath="Code" DisplayMemberPath="Language" HorizontalAlignment="Left" Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+        <ComboBox Name="LanguagesTextBox" SelectedValuePath="Code" DisplayMemberPath="Language" HorizontalAlignment="Left" Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
         <Button x:Name="SaveButton"  HorizontalAlignment="Left" Margin="10,360,0,10" VerticalAlignment="Bottom" Width="70" Click="SaveButton_Click" >
             <StackPanel Orientation="Horizontal">
                 <Path Stretch="Uniform" Data="M427.137,0H32.865C14.743,0,0,14.743,0,32.865v394.272c0,18.122,14.743,32.865,32.865,32.865c3.087,0,390.415,0,394.272,0

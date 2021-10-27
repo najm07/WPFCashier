@@ -16,26 +16,28 @@ namespace WPFCashier
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            DatabaseFacade facade = new DatabaseFacade(new DBAccess());
-            if(facade.EnsureCreated())
-            {
-                using (DBAccess context = new DBAccess())
-                {
-                    context.AppSettings.Add(new AppSettings() { Code = "en-US", Language = "English" });
-                    context.SaveChanges();
-                    var code = context.AppSettings.Single(x => x.Id == 1).Code;
-                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
-                }
-            }
+            
         }
 
         App()
         {
-            /*using (DBAccess context = new DBAccess())
+            DatabaseFacade facade = new DatabaseFacade(new DatabaseContext());
+            if (facade.EnsureCreated())
+            {
+                using (DatabaseContext context = new DatabaseContext())
+                {
+                    context.AppSettings.Add(new AppSettings() { Code = "en-US", Language = "English" });
+                    context.SaveChanges();
+                    //var code = context.AppSettings.Single(x => x.Id == 1).Code;
+                    //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+                }
+            }
+
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var code = context.AppSettings.Single(x => x.Id == 1).Code;
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
-            }*/
+            }
             
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en"); 
         }

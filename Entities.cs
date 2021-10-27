@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WPFCashier
 {
@@ -23,6 +24,17 @@ namespace WPFCashier
             int number;
             Int32.TryParse(text, out number);
             return number;
+        }
+
+        public static void RightToLeftLayout(this Window window)
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                if (context.AppSettings.Single(x => x.Id == 1).LangIndex == 1)
+                {
+                    window.FlowDirection = FlowDirection.RightToLeft;
+                }
+            }
         }
     }
 

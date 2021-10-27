@@ -35,7 +35,7 @@ namespace WPFCashier
         public async Task Create()
         {
             //Console.WriteLine("create function");
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var client = ClientTextBox.Text;
                 var date = DateTextBox.Text;
@@ -73,7 +73,7 @@ namespace WPFCashier
 
         public Task Read()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 //DbJournals = context.Journals.ToList();
                 //ModJournal();
@@ -93,7 +93,7 @@ namespace WPFCashier
 
         public Task Read(string name)
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 DbClient = context.Clients.Where(x => x.Name.ToLower().Contains(name)).ToList();
                 DbJournals = new List<Journal>();
@@ -118,7 +118,7 @@ namespace WPFCashier
 
         public async Task Update()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var selectedJournal = ItemList.SelectedItem as JournalMod;
                 var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
@@ -150,7 +150,7 @@ namespace WPFCashier
 
         public async Task Delete()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 JournalMod selectedJournal = ItemList.SelectedItem as JournalMod;
 
@@ -167,7 +167,7 @@ namespace WPFCashier
 
         public Task ModJournal()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 foreach (Journal journal in DbJournals)
                 {
@@ -182,7 +182,7 @@ namespace WPFCashier
         public Task ReadClientNames()
         {
             ClientListName = new List<ClientNames>();
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 foreach (Client client in context.Clients)
                     ClientListName.Add(new ClientNames() { Id = client.Id, Name = client.Name });
@@ -193,7 +193,7 @@ namespace WPFCashier
 
         public Task<string> GetSingleClientName(int id)
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var name = context.Clients.Single(x => x.Id == id).Name;
                 return Task.FromResult(name);
@@ -233,11 +233,6 @@ namespace WPFCashier
             await Create();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Read();
-        }
-
         #endregion
 
         #region Expences
@@ -245,7 +240,7 @@ namespace WPFCashier
         public async Task ExpencesCreate()
         {
             //Console.WriteLine("create function");
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var date = ExpencesDateTextBox.Text;
                 var type = ExpencesTypeTextBox.Text;
@@ -267,7 +262,7 @@ namespace WPFCashier
 
         public Task ExpencesRead()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 ExpencesItemList.ItemsSource = context.Expences.ToList();
             }
@@ -276,7 +271,7 @@ namespace WPFCashier
 
         public Task ExpencesRead(string from, string to)
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 ItemList.ItemsSource = context.Expences.Where(x => DateTime.Parse(x.Date) > DateTime.Parse(from) && DateTime.Parse(x.Date) < DateTime.Parse(to)).ToList();
             }
@@ -285,7 +280,7 @@ namespace WPFCashier
 
         public async Task ExpencesUpdate()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var selectedExpence = ItemList.SelectedItem as Expences;
                 var date = ExpencesDateTextBox.Text;
@@ -307,7 +302,7 @@ namespace WPFCashier
 
         public async Task ExpencesDelete()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 Expences selectedExpence = ExpencesItemList.SelectedItem as Expences;
 
@@ -323,5 +318,11 @@ namespace WPFCashier
         }
 
         #endregion
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RightToLeftLayout();
+            Read();
+        }
     }
 }

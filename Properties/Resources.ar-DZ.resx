@@ -204,6 +204,12 @@
   <data name="SettingsFormTitle" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>الممون</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>الممونين</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>نوع</value>
   </data>

@@ -204,6 +204,12 @@
   <data name="SettingsFormTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
   </data>

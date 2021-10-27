@@ -22,12 +22,17 @@ namespace WPFCashier
         public SettingsForm()
         {
             InitializeComponent();
+
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
+
+                this.RightToLeftLayout();
+
                 LanguagesTextBox.ItemsSource = Entities.Languages;
 
                 LanguagesTextBox.SelectedIndex = context.AppSettings.Single(x => x.Id == 1).LangIndex;
@@ -36,7 +41,7 @@ namespace WPFCashier
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 AppSettings appSettings = context.AppSettings.Single(x => x.Id == 1);
 

@@ -24,11 +24,13 @@ namespace WPFCashier
         public MainWindow()
         {
             InitializeComponent();
+
+            
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
         {
-            ClientsForm clientsForm = new ClientsForm();
+            DealersForm clientsForm = new DealersForm();
             clientsForm.Show();
         }
 
@@ -42,6 +44,11 @@ namespace WPFCashier
         {
             SettingsForm settings = new SettingsForm();
             settings.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RightToLeftLayout();
         }
     }
 }

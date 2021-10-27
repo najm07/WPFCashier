@@ -17,18 +17,21 @@ namespace WPFCashier
     /// <summary>
     /// Interaction logic for ClientsForm.xaml
     /// </summary>
-    public partial class ClientsForm : Window
+    public partial class DealersForm : Window
     {
         public List<Client> DbClient { get; private set; }
+        public List<Supplier> DbSupplier { get; private set; }
 
-        public ClientsForm()
+        public DealersForm()
         {
             InitializeComponent();
         }
 
+        #region Client
+
         public async Task Create()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 var name = NameTextBox.Text;
                 var address = AddressTextBox.Text;
@@ -45,7 +48,7 @@ namespace WPFCashier
 
         public Task Read()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 DbClient = context.Clients.ToList();
                 ItemList.ItemsSource = DbClient;
@@ -55,7 +58,7 @@ namespace WPFCashier
 
         public Task Read(string name)
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 DbClient = context.Clients.Where(x => x.Name.ToLower().Contains(name)).ToList();
                 ItemList.ItemsSource = DbClient;
@@ -65,7 +68,7 @@ namespace WPFCashier
 
         public async Task Update()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 Client selectedClient = ItemList.SelectedItem as Client;
                 var name = NameTextBox.Text;
@@ -89,7 +92,7 @@ namespace WPFCashier
 
         public async Task Delete()
         {
-            using (DBAccess context = new DBAccess())
+            using (DatabaseContext context = new DatabaseContext())
             {
                 Client selectedClient = ItemList.SelectedItem as Client;
 
@@ -143,9 +146,42 @@ namespace WPFCashier
             journalsForm.Show();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        #endregion
+
+        #region Supplier
+
+        public Task ReadSuppliers()
         {
-            Read();
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                DbSupplier = context.Suppliers.ToList();
+                SuppliersItemList.ItemsSource = DbSupplier;
+            }
+            return Task.CompletedTask;
+        }
+
+        public Task ReadSuppliers(string name)
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                DbSupplier = context.Suppliers.Where(x => x.Name.ToLower().Contains(name)).ToList();
+                SuppliersItemList.ItemsSource = DbSupplier;
+            }
+            return Task.CompletedTask;
+        }
+
+        private async void SuppliersReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ReadSuppliers();
+        }
+
+        #endregion
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RightToLeftLayout();
+            await Read();
+            await ReadSuppliers();
         }
     }
 }
