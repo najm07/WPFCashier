@@ -17,12 +17,26 @@ namespace WPFCashier
         protected override void OnStartup(StartupEventArgs e)
         {
             DatabaseFacade facade = new DatabaseFacade(new DBAccess());
-            facade.EnsureCreated();
+            if(facade.EnsureCreated())
+            {
+                using (DBAccess context = new DBAccess())
+                {
+                    context.AppSettings.Add(new AppSettings() { Code = "en-US", Language = "English" });
+                    context.SaveChanges();
+                    var code = context.AppSettings.Single(x => x.Id == 1).Code;
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+                }
+            }
         }
 
         App()
         {
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ar-DZ");
+            /*using (DBAccess context = new DBAccess())
+            {
+                var code = context.AppSettings.Single(x => x.Id == 1).Code;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+            }*/
+            
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en"); 
         }
     }

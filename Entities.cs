@@ -9,7 +9,7 @@ namespace WPFCashier
     public static class Entities
     {
         public static List<string> receiptType = new List<string>() { "payment", "loan" };
-        public static List<string> Languages = new List<string>() { "English", "Arabic" };
+        public static List<Lang> Languages = new List<Lang>() { new Lang() { Index = 0, Code = "en-US", Language = "English" }, new Lang() { Index = 1, Code = "ar-DZ", Language = "Arabic" }};
 
         public static decimal StringtoDecimal(this string text)
         {
@@ -24,5 +24,12 @@ namespace WPFCashier
             Int32.TryParse(text, out number);
             return number;
         }
+    }
+
+    public class Lang
+    {
+        public int Index { get; set; }
+        public string Code { get; set; }
+        public string Language { get; set; }
     }
 }

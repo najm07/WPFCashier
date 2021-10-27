@@ -165,6 +165,9 @@
   <data name="JournalsFormTitle" xml:space="preserve">
     <value>Journals</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>
   </data>
@@ -189,10 +192,16 @@
   <data name="ReceiptNumber" xml:space="preserve">
     <value>Receipt Number</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
   <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsFormTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="Type" xml:space="preserve">
