@@ -277,6 +277,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        public static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read.
         /// </summary>
         public static string Read {

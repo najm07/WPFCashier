@@ -189,6 +189,9 @@
   <data name="Phone" xml:space="preserve">
     <value>الهاتف</value>
   </data>
+  <data name="Print" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>قراءة</value>
   </data>

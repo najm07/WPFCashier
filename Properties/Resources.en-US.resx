@@ -189,6 +189,9 @@
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>Read</value>
   </data>
