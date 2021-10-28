@@ -55,7 +55,8 @@ namespace WPFCashier
 
                     context.Journals.Add(new Journal()
                     {
-                        ClientId = ClientTextBox.SelectedValue.ToString().StringtoInt(),
+                        DealerId = ClientTextBox.SelectedValue.ToString().StringtoInt(),
+                        DealerType = 0,
                         Date = date,
                         Type = type,
                         Amount = amount.StringtoDecimal(),
@@ -81,9 +82,9 @@ namespace WPFCashier
                 ReadClientNames();
 
                 var result = from j in context.Journals
-                             join c in context.Clients on j.ClientId equals c.Id
-                             where j.ClientId >= 0
-                             select new { Id = j.Id, ClientId = j.ClientId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit};
+                             join c in context.Clients on j.DealerId equals c.Id
+                             where j.DealerType == 0
+                             select new { Id = j.Id, ClientId = j.DealerId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit};
 
                 ItemList.ItemsSource = result.ToList();
                 ClientTextBox.ItemsSource = ClientListName;
@@ -100,16 +101,16 @@ namespace WPFCashier
                 
                 foreach (Client client in DbClient)
                 {
-                    var journals = context.Journals.Where(x => x.ClientId == client.Id).ToList();
+                    var journals = context.Journals.Where(x => x.DealerId == client.Id && x.DealerType == 0).ToList();
                     foreach (Journal journal in journals)
                         DbJournals.Add(journal);
                 }
                     
 
                 var result = from j in DbJournals
-                             join c in context.Clients on j.ClientId equals c.Id
-                             where j.ClientId == c.Id
-                             select new { Id = j.Id, ClientId = j.ClientId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             join c in context.Clients on j.DealerId equals c.Id
+                             where j.DealerId == c.Id && j.DealerType == 0
+                             select new { Id = j.Id, ClientId = j.DealerId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
             }
@@ -131,7 +132,7 @@ namespace WPFCashier
                 {
                     Journal journal = context.Journals.Find(selectedJournal.Id);
 
-                    journal.ClientId = clientId;
+                    journal.DealerId = clientId;
                     journal.Date = date;
                     journal.Type = type;
                     journal.Amount = amount.StringtoDecimal();
@@ -163,20 +164,6 @@ namespace WPFCashier
                     await context.SaveChangesAsync();
                 }
             }
-        }
-
-        public Task ModJournal()
-        {
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                foreach (Journal journal in DbJournals)
-                {
-                    var clientname = context.Clients.Single(x => x.Id == journal.ClientId).Name;
-                    DbJournalsMOD.Add(new JournalMod() { Id = journal.Id, ClientName = clientname, ReceiptNumber = journal.ReceiptNumber, Date = journal.Date, Type = journal.Type, Amount = journal.Amount, OldCredit = journal.OldCredit, NewCredit = journal.NewCredit });
-                }
-            }
-
-            return Task.CompletedTask;
         }
 
         public Task ReadClientNames()

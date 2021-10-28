@@ -38,7 +38,7 @@ namespace WPFCashier
                 var phone = PhoneTextBox.Text;
                 var credit = CreditTextBox.Text;
 
-                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(address) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(credit))
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(address) && !string.IsNullOrEmpty(phone) && !string.IsNullOrEmpty(credit))
                 {
                     context.Clients.Add(new Client() { Name = name, Address = address, Phone = phone, Credit = credit.StringtoDecimal() });
                     await context.SaveChangesAsync();
@@ -76,7 +76,7 @@ namespace WPFCashier
                 var phone = PhoneTextBox.Text;
                 var credit = CreditTextBox.Text;
 
-                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(address) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(credit))
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(address) && !string.IsNullOrEmpty(phone) && !string.IsNullOrEmpty(credit))
                 {
                     Client client = context.Clients.Find(selectedClient.Id);
 

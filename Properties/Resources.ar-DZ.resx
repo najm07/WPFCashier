@@ -225,6 +225,9 @@
   <data name="Suppliers" xml:space="preserve">
     <value>الممونين</value>
   </data>
+  <data name="SuppliersHistory" xml:space="preserve">
+    <value>سجل الممونين</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>نوع</value>
   </data>

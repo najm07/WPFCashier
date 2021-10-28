@@ -385,6 +385,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suppliers History.
+        /// </summary>
+        public static string SuppliersHistory {
+            get {
+                return ResourceManager.GetString("SuppliersHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         public static string Type {

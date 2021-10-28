@@ -9,9 +9,23 @@ namespace WPFCashier
 {
     public static class Entities
     {
+
+        /// <summary>
+        /// list of payment types
+        /// </summary>
         public static List<string> receiptType = new List<string>() { "payment", "loan" };
+
+        /// <summary>
+        /// A list that contains the languages
+        /// </summary>
         public static List<Lang> Languages = new List<Lang>() { new Lang() { Index = 0, Code = "en-US", Language = "English" }, new Lang() { Index = 1, Code = "ar-DZ", Language = "Arabic" }};
 
+        /// <summary>
+        /// A function that parse a string into
+        /// an decimal
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static decimal StringtoDecimal(this string text)
         {
             decimal number;
@@ -19,6 +33,12 @@ namespace WPFCashier
             return number;
         }
 
+        /// <summary>
+        /// A function that parse a string into
+        /// an integer
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static int StringtoInt(this string text)
         {
             int number;
@@ -26,6 +46,11 @@ namespace WPFCashier
             return number;
         }
 
+        /// <summary>
+        /// This function changes the form 
+        /// layout to "Right to Left"
+        /// </summary>
+        /// <param name="window"></param>
         public static void RightToLeftLayout(this Window window)
         {
             using (DatabaseContext context = new DatabaseContext())

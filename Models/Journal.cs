@@ -7,7 +7,9 @@ namespace WPFCashier
         [Key]
         public int Id { get; set; }
 
-        public int ClientId { get; set; }
+        public int DealerId { get; set; }
+
+        public int DealerType { get; set; }
 
         public int ReceiptNumber { get; set; }
 
