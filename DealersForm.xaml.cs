@@ -81,8 +81,8 @@ namespace WPFCashier
                     Client client = context.Clients.Find(selectedClient.Id);
 
                     client.Name = name;
-                    client.Address = name;
-                    client.Phone = name;
+                    client.Address = address;
+                    client.Phone = phone;
                     client.Credit = credit.StringtoDecimal();
 
                     await context.SaveChangesAsync();
@@ -150,6 +150,23 @@ namespace WPFCashier
 
         #region Supplier
 
+        public async Task CreateSuppliers()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                var name = SuppliersNameTextBox.Text;
+                var address = SuppliersAddressTextBox.Text;
+                var phone = SuppliersPhoneTextBox.Text;
+                var credit = SuppliersCreditTextBox.Text;
+
+                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(address) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(credit))
+                {
+                    context.Suppliers.Add(new Supplier() { Name = name, Address = address, Phone = phone, Credit = credit.StringtoDecimal() });
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
         public Task ReadSuppliers()
         {
             using (DatabaseContext context = new DatabaseContext())
@@ -170,9 +187,78 @@ namespace WPFCashier
             return Task.CompletedTask;
         }
 
+        public async Task UpdateSuppliers()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                Supplier selectedSupplier = SuppliersItemList.SelectedItem as Supplier;
+                var name = SuppliersNameTextBox.Text;
+                var address = SuppliersAddressTextBox.Text;
+                var phone = SuppliersPhoneTextBox.Text;
+                var credit = SuppliersCreditTextBox.Text;
+
+                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(address) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(credit))
+                {
+                    Supplier Supplier = context.Suppliers.Find(selectedSupplier.Id);
+
+                    Supplier.Name = name;
+                    Supplier.Address = address;
+                    Supplier.Phone = phone;
+                    Supplier.Credit = credit.StringtoDecimal();
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        public async Task DeleteSuppliers()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                Supplier selectedSupplier = SuppliersItemList.SelectedItem as Supplier;
+
+                if (selectedSupplier != null)
+                {
+                    Supplier supplier = context.Suppliers.Single(x => x.Id == selectedSupplier.Id);
+
+                    context.Remove(supplier);
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
         private async void SuppliersReadButton_Click(object sender, RoutedEventArgs e)
         {
             await ReadSuppliers();
+        }
+
+        private async void SuppliersCreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            await CreateSuppliers();
+        }
+
+        private async void SuppliersUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            await UpdateSuppliers();
+        }
+
+        private async void SuppliersDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await DeleteSuppliers();
+        }
+
+        private void SuppliersMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SuppliersItemList.SelectedItem = null; //.Items.Clear();
+        }
+
+        private async void SuppliersSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SuppliersSearchTextBox.Text.Length == 0)
+                await ReadSuppliers();
+            else
+                await ReadSuppliers(SuppliersSearchTextBox.Text);
         }
 
         #endregion
