@@ -233,10 +233,6 @@ namespace WPFCashier
             await ReadSuppliers();
         }
 
-        #endregion
-
-       
-
         private async void SuppliersCreateButton_Click(object sender, RoutedEventArgs e)
         {
             await CreateSuppliers();
@@ -265,11 +261,7 @@ namespace WPFCashier
                 await ReadSuppliers(SuppliersSearchTextBox.Text);
         }
 
-       /* private void SuppliersJournalButton_Click(object sender, RoutedEventArgs e)
-        {
-            JournalsForm journalsForm = new JournalsForm();
-            journalsForm.Show();
-        }*/
+        #endregion
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
