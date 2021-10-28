@@ -6,7 +6,71 @@
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:WPFCashier.Properties"
-        Title="{x:Static p:Resources.MainFormTitle}" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="{x:Static p:Resources.MainFormTitle}" Height="450" Width="800" Loaded="Window_Loaded" Background="#FFEFEDF2">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="DashboardButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="2"
+                                              ShadowDepth="1"
+                                              Direction="270"
+                                              Color="Black"
+                                              Opacity="0.4" />
+                            </Border.Effect>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,7 +81,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="ClientsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Click="ClientsButton_Click" >
+        <Button x:Name="ClientsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Click="ClientsButton_Click" BorderBrush="{x:Null}" Foreground="Black" Background="WhiteSmoke" Style="{DynamicResource DashboardButton}" >
             <StackPanel Orientation="Vertical">
                 <Path Stretch="Uniform"  Data="M93.632,2.24H2c-1.104,0-2,0.896-2,2v87.152c0,1.104,0.896,2,2,2h91.633c1.104,0,2-0.896,2-2V4.24
 		            C95.632,3.135,94.736,2.24,93.632,2.24z M25.606,10.441c5.44,0,9.85,4.409,9.85,9.849s-4.409,9.851-9.85,9.851
@@ -30,11 +94,11 @@
 		            c0-0.828,0.672-1.5,1.5-1.5h24.5c0.828,0,1.5,0.672,1.5,1.5V52.816z M86.566,37.816c0,0.828-0.672,1.5-1.5,1.5h-24.5
 		            c-0.828,0-1.5-0.672-1.5-1.5v-4.125c0-0.828,0.672-1.5,1.5-1.5h24.5c0.828,0,1.5,0.672,1.5,1.5V37.816z M86.566,24.816
 		            c0,0.828-0.672,1.5-1.5,1.5h-37.5c-0.828,0-1.5-0.672-1.5-1.5v-12.5c0-0.828,0.672-1.5,1.5-1.5h37.5c0.828,0,1.5,0.672,1.5,1.5
-		            V24.816z" Fill="#FF17314F" Width="100" Height="100" Margin="3,0,0,0"/>
-                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.Dealers}" FontSize="18" FontWeight="Bold"/>
+		            V24.816z" Fill="#FF385A7B" Width="100" Height="100" Margin="3,0,0,0"/>
+                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.Dealers}" FontSize="18" FontWeight="Bold" Foreground="#FF385A7B"/>
             </StackPanel>
         </Button>
-        <Button x:Name="HistoryButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Click="HistoryButton_Click" >
+        <Button x:Name="HistoryButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Click="HistoryButton_Click" BorderBrush="{x:Null}" Foreground="Black" Background="WhiteSmoke" Style="{DynamicResource DashboardButton}">
             <StackPanel Orientation="Vertical">
                 <Path Stretch="Uniform"  Data="M472.554,319.199c-9.4-0.7-28.8,9.8-34.1,12.5c-18.9,9.5-45.2,24.4-62.5,36.3c-1.2,0.8-2.8,1.9-4,2.7
 		c-7.8,5-16,8.3-25.1,10.3c-50.2,10.7-123.3,11.8-123.3,11.8l-4.3,0.2c-3.2,0.2-6.1-2.1-6.5-5.2c-0.5-3.4,2-6.6,5.6-6.9l108.7-10.3
@@ -64,11 +128,11 @@
 		c0,13.7,11.1,24.8,24.8,24.8c2.1,0,4.2-0.3,6.1-0.8v76.2H376.654z M114.954,232.999c0-5.8,4.7-10.5,10.5-10.5h261.7
 		c5.8,0,10.5,4.7,10.5,10.5s-4.7,10.5-10.5,10.5h-261.8C119.654,243.499,114.954,238.799,114.954,232.999z M114.954,270.999
 		c0-5.8,4.7-10.5,10.5-10.5h261.7c5.8,0,10.5,4.7,10.5,10.5s-4.7,10.5-10.5,10.5h-261.8
-		C119.654,281.499,114.954,276.799,114.954,270.999z" Fill="#FF17314F" Width="100" Height="100" Margin="3,0,0,0"/>
-                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.History}" FontSize="18" FontWeight="Bold"/>
+		C119.654,281.499,114.954,276.799,114.954,270.999z" Fill="#FF385A7B" Width="100" Height="100" Margin="3,0,0,0"/>
+                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.History}" FontSize="18" FontWeight="Bold" Foreground="#FF385A7B"/>
             </StackPanel>
         </Button>
-        <Button x:Name="SettingsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Click="SettingsButton_Click" >
+        <Button x:Name="SettingsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Click="SettingsButton_Click" BorderBrush="{x:Null}" Foreground="Black" Background="WhiteSmoke" Style="{DynamicResource DashboardButton}" >
             <StackPanel Orientation="Vertical">
                 <Path Stretch="Uniform"  Data="M20.701,281.901l32.1,0.2c4.8,24.7,14.3,48.7,28.7,70.5l-22.8,22.6c-8.2,8.1-8.2,21.2-0.2,29.4l24.6,24.9
 		c8.1,8.2,21.2,8.2,29.4,0.2l22.8-22.6c21.6,14.6,45.5,24.5,70.2,29.5l-0.2,32.1c-0.1,11.5,9.2,20.8,20.7,20.9l35,0.2
@@ -79,8 +143,8 @@
 		c-11.5-0.1-20.8,9.2-20.9,20.7l-0.3,32.1c-24.8,4.8-48.8,14.3-70.5,28.7l-22.6-22.8c-8.1-8.2-21.2-8.2-29.4-0.2l-24.8,24.6
 		c-8.2,8.1-8.2,21.2-0.2,29.4l22.6,22.8c-14.6,21.6-24.5,45.5-29.5,70.2l-32.1-0.2c-11.5-0.1-20.8,9.2-20.9,20.7l-0.2,35
 		C-0.099,272.401,9.201,281.801,20.701,281.901z M179.301,178.601c36.6-36.2,95.5-35.9,131.7,0.7s35.9,95.5-0.7,131.7
-		s-95.5,35.9-131.7-0.7S142.701,214.801,179.301,178.601z" Fill="#FF17314F" Width="100" Height="100" Margin="3,0,0,0"/>
-                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.Settings}" FontSize="18" FontWeight="Bold"/>
+		s-95.5,35.9-131.7-0.7S142.701,214.801,179.301,178.601z" Fill="#FF385A7B" Width="100" Height="100" Margin="3,0,0,0"/>
+                <Label HorizontalAlignment="Center" Content="{x:Static p:Resources.Settings}" FontSize="18" FontWeight="Bold" Foreground="#FF385A7B"/>
             </StackPanel>
         </Button>
     </Grid>
