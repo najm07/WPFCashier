@@ -24,6 +24,8 @@ namespace WPFCashier
         public List<JournalMod> DbJournalsMOD { get; private set; }
         public List<Client> DbClient { get; private set; }
         public List<ClientNames> ClientListName;
+        public List<Supplier> DbSupplier { get; private set; }
+        public List<SupplierNames> SupplierListName;
 
         public JournalsForm()
         {
@@ -306,10 +308,196 @@ namespace WPFCashier
 
         #endregion
 
+        #region Supplier_History
+
+        public async Task CreateSupplier()
+        {
+            //Console.WriteLine("create function");
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                var supplier = SupplierTextBox.Text;
+                var date = SupplierDateTextBox.Text;
+                var type = SupplierTypeTextBox.Text;
+                var amount = SupplierAmountTextBox.Text;
+                var receipt = SupplierReceiptTextBox.Text;
+
+                if (!string.IsNullOrEmpty(supplier) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount) && !string.IsNullOrEmpty(receipt))
+                {
+                    var supplierCredit = context.Suppliers.Single(x => x.Id == SupplierTextBox.SelectedValue.ToString().StringtoInt()).Credit;
+                    decimal newSupplierCredit = 0;
+
+                    if (type.Equals("payment"))
+                        newSupplierCredit = supplierCredit - amount.StringtoDecimal();
+                    else
+                        newSupplierCredit = supplierCredit + amount.StringtoDecimal();
+
+                    context.Journals.Add(new Journal()
+                    {
+                        DealerId = SupplierTextBox.SelectedValue.ToString().StringtoInt(),
+                        DealerType = 1,
+                        Date = date,
+                        Type = type,
+                        Amount = amount.StringtoDecimal(),
+                        ReceiptNumber = receipt.StringtoInt(),
+                        OldCredit = supplierCredit,
+                        NewCredit = newSupplierCredit
+                    });
+
+                    context.Suppliers.Single(x => x.Id == SupplierTextBox.SelectedValue.ToString().StringtoInt()).Credit = newSupplierCredit;
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        public Task ReadSupplier()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                //DbJournals = context.Journals.ToList();
+                //ModJournal();
+                SupplierTypeTextBox.ItemsSource = Entities.receiptType;
+                ReadSupplierNames();
+
+                var result = from j in context.Journals
+                             join c in context.Suppliers on j.DealerId equals c.Id
+                             where j.DealerType == 1
+                             select new { Id = j.Id, SupplierId = j.DealerId, SupplierName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+
+                SupplierItemList.ItemsSource = result.ToList();
+                SupplierTextBox.ItemsSource = SupplierListName;
+            }
+            return Task.CompletedTask;
+        }
+
+        public Task ReadSupplier(string name)
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                DbSupplier = context.Suppliers.Where(x => x.Name.ToLower().Contains(name)).ToList();
+                DbJournals = new List<Journal>();
+
+                foreach (Supplier supplier in DbSupplier)
+                {
+                    var journals = context.Journals.Where(x => x.DealerId == supplier.Id && x.DealerType == 1).ToList();
+                    foreach (Journal journal in journals)
+                        DbJournals.Add(journal);
+                }
+
+
+                var result = from j in DbJournals
+                             join c in context.Suppliers on j.DealerId equals c.Id
+                             where j.DealerId == c.Id && j.DealerType == 1
+                             select new { Id = j.Id, SupplierId = j.DealerId, SupplierName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+
+                SupplierItemList.ItemsSource = result.ToList();
+            }
+            return Task.CompletedTask;
+        }
+
+        public Task ReadSupplierNames()
+        {
+            SupplierListName = new List<SupplierNames>();
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                foreach (Supplier supplier in context.Suppliers)
+                    SupplierListName.Add(new SupplierNames() { Id = supplier.Id, Name = supplier.Name });
+            }
+
+            return Task.CompletedTask;
+        }
+
+        public async Task UpdateSupplier()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                var selectedJournal = SupplierItemList.SelectedItem as JournalMod;
+                var supplierId = SupplierTextBox.SelectedValue.ToString().StringtoInt();
+                var date = SupplierDateTextBox.Text;
+                var type = SupplierTypeTextBox.Text;
+                var amount = SupplierAmountTextBox.Text;
+                var receipt = SupplierReceiptTextBox.Text;
+
+                if (!String.IsNullOrEmpty(SupplierTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount) && !String.IsNullOrEmpty(receipt))
+                {
+                    Journal journal = context.Journals.Find(selectedJournal.Id);
+
+                    journal.DealerId = supplierId;
+                    journal.Date = date;
+                    journal.Type = type;
+                    journal.Amount = amount.StringtoDecimal();
+
+                    if (type.Equals("payment"))
+                        journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
+                    else
+                        journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
+
+                    context.Suppliers.Single(x => x.Id == supplierId).Credit = journal.NewCredit;
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        public async Task DeleteSupplier()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                JournalMod selectedJournal = SupplierItemList.SelectedItem as JournalMod;
+
+                if (selectedJournal != null)
+                {
+                    Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
+
+                    context.Remove(journal);
+
+                    await context.SaveChangesAsync();
+
+                }
+            }
+        }
+
+        private async void SupplierReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ReadSupplier();
+        }
+
+        private async void SupplierUpdateButton_Click(object sender, RoutedEventArgs e)
+        {   if (SupplierEnableCheckBox.IsChecked == false)
+                SupplierEnableCheckBox.IsChecked=true;
+            await UpdateSupplier();
+        }
+
+        private async void SupplierDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await DeleteSupplier();
+        }
+
+        private void SupplierMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierItemList.Items.Clear();
+        }
+
+        private async void SupplierSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SupplierSearchTextBox.Text.Length == 0)
+                await ReadSupplier();
+            else
+                await ReadSupplier(SupplierSearchTextBox.Text);
+        }
+
+        private async void SupplierCreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            await CreateSupplier();
+        }
+
+        #endregion
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.RightToLeftLayout();
             Read();
+            ReadSupplier();
         }
     }
 }
