@@ -24,7 +24,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="{x:Static p:Resources.Id}" Width="50"  DisplayMemberBinding="{Binding Id}"/>
-                                <GridViewColumn Header="{x:Static p:Resources.Client}" Width="100" DisplayMemberBinding="{Binding ClientName}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.Client}" Width="100" DisplayMemberBinding="{Binding DealerName}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Date}" Width="100" DisplayMemberBinding="{Binding Date}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Type}" Width="80" DisplayMemberBinding="{Binding Type}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Receipt}" Width="80" DisplayMemberBinding="{Binding ReceiptNumber}"/>
@@ -101,7 +101,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="{x:Static p:Resources.Id}" Width="50"  DisplayMemberBinding="{Binding Id}"/>
-                                <GridViewColumn Header="{x:Static p:Resources.Supplier}" Width="100" DisplayMemberBinding="{Binding SupplierName}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.Supplier}" Width="100" DisplayMemberBinding="{Binding DealerName}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Date}" Width="100" DisplayMemberBinding="{Binding Date}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Type}" Width="80" DisplayMemberBinding="{Binding Type}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Receipt}" Width="80" DisplayMemberBinding="{Binding ReceiptNumber}"/>
