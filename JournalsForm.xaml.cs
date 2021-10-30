@@ -362,7 +362,7 @@ namespace WPFCashier
                 var result = from j in context.Journals
                              join c in context.Suppliers on j.DealerId equals c.Id
                              where j.DealerType == 1
-                             select new { Id = j.Id, SupplierId = j.DealerId, SupplierName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             select new { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
                 SupplierTextBox.ItemsSource = SupplierListName;
@@ -388,7 +388,7 @@ namespace WPFCashier
                 var result = from j in DbJournals
                              join c in context.Suppliers on j.DealerId equals c.Id
                              where j.DealerId == c.Id && j.DealerType == 1
-                             select new { Id = j.Id, SupplierId = j.DealerId, SupplierName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             select new { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
             }
