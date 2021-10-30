@@ -27,7 +27,7 @@ namespace WPFCashier
     public class JournalMod
     {
         public int Id { get; set; }
-
+      
         public int DealertId { get; set; }
 
         public string DealerName { get; set; }
