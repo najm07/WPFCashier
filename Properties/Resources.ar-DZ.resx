@@ -123,6 +123,9 @@
   <data name="Amount" xml:space="preserve">
     <value>المبلغ</value>
   </data>
+  <data name="ApplicationSettings" xml:space="preserve">
+    <value>إعدادات البرنامج</value>
+  </data>
   <data name="Client" xml:space="preserve">
     <value>الزبون</value>
   </data>
@@ -131,6 +134,18 @@
   </data>
   <data name="ClientsHistory" xml:space="preserve">
     <value>سجل الزبائن</value>
+  </data>
+  <data name="CompanyAddress" xml:space="preserve">
+    <value>عنوان الشركة</value>
+  </data>
+  <data name="CompanyInformation" xml:space="preserve">
+    <value>معلومات الشركة</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="CompanyPhone" xml:space="preserve">
+    <value>هاتف الشركة</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>أضف</value>
@@ -173,6 +188,9 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>اللغة</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>اللقب</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>الصندوق</value>
