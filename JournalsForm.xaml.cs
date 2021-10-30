@@ -86,7 +86,7 @@ namespace WPFCashier
                 var result = from j in context.Journals
                              join c in context.Clients on j.DealerId equals c.Id
                              where j.DealerType == 0
-                             select new { Id = j.Id, ClientId = j.DealerId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit};
+                             select new { Id = j.Id, ClientId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit};
 
                 ItemList.ItemsSource = result.ToList();
                 ClientTextBox.ItemsSource = ClientListName;
@@ -112,7 +112,7 @@ namespace WPFCashier
                 var result = from j in DbJournals
                              join c in context.Clients on j.DealerId equals c.Id
                              where j.DealerId == c.Id && j.DealerType == 0
-                             select new { Id = j.Id, ClientId = j.DealerId, ClientName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             select new { Id = j.Id, ClientId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
             }
