@@ -18,7 +18,7 @@ namespace WPFCashier
         /// <summary>
         /// A list that contains the languages
         /// </summary>
-        public static List<Lang> Languages = new List<Lang>() { new Lang() { Index = 0, Code = "en-US", Language = "English" }, new Lang() { Index = 1, Code = "ar-DZ", Language = "Arabic" }};
+        public static List<Lang> Languages = new List<Lang>() { new Lang() { Index = 0, Code = "en-US", Language = Properties.Resources.English }, new Lang() { Index = 1, Code = "ar-DZ", Language = Properties.Resources.Arabic }};
 
         /// <summary>
         /// A function that parse a string into

@@ -19,7 +19,7 @@ namespace WPFCashier.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -88,6 +88,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic.
+        /// </summary>
+        public static string Arabic {
+            get {
+                return ResourceManager.GetString("Arabic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client.
         /// </summary>
         public static string Client {
@@ -124,6 +133,24 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank account.
+        /// </summary>
+        public static string CompanyBankAccount {
+            get {
+                return ResourceManager.GetString("CompanyBankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commercial Register.
+        /// </summary>
+        public static string CompanyCommercialRegister {
+            get {
+                return ResourceManager.GetString("CompanyCommercialRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Information.
         /// </summary>
         public static string CompanyInformation {
@@ -147,6 +174,24 @@ namespace WPFCashier.Properties {
         public static string CompanyPhone {
             get {
                 return ResourceManager.GetString("CompanyPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistical number.
+        /// </summary>
+        public static string CompanyStatisticalNumber {
+            get {
+                return ResourceManager.GetString("CompanyStatisticalNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax number.
+        /// </summary>
+        public static string CompanyTaxNumber {
+            get {
+                return ResourceManager.GetString("CompanyTaxNumber", resourceCulture);
             }
         }
         
@@ -219,6 +264,15 @@ namespace WPFCashier.Properties {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
             }
         }
         

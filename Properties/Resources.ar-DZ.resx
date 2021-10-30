@@ -126,6 +126,9 @@
   <data name="ApplicationSettings" xml:space="preserve">
     <value>إعدادات البرنامج</value>
   </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>العربية</value>
+  </data>
   <data name="Client" xml:space="preserve">
     <value>الزبون</value>
   </data>
@@ -138,6 +141,12 @@
   <data name="CompanyAddress" xml:space="preserve">
     <value>عنوان الشركة</value>
   </data>
+  <data name="CompanyBankAccount" xml:space="preserve">
+    <value>الحساب البنكي</value>
+  </data>
+  <data name="CompanyCommercialRegister" xml:space="preserve">
+    <value>السجل التجاري</value>
+  </data>
   <data name="CompanyInformation" xml:space="preserve">
     <value>معلومات الشركة</value>
   </data>
@@ -146,6 +155,12 @@
   </data>
   <data name="CompanyPhone" xml:space="preserve">
     <value>هاتف الشركة</value>
+  </data>
+  <data name="CompanyStatisticalNumber" xml:space="preserve">
+    <value>الرقم الاحصائي</value>
+  </data>
+  <data name="CompanyTaxNumber" xml:space="preserve">
+    <value>الرقم الضريبي</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>أضف</value>
@@ -170,6 +185,9 @@
   </data>
   <data name="Edit" xml:space="preserve">
     <value>تعديل</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>الانجليزية</value>
   </data>
   <data name="Expences" xml:space="preserve">
     <value>النفقات</value>
