@@ -72,37 +72,37 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid>
+        <Grid Margin="0, 0, 0, 50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="{x:Static p:Resources.ApplicationSettings}" Grid.Column="0">
+            <GroupBox Header="{x:Static p:Resources.ApplicationSettings}" Grid.Column="0" Margin="5">
                 <Grid>
-                    <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-                    <ComboBox Name="LanguagesTextBox" SelectedValuePath="Code" DisplayMemberPath="Language" HorizontalAlignment="Left" Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"/>
+                    <ComboBox Name="LanguagesTextBox" SelectedValuePath="Code" DisplayMemberPath="Language" HorizontalAlignment="Left" Margin="90,20,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="{x:Static p:Resources.CompanyInformation}" Grid.Column="1">
+            <GroupBox Header="{x:Static p:Resources.CompanyInformation}" Grid.Column="1" Margin="5">
                 <Grid>
-                    <Label Content="{x:Static p:Resources.Name}" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="NameTextBox" HorizontalAlignment="Left" Margin="80,40,0,0" Width="100" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.LastName}" HorizontalAlignment="Center" Margin="100,40,20,0" VerticalAlignment="Top"/>
-                    <TextBox Name="LastNameTextBox" HorizontalAlignment="Right" Margin="215,40,10,0" Width="100" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyName}" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="CompanyNameTextBox" HorizontalAlignment="Right" Margin="140,80,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyAddress}" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="CompanyAddressTextBox" HorizontalAlignment="Right" Margin="140,120,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyPhone}" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="CompanyPhoneTextBox" HorizontalAlignment="Right" Margin="140,160,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyCommercialRegister}" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="CompanyCommercialRegisterTextBox" HorizontalAlignment="Right" Margin="140,200,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyTaxNumber}" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="TaxNumberTextBox" HorizontalAlignment="Right" Margin="140,240,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyStatisticalNumber}" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="StatisticalNumberTextBox" HorizontalAlignment="Right" Margin="140,280,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                    <Label Content="{x:Static p:Resources.CompanyBankAccount}" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top"/>
-                    <TextBox Name="BankAccountTextBox" HorizontalAlignment="Right" Margin="140,320,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.Name}" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="NameTextBox" HorizontalAlignment="Left" Margin="65,20,0,0" Width="100" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.LastName}" HorizontalAlignment="Center" Margin="75,20,20,0" VerticalAlignment="Top"/>
+                    <TextBox Name="LastNameTextBox" HorizontalAlignment="Right" Margin="215,20,10,0" Width="100" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyName}" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="CompanyNameTextBox" HorizontalAlignment="Right" Margin="140,60,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyAddress}" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="CompanyAddressTextBox" HorizontalAlignment="Right" Margin="140,100,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyPhone}" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="CompanyPhoneTextBox" HorizontalAlignment="Right" Margin="140,140,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyCommercialRegister}" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="CompanyCommercialRegisterTextBox" HorizontalAlignment="Right" Margin="140,180,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyTaxNumber}" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="TaxNumberTextBox" HorizontalAlignment="Right" Margin="140,220,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyStatisticalNumber}" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="StatisticalNumberTextBox" HorizontalAlignment="Right" Margin="140,260,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                    <Label Content="{x:Static p:Resources.CompanyBankAccount}" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="BankAccountTextBox" HorizontalAlignment="Right" Margin="140,300,10,0" Width="150" Height="26" VerticalAlignment="Top"/>
                 </Grid>
             </GroupBox>
         </Grid>
