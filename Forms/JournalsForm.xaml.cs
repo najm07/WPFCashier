@@ -86,7 +86,7 @@ namespace WPFCashier
                 var result = from j in context.Journals
                              join c in context.Clients on j.DealerId equals c.Id
                              where j.DealerType == 0
-                             select new { Id = j.Id, ClientId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit};
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit};
 
                 ItemList.ItemsSource = result.ToList();
                 ClientTextBox.ItemsSource = ClientListName;
@@ -112,7 +112,7 @@ namespace WPFCashier
                 var result = from j in DbJournals
                              join c in context.Clients on j.DealerId equals c.Id
                              where j.DealerId == c.Id && j.DealerType == 0
-                             select new { Id = j.Id, ClientId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
             }
@@ -161,6 +161,11 @@ namespace WPFCashier
                 {
                     Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
 
+                    if (journal.Type.Equals("payment"))
+                        context.Clients.Single(x => x.Id == journal.DealerId).NewCredit = journal.OldCredit + amount.StringtoDecimal();
+                    else
+                        journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
+
                     context.Remove(journal);
 
                     await context.SaveChangesAsync();
@@ -206,7 +211,8 @@ namespace WPFCashier
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            ItemList.Items.Clear();
+            ItemList.SelectedItem = null;
+            //ItemList.Items.Clear();
         }
 
         private async void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
