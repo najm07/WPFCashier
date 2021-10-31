@@ -162,9 +162,9 @@ namespace WPFCashier
                     Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
 
                     if (journal.Type.Equals("payment"))
-                        context.Clients.Single(x => x.Id == journal.DealerId).NewCredit = journal.OldCredit + amount.StringtoDecimal();
+                        context.Clients.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit + journal.Amount;
                     else
-                        journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
+                        context.Clients.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit - journal.Amount;
 
                     context.Remove(journal);
 
@@ -368,7 +368,7 @@ namespace WPFCashier
                 var result = from j in context.Journals
                              join c in context.Suppliers on j.DealerId equals c.Id
                              where j.DealerType == 1
-                             select new { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
                 SupplierTextBox.ItemsSource = SupplierListName;
@@ -394,7 +394,7 @@ namespace WPFCashier
                 var result = from j in DbJournals
                              join c in context.Suppliers on j.DealerId equals c.Id
                              where j.DealerId == c.Id && j.DealerType == 1
-                             select new { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, Old = j.OldCredit, New = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
             }
@@ -434,9 +434,9 @@ namespace WPFCashier
                     journal.Amount = amount.StringtoDecimal();
 
                     if (type.Equals("payment"))
-                        journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
-                    else
                         journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
+                    else
+                        journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
 
                     context.Suppliers.Single(x => x.Id == supplierId).Credit = journal.NewCredit;
 
@@ -469,9 +469,11 @@ namespace WPFCashier
         }
 
         private async void SupplierUpdateButton_Click(object sender, RoutedEventArgs e)
-        {   if (SupplierEnableCheckBox.IsChecked == false)
-                SupplierEnableCheckBox.IsChecked=true;
-            await UpdateSupplier();
+        {
+            if (SupplierItemList.SelectedItem == null)
+                await Create();
+            else
+                await UpdateSupplier();
         }
 
         private async void SupplierDeleteButton_Click(object sender, RoutedEventArgs e)
