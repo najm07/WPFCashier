@@ -79,6 +79,24 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application Settings.
+        /// </summary>
+        public static string ApplicationSettings {
+            get {
+                return ResourceManager.GetString("ApplicationSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arabic.
+        /// </summary>
+        public static string Arabic {
+            get {
+                return ResourceManager.GetString("Arabic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client.
         /// </summary>
         public static string Client {
@@ -102,6 +120,78 @@ namespace WPFCashier.Properties {
         public static string ClientsHistory {
             get {
                 return ResourceManager.GetString("ClientsHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company address.
+        /// </summary>
+        public static string CompanyAddress {
+            get {
+                return ResourceManager.GetString("CompanyAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank account.
+        /// </summary>
+        public static string CompanyBankAccount {
+            get {
+                return ResourceManager.GetString("CompanyBankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commercial Register.
+        /// </summary>
+        public static string CompanyCommercialRegister {
+            get {
+                return ResourceManager.GetString("CompanyCommercialRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Information.
+        /// </summary>
+        public static string CompanyInformation {
+            get {
+                return ResourceManager.GetString("CompanyInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company name.
+        /// </summary>
+        public static string CompanyName {
+            get {
+                return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company phone.
+        /// </summary>
+        public static string CompanyPhone {
+            get {
+                return ResourceManager.GetString("CompanyPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistical number.
+        /// </summary>
+        public static string CompanyStatisticalNumber {
+            get {
+                return ResourceManager.GetString("CompanyStatisticalNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax number.
+        /// </summary>
+        public static string CompanyTaxNumber {
+            get {
+                return ResourceManager.GetString("CompanyTaxNumber", resourceCulture);
             }
         }
         
@@ -178,6 +268,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expences.
         /// </summary>
         public static string Expences {
@@ -228,6 +327,15 @@ namespace WPFCashier.Properties {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         

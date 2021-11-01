@@ -123,6 +123,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="ApplicationSettings" xml:space="preserve">
+    <value>Application Settings</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
   <data name="Client" xml:space="preserve">
     <value>Client</value>
   </data>
@@ -131,6 +137,30 @@
   </data>
   <data name="ClientsHistory" xml:space="preserve">
     <value>Clients History</value>
+  </data>
+  <data name="CompanyAddress" xml:space="preserve">
+    <value>Company address</value>
+  </data>
+  <data name="CompanyBankAccount" xml:space="preserve">
+    <value>Bank account</value>
+  </data>
+  <data name="CompanyCommercialRegister" xml:space="preserve">
+    <value>Commercial Register</value>
+  </data>
+  <data name="CompanyInformation" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="CompanyPhone" xml:space="preserve">
+    <value>Company phone</value>
+  </data>
+  <data name="CompanyStatisticalNumber" xml:space="preserve">
+    <value>Statistical number</value>
+  </data>
+  <data name="CompanyTaxNumber" xml:space="preserve">
+    <value>Tax number</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
@@ -156,6 +186,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="Expences" xml:space="preserve">
     <value>Expences</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last name</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>

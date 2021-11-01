@@ -50,6 +50,16 @@ namespace WPFCashier
                 appSettings.Code = LanguagesTextBox.SelectedValue.ToString();
                 appSettings.Language = LanguagesTextBox.DisplayMemberPath.ToString();
 
+                appSettings.Name = NameTextBox.Text;
+                appSettings.LastName = LastNameTextBox.Text;
+                appSettings.CompanyName = CompanyNameTextBox.Text;
+                appSettings.CompanyAddress = CompanyAddressTextBox.Text;
+                appSettings.CompanyPhone = CompanyPhoneTextBox.Text;
+                appSettings.CompanyCommercialRegister = CompanyCommercialRegisterTextBox.Text;
+                appSettings.CompanyStatisticalNumber = StatisticalNumberTextBox.Text;
+                appSettings.CompanyTaxNumber = TaxNumberTextBox.Text;
+                appSettings.CompanyBankAccount = BankAccountTextBox.Text;
+
                 await context.SaveChangesAsync();
             }
 
