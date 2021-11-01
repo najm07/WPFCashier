@@ -201,12 +201,18 @@ namespace WPFCashier
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            await Update();
+            if(ItemList.SelectedItem == null)
+                await Create();
+            else
+                await Update();
+
+            await Read();
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await Delete();
+            await Read();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
