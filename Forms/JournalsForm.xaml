@@ -6,16 +6,28 @@
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:WPFCashier.Properties"
-        Title="{x:Static p:Resources.JournalsFormTitle}" Height="480" Width="800" Loaded="Window_Loaded" Background="#FFEFEDF2">
+        Title="{x:Static p:Resources.JournalsFormTitle}" Height="450" Width="800" Loaded="Window_Loaded" Background="#FFEFEDF2">
     <Grid>
         <TabControl>
             <TabItem Header="{x:Static p:Resources.ClientsHistory}">
                 <Grid>
-                    <Grid Margin="5, 10, 5, 0">
-                        <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
-                        <TextBox Name="SearchTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="250" Height="26" VerticalAlignment="Top" TextChanged="SearchTextBox_TextChanged"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="2" Grid.Row="0" VerticalAlignment="Center">
+                        <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Center"/>
+                        <TextBox Name="SearchTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SearchTextBox_TextChanged"/>
+                        <Button x:Name="PrintButton" HorizontalAlignment="Right" Margin="5, 0" VerticalAlignment="Center" IsEnabled="{Binding ElementName=ItemList,Path=SelectedItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <Path Stretch="Uniform" Data="M31.75,8 C33.4830315,8 34.8992459,9.35645477 34.9948552,11.0655761 L35,11.25 L35,14 L36.75,14 C39.6494949,14 42,16.3505051 42,19.25 L42,32.75 C42,34.5449254 40.5449254,36 38.75,36 L35,36 L35,37.75 C35,39.5449254 33.5449254,41 31.75,41 L16.25,41 C14.4550746,41 13,39.5449254 13,37.75 L13,36 L9.25,36 C7.45507456,36 6,34.5449254 6,32.75 L6,19.25 C6,16.3505051 8.35050506,14 11.25,14 L13,14 L13,11.25 C13,9.51696854 14.3564548,8.10075407 16.0655761,8.00514479 L16.25,8 L31.75,8 Z M15.5,37.75 C15.5,38.1642136 15.8357864,38.5 16.25,38.5 L31.75,38.5 C32.1642136,38.5 32.5,38.1642136 32.5,37.75 L32.5,29.25 C32.5,28.8357864 32.1642136,28.5 31.75,28.5 L16.25,28.5 C15.8357864,28.5 15.5,28.8357864 15.5,29.25 L15.5,37.75 Z M31.75,10.5 L16.25,10.5 C15.8703042,10.5 15.556509,10.7821539 15.5068466,11.1482294 L15.5,11.25 L15.5,14 L32.5,14 L32.5,11.25 C32.5,10.8703042 32.2178461,10.556509 31.8517706,10.5068466 L31.75,10.5 Z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Print}"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
-                    <ListView Name="ItemList" Margin="5,40,5,0" Height="195" VerticalAlignment="Top">
+                    <ListView Name="ItemList" Margin="5" Height="195" VerticalAlignment="Center" Grid.Row="1">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
@@ -35,9 +47,9 @@
                         </ListView.View>
                     </ListView>
 
-                    <CheckBox x:Name="EnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Grid.Row="2" x:Name="EnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center"/>
 
-                    <Grid x:Name="EditGrid" IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" Margin="3,270,0,0"  HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <Grid Grid.Row="3" x:Name="EditGrid" IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" Margin="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center">
                         <Label Content="{x:Static p:Resources.Client}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Date}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Type}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
@@ -48,51 +60,38 @@
                         <ComboBox Name="TypeTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Type,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="ReceiptTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.ReceiptNumber,Mode=OneWay}" HorizontalAlignment="Left" Margin="620,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="AmountTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Amount,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <Button x:Name="UpdateButton" HorizontalAlignment="Right" Click="UpdateButton_Click" Margin="90,40,25,10" VerticalAlignment="Top" >
+                            <StackPanel Orientation="Horizontal">
+                                <Path Stretch="Uniform" Data="M427.137,0H32.865C14.743,0,0,14.743,0,32.865v394.272c0,18.122,14.743,32.865,32.865,32.865c3.087,0,390.415,0,394.272,0
+			c18.122,0,32.865-14.743,32.865-32.865V32.865C460.001,14.743,445.258,0,427.137,0z M382.993,430.001h-29.999V309.673H107.007
+			v120.328h-30V294.673c0-8.284,6.716-15,15-15h275.986c8.284,0,15,6.716,15,15V430.001z M383.185,165.328c0,8.284-6.716,15-15,15
+			H92.198c-8.284,0-15-6.716-15-15V30h138.615v0.691v75.435c0,8.284,6.716,15,15,15h80.995c8.284,0,15-6.716,15-15V30.691V30h56.377
+			V165.328z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Save}"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="DeleteButton" HorizontalAlignment="Right" Margin="90,40,100,10" Click="DeleteButton_Click" VerticalAlignment="Top" >
+                            <StackPanel Orientation="Horizontal">
+                                <Path Stretch="Uniform" Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Delete}"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
-
-                    <Button x:Name="CreateButton" HorizontalAlignment="Left" Click="CreateButton_Click" Margin="10,360,0,10" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform"  Data="M 402.34375 587.59375 C 402.08783 587.59375 401.8515 587.71099 401.65625 587.90625 L 400.78125 588.78125 C 399.66615 588.24854 398.2986 588.42011 397.375 589.34375 L 386.75 599.96875 L 392.40625 605.625 L 403.03125 595 C 403.95495 594.07636 404.12645 592.70888 403.59375 591.59375 L 404.46875 590.71875 C 404.85925 590.32823 404.85925 589.70302 404.46875 589.3125 L 403.0625 587.90625 C 402.86725 587.71099 402.59967 587.59375 402.34375 587.59375 z M 399.46875 590.46875 C 399.72467 590.46875 399.99225 590.58599 400.1875 590.78125 L 401.59375 592.1875 C 401.98435 592.57803 401.98435 593.20322 401.59375 593.59375 L 400.625 594.59375 L 397.78125 591.75 L 398.78125 590.78125 C 398.9765 590.58599 399.21283 590.46875 399.46875 590.46875 z M 395.96875 593.5625 L 398.78125 596.40625 L 392.40625 602.78125 L 389.59375 599.96875 L 395.96875 593.5625 z M 385.9375 600.78125 L 383.8125 608.5625 L 391.59375 606.4375 L 385.9375 600.78125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Create}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="ReadButton"  HorizontalAlignment="Left" Click="ReadButton_Click" Margin="250,360,0,10" VerticalAlignment="Bottom" Width="70" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 399.5625 598.46875 C 397.90565 598.46875 396.5625 599.8119 396.5625 601.46875 L 396.5625 615.46875 C 396.5625 617.12565 397.90565 618.46875 399.5625 618.46875 L 411.5625 618.46875 C 413.2194 618.46875 414.5625 617.12565 414.5625 615.46875 L 414.5625 605.46875 C 414.5625 601.60276 411.4285 598.46875 407.5625 598.46875 L 399.5625 598.46875 z M 399.5625 600.46875 L 406.5625 600.46875 L 406.5625 605.46875 L 412.5625 605.46875 L 412.5625 615.46875 C 412.5625 616.02105 412.1148 616.46875 411.5625 616.46875 L 399.5625 616.46875 C 399.01022 616.46875 398.5625 616.02105 398.5625 615.46875 L 398.5625 601.46875 C 398.5625 600.91647 399.01022 600.46875 399.5625 600.46875 z M 408.5625 600.5625 C 410.1738 600.88958 411.51355 601.99781 412.15625 603.46875 L 408.5625 603.46875 L 408.5625 600.5625 z M 400.5625 604.46875 L 400.5625 606.46875 L 404.5625 606.46875 L 404.5625 604.46875 L 400.5625 604.46875 z M 400.5625 608.46875 L 400.5625 610.46875 L 410.5625 610.46875 L 410.5625 608.46875 L 400.5625 608.46875 z M 400.5625 612.46875 L 400.5625 614.46875 L 410.5625 614.46875 L 410.5625 612.46875 L 400.5625 612.46875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Read}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="UpdateButton" HorizontalAlignment="Left" Click="UpdateButton_Click" Margin="90,360,0,10" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 405.625 587.625 L 403.8125 594.3125 L 410.5 592.53125 L 408.96875 591 C 411.62184 589.56391 415.0078 589.94525 417.25 592.1875 L 418.65625 590.78125 C 415.62765 587.75259 410.97718 587.34026 407.5 589.53125 L 405.625 587.625 z M 418.6875 597.03125 L 412 598.84375 L 413.53125 600.375 C 410.87815 601.811 407.49225 601.39855 405.25 599.15625 L 403.84375 600.5625 C 406.87241 603.5912 411.5229 604.03475 415 601.84375 L 416.90625 603.71875 L 418.6875 597.03125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Update}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="DeleteButton" HorizontalAlignment="Left" Margin="170,360,0,10" Click="DeleteButton_Click" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Delete}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="PrintButton" HorizontalAlignment="Left" Margin="335,360,0,10" VerticalAlignment="Bottom" Click="PrintButton_Click" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M31.75,8 C33.4830315,8 34.8992459,9.35645477 34.9948552,11.0655761 L35,11.25 L35,14 L36.75,14 C39.6494949,14 42,16.3505051 42,19.25 L42,32.75 C42,34.5449254 40.5449254,36 38.75,36 L35,36 L35,37.75 C35,39.5449254 33.5449254,41 31.75,41 L16.25,41 C14.4550746,41 13,39.5449254 13,37.75 L13,36 L9.25,36 C7.45507456,36 6,34.5449254 6,32.75 L6,19.25 C6,16.3505051 8.35050506,14 11.25,14 L13,14 L13,11.25 C13,9.51696854 14.3564548,8.10075407 16.0655761,8.00514479 L16.25,8 L31.75,8 Z M15.5,37.75 C15.5,38.1642136 15.8357864,38.5 16.25,38.5 L31.75,38.5 C32.1642136,38.5 32.5,38.1642136 32.5,37.75 L32.5,29.25 C32.5,28.8357864 32.1642136,28.5 31.75,28.5 L16.25,28.5 C15.8357864,28.5 15.5,28.8357864 15.5,29.25 L15.5,37.75 Z M31.75,10.5 L16.25,10.5 C15.8703042,10.5 15.556509,10.7821539 15.5068466,11.1482294 L15.5,11.25 L15.5,14 L32.5,14 L32.5,11.25 C32.5,10.8703042 32.2178461,10.556509 31.8517706,10.5068466 L31.75,10.5 Z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Print}"/>
-                        </StackPanel>
-                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Resources.SuppliersHistory}">
                 <Grid>
-                    <Grid Margin="5, 10, 5, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" VerticalAlignment="Center" Margin="5">
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
                         <TextBox Name="SupplierSearchTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="250" Height="26" VerticalAlignment="Top" TextChanged="SearchTextBox_TextChanged"/>
                     </Grid>
-                    <ListView Name="SupplierItemList" Margin="5,40,5,0" Height="195" VerticalAlignment="Top">
+                    <ListView Grid.Row="1" Name="SupplierItemList" Margin="5" Height="195" VerticalAlignment="Center">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
@@ -112,9 +111,9 @@
                         </ListView.View>
                     </ListView>
 
-                    <CheckBox x:Name="SupplierEnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Grid.Row="2" x:Name="SupplierEnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center"/>
 
-                    <Grid x:Name="SupplierEditGrid" IsEnabled="{Binding ElementName=SupplierEnableCheckBox,Path=IsChecked}" Margin="3,270,0,0"  HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <Grid Grid.Row="3" x:Name="SupplierEditGrid" IsEnabled="{Binding ElementName=SupplierEnableCheckBox,Path=IsChecked}" Margin="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center">
                         <Label Content="{x:Static p:Resources.Supplier}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Date}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Type}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
@@ -125,52 +124,45 @@
                         <ComboBox Name="SupplierTypeTextBox" Text="{Binding ElementName=SupplierItemList ,Path=SelectedItem.Type,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="SupplierReceiptTextBox" Text="{Binding ElementName=SupplierItemList ,Path=SelectedItem.ReceiptNumber,Mode=OneWay}" HorizontalAlignment="Left" Margin="620,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="SupplierAmountTextBox" Text="{Binding ElementName=SupplierItemList ,Path=SelectedItem.Amount,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <Button x:Name="SupplierUpdateButton" HorizontalAlignment="Right" Click="SupplierUpdateButton_Click" Margin="550,40,15,10" VerticalAlignment="Top" >
+                        <Button x:Name="SupplierUpdateButton" HorizontalAlignment="Right" Click="SupplierUpdateButton_Click" Margin="550,40,25,10" VerticalAlignment="Top" >
                             <StackPanel Orientation="Horizontal">
-                                <Path Stretch="Uniform" Data="M 405.625 587.625 L 403.8125 594.3125 L 410.5 592.53125 L 408.96875 591 C 411.62184 589.56391 415.0078 589.94525 417.25 592.1875 L 418.65625 590.78125 C 415.62765 587.75259 410.97718 587.34026 407.5 589.53125 L 405.625 587.625 z M 418.6875 597.03125 L 412 598.84375 L 413.53125 600.375 C 410.87815 601.811 407.49225 601.39855 405.25 599.15625 L 403.84375 600.5625 C 406.87241 603.5912 411.5229 604.03475 415 601.84375 L 416.90625 603.71875 L 418.6875 597.03125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Path Stretch="Uniform" Data="M427.137,0H32.865C14.743,0,0,14.743,0,32.865v394.272c0,18.122,14.743,32.865,32.865,32.865c3.087,0,390.415,0,394.272,0
+			c18.122,0,32.865-14.743,32.865-32.865V32.865C460.001,14.743,445.258,0,427.137,0z M382.993,430.001h-29.999V309.673H107.007
+			v120.328h-30V294.673c0-8.284,6.716-15,15-15h275.986c8.284,0,15,6.716,15,15V430.001z M383.185,165.328c0,8.284-6.716,15-15,15
+			H92.198c-8.284,0-15-6.716-15-15V30h138.615v0.691v75.435c0,8.284,6.716,15,15,15h80.995c8.284,0,15-6.716,15-15V30.691V30h56.377
+			V165.328z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
                                 <Label Content="{x:Static p:Resources.Save}"/>
                             </StackPanel>
                         </Button>
+                        <Button x:Name="SupplierDeleteButton" HorizontalAlignment="Right" Margin="0, 0, 100, 10" Click="SupplierDeleteButton_Click" VerticalAlignment="Bottom" >
+                            <StackPanel Orientation="Horizontal">
+                                <Path Stretch="Uniform" Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Delete}"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
-
-                    <Button x:Name="SupplierCreateButton" HorizontalAlignment="Left" Click="SupplierCreateButton_Click" Margin="10,360,0,10" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform"  Data="M 402.34375 587.59375 C 402.08783 587.59375 401.8515 587.71099 401.65625 587.90625 L 400.78125 588.78125 C 399.66615 588.24854 398.2986 588.42011 397.375 589.34375 L 386.75 599.96875 L 392.40625 605.625 L 403.03125 595 C 403.95495 594.07636 404.12645 592.70888 403.59375 591.59375 L 404.46875 590.71875 C 404.85925 590.32823 404.85925 589.70302 404.46875 589.3125 L 403.0625 587.90625 C 402.86725 587.71099 402.59967 587.59375 402.34375 587.59375 z M 399.46875 590.46875 C 399.72467 590.46875 399.99225 590.58599 400.1875 590.78125 L 401.59375 592.1875 C 401.98435 592.57803 401.98435 593.20322 401.59375 593.59375 L 400.625 594.59375 L 397.78125 591.75 L 398.78125 590.78125 C 398.9765 590.58599 399.21283 590.46875 399.46875 590.46875 z M 395.96875 593.5625 L 398.78125 596.40625 L 392.40625 602.78125 L 389.59375 599.96875 L 395.96875 593.5625 z M 385.9375 600.78125 L 383.8125 608.5625 L 391.59375 606.4375 L 385.9375 600.78125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Create}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="SupplierReadButton"  HorizontalAlignment="Left" Click="SupplierReadButton_Click" Margin="250,360,0,10" VerticalAlignment="Bottom" Width="70" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 399.5625 598.46875 C 397.90565 598.46875 396.5625 599.8119 396.5625 601.46875 L 396.5625 615.46875 C 396.5625 617.12565 397.90565 618.46875 399.5625 618.46875 L 411.5625 618.46875 C 413.2194 618.46875 414.5625 617.12565 414.5625 615.46875 L 414.5625 605.46875 C 414.5625 601.60276 411.4285 598.46875 407.5625 598.46875 L 399.5625 598.46875 z M 399.5625 600.46875 L 406.5625 600.46875 L 406.5625 605.46875 L 412.5625 605.46875 L 412.5625 615.46875 C 412.5625 616.02105 412.1148 616.46875 411.5625 616.46875 L 399.5625 616.46875 C 399.01022 616.46875 398.5625 616.02105 398.5625 615.46875 L 398.5625 601.46875 C 398.5625 600.91647 399.01022 600.46875 399.5625 600.46875 z M 408.5625 600.5625 C 410.1738 600.88958 411.51355 601.99781 412.15625 603.46875 L 408.5625 603.46875 L 408.5625 600.5625 z M 400.5625 604.46875 L 400.5625 606.46875 L 404.5625 606.46875 L 404.5625 604.46875 L 400.5625 604.46875 z M 400.5625 608.46875 L 400.5625 610.46875 L 410.5625 610.46875 L 410.5625 608.46875 L 400.5625 608.46875 z M 400.5625 612.46875 L 400.5625 614.46875 L 410.5625 614.46875 L 410.5625 612.46875 L 400.5625 612.46875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Read}"/>
-                        </StackPanel>
-                    </Button>
-
-                    
-
-                    <Button x:Name="SupplierDeleteButton" HorizontalAlignment="Left" Margin="170,360,0,10" Click="SupplierDeleteButton_Click" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Delete}"/>
-                        </StackPanel>
-                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Resources.Expences}">
                 <Grid>
-                    <Grid Margin="5, 10, 5, 0">
-                        <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
-                        <DatePicker Name="ExpencesFromTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <DatePicker Name="ExpencesToTextBox" HorizontalAlignment="Left"  Margin="230,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <Button x:Name="ExpencesSearchButton" HorizontalAlignment="Left" Margin="390,0,0,0" Height="26" VerticalAlignment="Top" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="0" Grid.Row="0" VerticalAlignment="Center">
+                        <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Center"/>
+                        <DatePicker Name="ExpencesFromTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Center"/>
+                        <DatePicker Name="ExpencesToTextBox" HorizontalAlignment="Left"  Margin="230,0,0,0" Width="150" Height="26" VerticalAlignment="Center"/>
+                        <Button x:Name="ExpencesSearchButton" HorizontalAlignment="Left" Margin="390,0,0,0" Height="26" VerticalAlignment="Center" >
                             <StackPanel Orientation="Horizontal">
                                 <Path Stretch="Uniform"  Data="m393.36 334.66c-26.422 0-52.849 10.027-72.935 30.113-40.172 40.171-40.218 105.74-0.046 145.91 35.217 35.216 89.911 39.558 129.94 13.03l60.918 60.916c8.0386 8.0384 20.97 8.0384 29.008 0 8.0387-8.0384 8.0387-20.969 0-29.008l-60.872-60.916c26.497-40.023 22.127-94.732-13.077-129.94-20.086-20.085-46.514-30.113-72.935-30.113zm-0.046 27.166c19.371 0.009 38.738 7.4275 53.596 22.285 29.716 29.715 29.762 77.521 0.046 107.24-29.716 29.715-77.523 29.715-107.24 0-29.716-29.715-29.716-77.52 0-107.24 14.858-14.858 34.225-22.295 53.596-22.285zm-54.656 99.224a2.9472 2.9471 0 0 0 -2.5325 4.236c10.265 21.49 32.226 36.328 57.602 36.328 5.5064 0 10.842-0.71645 15.932-2.0259a2.9472 2.9471 0 0 0 -0.0921 -5.7094c-25.496-5.6948-48.907-16.882-68.975-32.231a2.9472 2.9471 0 0 0 -1.9339 -0.59857z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
                                 <Label Content="{x:Static p:Resources.Search}" FontSize="10"/>
                             </StackPanel>
                         </Button>
                     </Grid>
-                    <ListView Name="ExpencesItemList" Margin="5,40,5,0" Height="195" VerticalAlignment="Top">
+                    <ListView Grid.Row="1" Name="ExpencesItemList" Margin="0" Height="195" VerticalAlignment="Center">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
@@ -186,44 +178,34 @@
                         </ListView.View>
                     </ListView>
 
-                    <CheckBox x:Name="ExpencesEnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Grid.Row="2" x:Name="ExpencesEnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center"/>
 
-                    <Grid x:Name="ExpencesEditGrid" IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" Margin="3,270,0,0"  HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <Grid Grid.Row="3" x:Name="ExpencesEditGrid" IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" Margin="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center">
                         <Label Content="{x:Static p:Resources.Date}" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Type}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Amount}" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top"/>
                         <DatePicker Name="ExpencesDateTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Date,Mode=OneWay}" HorizontalAlignment="Left" Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="ExpencesTypeTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Type,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="ExpencesAmountTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Amount,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+
+                        <Button x:Name="ExpencesUpdateButton" HorizontalAlignment="Right" Margin="0, 0, 25, 0" VerticalAlignment="Top" Click="ExpencesUpdateButton_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <Path Stretch="Uniform" Data="M427.137,0H32.865C14.743,0,0,14.743,0,32.865v394.272c0,18.122,14.743,32.865,32.865,32.865c3.087,0,390.415,0,394.272,0
+			c18.122,0,32.865-14.743,32.865-32.865V32.865C460.001,14.743,445.258,0,427.137,0z M382.993,430.001h-29.999V309.673H107.007
+			v120.328h-30V294.673c0-8.284,6.716-15,15-15h275.986c8.284,0,15,6.716,15,15V430.001z M383.185,165.328c0,8.284-6.716,15-15,15
+			H92.198c-8.284,0-15-6.716-15-15V30h138.615v0.691v75.435c0,8.284,6.716,15,15,15h80.995c8.284,0,15-6.716,15-15V30.691V30h56.377
+			V165.328z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Save}"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="ExpencesDeleteButton" HorizontalAlignment="Right" Margin="0, 0, 100, 0" VerticalAlignment="Top" Click="ExpencesDeleteButton_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <Path Stretch="Uniform"  Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Delete}"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
-
-                    <Button x:Name="ExpencesCreateButton" HorizontalAlignment="Left" Click="CreateButton_Click" Margin="10,360,0,10" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform"  Data="M 402.34375 587.59375 C 402.08783 587.59375 401.8515 587.71099 401.65625 587.90625 L 400.78125 588.78125 C 399.66615 588.24854 398.2986 588.42011 397.375 589.34375 L 386.75 599.96875 L 392.40625 605.625 L 403.03125 595 C 403.95495 594.07636 404.12645 592.70888 403.59375 591.59375 L 404.46875 590.71875 C 404.85925 590.32823 404.85925 589.70302 404.46875 589.3125 L 403.0625 587.90625 C 402.86725 587.71099 402.59967 587.59375 402.34375 587.59375 z M 399.46875 590.46875 C 399.72467 590.46875 399.99225 590.58599 400.1875 590.78125 L 401.59375 592.1875 C 401.98435 592.57803 401.98435 593.20322 401.59375 593.59375 L 400.625 594.59375 L 397.78125 591.75 L 398.78125 590.78125 C 398.9765 590.58599 399.21283 590.46875 399.46875 590.46875 z M 395.96875 593.5625 L 398.78125 596.40625 L 392.40625 602.78125 L 389.59375 599.96875 L 395.96875 593.5625 z M 385.9375 600.78125 L 383.8125 608.5625 L 391.59375 606.4375 L 385.9375 600.78125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Create}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="ExpencesReadButton"  HorizontalAlignment="Left" Click="ReadButton_Click" Margin="250,360,0,10" VerticalAlignment="Bottom" Width="70" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 399.5625 598.46875 C 397.90565 598.46875 396.5625 599.8119 396.5625 601.46875 L 396.5625 615.46875 C 396.5625 617.12565 397.90565 618.46875 399.5625 618.46875 L 411.5625 618.46875 C 413.2194 618.46875 414.5625 617.12565 414.5625 615.46875 L 414.5625 605.46875 C 414.5625 601.60276 411.4285 598.46875 407.5625 598.46875 L 399.5625 598.46875 z M 399.5625 600.46875 L 406.5625 600.46875 L 406.5625 605.46875 L 412.5625 605.46875 L 412.5625 615.46875 C 412.5625 616.02105 412.1148 616.46875 411.5625 616.46875 L 399.5625 616.46875 C 399.01022 616.46875 398.5625 616.02105 398.5625 615.46875 L 398.5625 601.46875 C 398.5625 600.91647 399.01022 600.46875 399.5625 600.46875 z M 408.5625 600.5625 C 410.1738 600.88958 411.51355 601.99781 412.15625 603.46875 L 408.5625 603.46875 L 408.5625 600.5625 z M 400.5625 604.46875 L 400.5625 606.46875 L 404.5625 606.46875 L 404.5625 604.46875 L 400.5625 604.46875 z M 400.5625 608.46875 L 400.5625 610.46875 L 410.5625 610.46875 L 410.5625 608.46875 L 400.5625 608.46875 z M 400.5625 612.46875 L 400.5625 614.46875 L 410.5625 614.46875 L 410.5625 612.46875 L 400.5625 612.46875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Read}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="ExpencesUpdateButton" HorizontalAlignment="Left" Click="UpdateButton_Click" Margin="90,360,0,10" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform" Data="M 405.625 587.625 L 403.8125 594.3125 L 410.5 592.53125 L 408.96875 591 C 411.62184 589.56391 415.0078 589.94525 417.25 592.1875 L 418.65625 590.78125 C 415.62765 587.75259 410.97718 587.34026 407.5 589.53125 L 405.625 587.625 z M 418.6875 597.03125 L 412 598.84375 L 413.53125 600.375 C 410.87815 601.811 407.49225 601.39855 405.25 599.15625 L 403.84375 600.5625 C 406.87241 603.5912 411.5229 604.03475 415 601.84375 L 416.90625 603.71875 L 418.6875 597.03125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Update}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button x:Name="ExpencesDeleteButton" HorizontalAlignment="Left" Margin="170,360,0,10" Click="DeleteButton_Click" VerticalAlignment="Bottom" >
-                        <StackPanel Orientation="Horizontal">
-                            <Path Stretch="Uniform"  Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
-                            <Label Content="{x:Static p:Resources.Delete}"/>
-                        </StackPanel>
-                    </Button>
                 </Grid>
             </TabItem>
         </TabControl>

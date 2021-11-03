@@ -201,12 +201,18 @@ namespace WPFCashier
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            await Update();
+            if(ItemList.SelectedItem == null)
+                await Create();
+            else
+                await Update();
+
+            await Read();
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await Delete();
+            await Read();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -336,6 +342,20 @@ namespace WPFCashier
                     await context.SaveChangesAsync();
                 }
             }
+        }
+        private async void ExpencesDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ExpencesDelete();
+            await ExpencesRead();
+        }
+
+        private async void ExpencesUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ExpencesItemList.SelectedItem == null)
+                await ExpencesCreate();
+            else
+                await ExpencesUpdate();
+            await ExpencesRead();
         }
 
         #endregion
@@ -484,7 +504,6 @@ namespace WPFCashier
                     context.Remove(journal);
 
                     await context.SaveChangesAsync();
-
                 }
             }
         }
@@ -500,16 +519,19 @@ namespace WPFCashier
                 await Create();
             else
                 await UpdateSupplier();
+
+            await ReadSupplier();
         }
 
         private async void SupplierDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await DeleteSupplier();
+            await ReadSupplier();
         }
 
         private void SupplierMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SupplierItemList.Items.Clear();
+            SupplierItemList.SelectedItem = null;
         }
 
         private async void SupplierSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -527,11 +549,12 @@ namespace WPFCashier
 
         #endregion
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.RightToLeftLayout();
-            Read();
-            ReadSupplier();
+            await Read();
+            await ExpencesRead();
+            await ReadSupplier();
         }
 
         
