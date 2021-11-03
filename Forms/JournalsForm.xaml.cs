@@ -45,7 +45,7 @@ namespace WPFCashier
                 var amount = AmountTextBox.Text;
                 var receipt = ReceiptTextBox.Text;
 
-                if (!string.IsNullOrEmpty(client) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount) && !string.IsNullOrEmpty(receipt))
+                if (!string.IsNullOrEmpty(client) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount))
                 {
                     var clientCredit = context.Clients.Single(x => x.Id == ClientTextBox.SelectedValue.ToString().StringtoInt()).Credit;
                     decimal newClientCredit = 0;
@@ -130,7 +130,7 @@ namespace WPFCashier
                 var amount = AmountTextBox.Text;
                 var receipt = ReceiptTextBox.Text;
 
-                if (!String.IsNullOrEmpty(ClientTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount) && !String.IsNullOrEmpty(receipt))
+                if (!String.IsNullOrEmpty(ClientTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount))
                 {
                     Journal journal = context.Journals.Find(selectedJournal.Id);
 
@@ -201,12 +201,18 @@ namespace WPFCashier
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            await Update();
+            if(ItemList.SelectedItem == null)
+                await Create();
+            else
+                await Update();
+
+            await Read();
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await Delete();
+            await Read();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -226,6 +232,35 @@ namespace WPFCashier
         private async void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             await Create();
+        }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(ItemList.SelectedItem != null)
+            {
+                Client client = new Client();
+                AppSettings appsetting = new AppSettings();
+                using (DatabaseContext context = new DatabaseContext())
+                {
+
+                    var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
+
+
+                    if (!String.IsNullOrEmpty(ClientTextBox.Text))
+                    {
+
+                        client = context.Clients.Find(clientId);
+                    }
+
+                    appsetting = context.AppSettings.Single(x => x.Id == 1);
+                }
+                PrintPreview printReport = new PrintPreview();
+                var q = ItemList.SelectedItem as JournalMod;
+                printReport.Printedjournal.Add(q);
+                printReport.Clientdetails.Add(client);
+                printReport.AppDetails.Add(appsetting);
+                printReport.Show();
+            }
         }
 
         #endregion
@@ -311,6 +346,20 @@ namespace WPFCashier
                 }
             }
         }
+        private async void ExpencesDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ExpencesDelete();
+            await ExpencesRead();
+        }
+
+        private async void ExpencesUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ExpencesItemList.SelectedItem == null)
+                await ExpencesCreate();
+            else
+                await ExpencesUpdate();
+            await ExpencesRead();
+        }
 
         #endregion
 
@@ -327,7 +376,7 @@ namespace WPFCashier
                 var amount = SupplierAmountTextBox.Text;
                 var receipt = SupplierReceiptTextBox.Text;
 
-                if (!string.IsNullOrEmpty(supplier) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount) && !string.IsNullOrEmpty(receipt))
+                if (!string.IsNullOrEmpty(supplier) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount))
                 {
                     var supplierCredit = context.Suppliers.Single(x => x.Id == SupplierTextBox.SelectedValue.ToString().StringtoInt()).Credit;
                     decimal newSupplierCredit = 0;
@@ -424,7 +473,7 @@ namespace WPFCashier
                 var amount = SupplierAmountTextBox.Text;
                 var receipt = SupplierReceiptTextBox.Text;
 
-                if (!String.IsNullOrEmpty(SupplierTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount) && !String.IsNullOrEmpty(receipt))
+                if (!String.IsNullOrEmpty(SupplierTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount))
                 {
                     Journal journal = context.Journals.Find(selectedJournal.Id);
 
@@ -458,7 +507,6 @@ namespace WPFCashier
                     context.Remove(journal);
 
                     await context.SaveChangesAsync();
-
                 }
             }
         }
@@ -474,16 +522,19 @@ namespace WPFCashier
                 await Create();
             else
                 await UpdateSupplier();
+
+            await ReadSupplier();
         }
 
         private async void SupplierDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await DeleteSupplier();
+            await ReadSupplier();
         }
 
         private void SupplierMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SupplierItemList.Items.Clear();
+            SupplierItemList.SelectedItem = null;
         }
 
         private async void SupplierSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -501,11 +552,12 @@ namespace WPFCashier
 
         #endregion
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.RightToLeftLayout();
-            Read();
-            ReadSupplier();
+            await Read();
+            await ExpencesRead();
+            await ReadSupplier();
         }
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
