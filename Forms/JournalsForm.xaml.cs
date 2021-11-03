@@ -559,22 +559,5 @@ namespace WPFCashier
             await ExpencesRead();
             await ReadSupplier();
         }
-
-        private void PrintButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                var result = from j in context.Journals
-                             select j ;
-                StiReport report = new StiReport();
-                report.Load(@"C:\Users\Mohamed\source\repos\WPFCashier\bin\Debug\Report.mrt");
-                report.Compile();
-               StiPage page = report.Pages[0];
-                report.RegData(result);
-                report.Dictionary.Synchronize();
-                report.Render();
-                report.Show();
-            }
-        }
     }
 }
