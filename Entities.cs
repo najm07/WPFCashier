@@ -56,9 +56,18 @@ namespace WPFCashier
             using (DatabaseContext context = new DatabaseContext())
             {
                 if (context.AppSettings.Single(x => x.Id == 1).LangIndex == 1)
-                {
                     window.FlowDirection = FlowDirection.RightToLeft;
-                }
+            }
+        }
+
+        public static bool IsArabic(this Window window)
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                if (context.AppSettings.Single(x => x.Id == 1).LangIndex == 1)
+                    return true;
+
+                return false;
             }
         }
     }

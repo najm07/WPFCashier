@@ -265,7 +265,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\Supplier.cs" />
-    <Compile Include="PrintPreview.xaml.cs">
+    <Compile Include="Forms\PrintPreview.xaml.cs">
       <DependentUpon>PrintPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.en-US.Designer.cs">
@@ -311,7 +311,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PrintPreview.xaml">
+    <Page Include="Forms\PrintPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

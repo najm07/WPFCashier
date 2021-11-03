@@ -21,9 +21,11 @@ namespace WPFCashier
     /// </summary>
     public partial class PrintPreview : Window
     {
-        public List<JournalMod> Printedjournal=new List<JournalMod>();
+        
+        public List<JournalMod> Printedjournal = new List<JournalMod>();
         public List<Client> Clientdetails = new List<Client>();
         public List<AppSettings> AppDetails = new List<AppSettings>();
+
         public PrintPreview()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace WPFCashier
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.RightToLeftLayout();
             ReportDataSource rs = new ReportDataSource();
             rs.Name = "DataSet1";
             rs.Value = Printedjournal;
