@@ -556,7 +556,5 @@ namespace WPFCashier
             await ExpencesRead();
             await ReadSupplier();
         }
-
-        
     }
 }
