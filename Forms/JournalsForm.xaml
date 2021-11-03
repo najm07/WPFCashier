@@ -188,7 +188,7 @@
                         <TextBox Name="ExpencesTypeTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Type,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <TextBox Name="ExpencesAmountTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Amount,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
 
-                        <Button x:Name="ExpencesUpdateButton" HorizontalAlignment="Right" Click="UpdateButton_Click" Margin="0, 0, 25, 0" VerticalAlignment="Top" >
+                        <Button x:Name="ExpencesUpdateButton" HorizontalAlignment="Right" Margin="0, 0, 25, 0" VerticalAlignment="Top" Click="ExpencesUpdateButton_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <Path Stretch="Uniform" Data="M427.137,0H32.865C14.743,0,0,14.743,0,32.865v394.272c0,18.122,14.743,32.865,32.865,32.865c3.087,0,390.415,0,394.272,0
 			c18.122,0,32.865-14.743,32.865-32.865V32.865C460.001,14.743,445.258,0,427.137,0z M382.993,430.001h-29.999V309.673H107.007
@@ -199,7 +199,7 @@
                             </StackPanel>
                         </Button>
 
-                        <Button x:Name="ExpencesDeleteButton" HorizontalAlignment="Right" Margin="0, 0, 100, 0" Click="DeleteButton_Click" VerticalAlignment="Top" >
+                        <Button x:Name="ExpencesDeleteButton" HorizontalAlignment="Right" Margin="0, 0, 100, 0" VerticalAlignment="Top" Click="ExpencesDeleteButton_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <Path Stretch="Uniform"  Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
                                 <Label Content="{x:Static p:Resources.Delete}"/>
