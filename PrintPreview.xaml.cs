@@ -19,20 +19,19 @@ namespace WPFCashier
     /// <summary>
     /// Interaction logic for PrintReport.xaml
     /// </summary>
-    public partial class PrintReport : Window
+    public partial class PrintPreview : Window
     {
         public List<JournalMod> Printedjournal=new List<JournalMod>();
         public List<Client> Clientdetails = new List<Client>();
         public List<AppSettings> AppDetails = new List<AppSettings>();
-        public PrintReport()
+        public PrintPreview()
         {
             InitializeComponent();
            
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
             ReportDataSource rs = new ReportDataSource();
             rs.Name = "DataSet1";
             rs.Value = Printedjournal;
@@ -45,15 +44,12 @@ namespace WPFCashier
             app.Name = "DataSet3";
             app.Value = AppDetails;
             reportviewer.LocalReport.DataSources.Add(app);
-            string Path = @"C:\Users\Mohamed\Source\Repos\WPFCashier\Report1.rdlc";
+            string Path = @"Reports/JournalReport.en-US.rdlc";
             reportviewer.LocalReport.ReportPath = Path;
-           
 
-              reportviewer.Dock = DockStyle.Fill;
-             reportviewer.SetDisplayMode(DisplayMode.Normal);
+            reportviewer.ZoomMode = ZoomMode.FullPage;
 
             reportviewer.RefreshReport();
-            // reportviewer.Refresh();
         }
     }
 }

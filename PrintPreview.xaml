@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPFCashier.PrintReport"
+﻿<Window x:Class="WPFCashier.PrintPreview"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,14 +7,11 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
-        AllowsTransparency="False"
-        Title="PrintReport" Height="450" Width="900" Loaded="Window_Loaded_1">
-    
-    <Grid >
-        <WindowsFormsHost Name="windowsFormsHost" Margin="0,0,-0.4,0" Background="White" >
+        Title="PrintReport" Height="600" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+        <WindowsFormsHost Name="windowsFormsHost" Margin="0,0,-0.4,0" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <rv:ReportViewer x:Name="reportviewer" />
-            
-            
         </WindowsFormsHost>
     </Grid>
 </Window>
