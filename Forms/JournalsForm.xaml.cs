@@ -228,6 +228,32 @@ namespace WPFCashier
             await Create();
         }
 
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            Client client=new Client();
+            AppSettings appsetting = new AppSettings();
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                
+                var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
+                
+
+                if (!String.IsNullOrEmpty(ClientTextBox.Text) )
+                {
+                    
+                    client = context.Clients.Find(clientId);
+                }
+
+                appsetting = context.AppSettings.Single(x => x.Id==1);
+            }
+                    PrintReport printReport = new PrintReport();
+            var q= ItemList.SelectedItem as JournalMod;
+            printReport.Printedjournal.Add(q);
+            printReport.Clientdetails.Add(client);
+            printReport.AppDetails.Add(appsetting);
+            printReport.Show();
+        }
+
         #endregion
 
         #region Expences
@@ -507,5 +533,7 @@ namespace WPFCashier
             Read();
             ReadSupplier();
         }
+
+        
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPFCashier
 {
-    class AppSettings
+    public class AppSettings
     {
         [Key]
         public int Id { get; set; }

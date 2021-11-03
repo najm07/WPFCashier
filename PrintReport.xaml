@@ -1,0 +1,20 @@
+﻿<Window x:Class="WPFCashier.PrintReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:local="clr-namespace:WPFCashier"
+        mc:Ignorable="d"
+        AllowsTransparency="False"
+        Title="PrintReport" Height="450" Width="900" Loaded="Window_Loaded_1">
+    
+    <Grid >
+        <WindowsFormsHost Name="windowsFormsHost" Margin="0,0,-0.4,0" Background="White" >
+            <rv:ReportViewer x:Name="reportviewer" />
+            
+            
+        </WindowsFormsHost>
+    </Grid>
+</Window>
