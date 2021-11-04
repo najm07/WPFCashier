@@ -34,20 +34,31 @@ namespace WPFCashier
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.RightToLeftLayout();
+          //  this.RightToLeftLayout();
+            ShowReport(this.IsArabic());
+           
+        }
+
+        private void ShowReport(bool language)
+        {
             ReportDataSource rs = new ReportDataSource();
-            rs.Name = "DataSet1";
+            rs.Name = "JournalDataSet";
             rs.Value = Printedjournal;
             reportviewer.LocalReport.DataSources.Add(rs);
             ReportDataSource cl = new ReportDataSource();
-            cl.Name = "DataSet2";
+            cl.Name = "ClientDataSet";
             cl.Value = Clientdetails;
             reportviewer.LocalReport.DataSources.Add(cl);
             ReportDataSource app = new ReportDataSource();
-            app.Name = "DataSet3";
+            app.Name = "SettingsDataSet";
             app.Value = AppDetails;
             reportviewer.LocalReport.DataSources.Add(app);
-            string Path = @"Reports/JournalReport.en-US.rdlc";
+            string Path;
+            if (language==true)
+                Path = @"Reports/JournalReport.ar-DZ.rdlc";
+            else
+                Path = @"Reports/JournalReport.en-US.rdlc";
+
             reportviewer.LocalReport.ReportPath = Path;
 
             reportviewer.ZoomMode = ZoomMode.FullPage;
