@@ -39,7 +39,7 @@ namespace WPFCashier
            
         }
 
-        private void ShowReport(bool language)
+        private void ShowReport(bool arabic)
         {
             ReportDataSource rs = new ReportDataSource();
             rs.Name = "JournalDataSet";
@@ -54,7 +54,7 @@ namespace WPFCashier
             app.Value = AppDetails;
             reportviewer.LocalReport.DataSources.Add(app);
             string Path;
-            if (language==true)
+            if (arabic==true)
                 Path = @"Reports/JournalReport.ar-DZ.rdlc";
             else
                 Path = @"Reports/JournalReport.en-US.rdlc";
