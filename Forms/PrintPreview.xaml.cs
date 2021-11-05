@@ -26,33 +26,45 @@ namespace WPFCashier
         public List<Client> Clientdetails = new List<Client>();
         public List<AppSettings> AppDetails = new List<AppSettings>();
 
-        public PrintPreview()
+        public int ReportIndex = -1;
+
+        public PrintPreview(int reportIndex)
         {
+            this.ReportIndex = reportIndex;
             InitializeComponent();
-           
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.RightToLeftLayout();
+          //  this.RightToLeftLayout();
+            await ShowReport(ReportIndex);
+        }
+
+        private Task ShowReport(int reportIndex)
+        {
             ReportDataSource rs = new ReportDataSource();
-            rs.Name = "DataSet1";
+            rs.Name = "JournalModDataSet";
             rs.Value = Printedjournal;
             reportviewer.LocalReport.DataSources.Add(rs);
             ReportDataSource cl = new ReportDataSource();
-            cl.Name = "DataSet2";
+            cl.Name = "ClientDataSet";
             cl.Value = Clientdetails;
             reportviewer.LocalReport.DataSources.Add(cl);
             ReportDataSource app = new ReportDataSource();
-            app.Name = "DataSet3";
+            app.Name = "SettingsDataSet";
             app.Value = AppDetails;
             reportviewer.LocalReport.DataSources.Add(app);
-            string Path = @"Reports/JournalReport.en-US.rdlc";
+            string Path;
+
+            Path = Entities.reportPaths.Single(x => x.Index == reportIndex).Path;
+
             reportviewer.LocalReport.ReportPath = Path;
 
             reportviewer.ZoomMode = ZoomMode.FullPage;
 
             reportviewer.RefreshReport();
+
+            return Task.CompletedTask;
         }
     }
 }

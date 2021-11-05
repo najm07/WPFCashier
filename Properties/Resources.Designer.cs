@@ -19,7 +19,7 @@ namespace WPFCashier.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -322,6 +322,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reports/JournalReport.en-US.rdlc.
+        /// </summary>
+        public static string JournalReport {
+            get {
+                return ResourceManager.GetString("JournalReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Journals.
         /// </summary>
         public static string JournalsFormTitle {
@@ -345,6 +354,15 @@ namespace WPFCashier.Properties {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loan.
+        /// </summary>
+        public static string Loan {
+            get {
+                return ResourceManager.GetString("Loan", resourceCulture);
             }
         }
         
@@ -381,6 +399,15 @@ namespace WPFCashier.Properties {
         public static string Old {
             get {
                 return ResourceManager.GetString("Old", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment.
+        /// </summary>
+        public static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
             }
         }
         

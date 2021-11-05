@@ -17,16 +17,21 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0">
+                    <Grid Grid.Row="0" Margin="0" Grid.ColumnSpan="2">
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="10, 0"   VerticalAlignment="Center"/>
                         <TextBox Name="SearchTextBox" HorizontalAlignment="Left"  Margin="70, 0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SearchTextBox_TextChanged"/>
                     </Grid>
-                    <ListView Grid.Row="1" Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center">
+                    <ListView Grid.Row="1" Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center" Grid.ColumnSpan="2">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="{x:Static p:Resources.Id}" Width="30"  DisplayMemberBinding="{Binding Id}"/>
@@ -38,9 +43,9 @@
                         </ListView.View>
                     </ListView>
 
-                    <CheckBox Grid.Row="2" x:Name="EnableCheckBox" Content="{x:Static p:Resources.Edit}"  HorizontalAlignment="Left" Margin="10,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Row="2" x:Name="EnableCheckBox" Content="{x:Static p:Resources.Edit}" HorizontalAlignment="Left" Margin="10,0" VerticalAlignment="Center"/>
 
-                    <Grid Grid.Row="3" x:Name="EditGrid" IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" Margin="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <Grid Grid.Row="3" x:Name="EditGrid" IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" Margin="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.ColumnSpan="2">
                         <Label Content="{x:Static p:Resources.Name}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Address}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Phone}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
@@ -83,6 +88,11 @@
                                 <MenuItem Header="Clear" Click="SuppliersMenuItem_Click"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="{x:Static p:Resources.Id}" Width="30"  DisplayMemberBinding="{Binding Id}"/>
@@ -123,6 +133,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        
+
     </Grid>
 </Window>

@@ -6,35 +6,35 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.76047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.76047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.76047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.76047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.76047cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.74552cm</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox42">
+                    <Textbox Name="Textbox48">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Name</Value>
+                              <Value>نوع الدفع</Value>
                               <Style>
                                 <FontFamily>Rockwell</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -47,81 +47,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox41</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox2">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Amount</Value>
-                              <Style>
-                                <FontFamily>Rockwell</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox46">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Old Credit</Value>
-                              <Style>
-                                <FontFamily>Rockwell</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox45</rd:DefaultName>
+                      <rd:DefaultName>Textbox47</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -145,7 +71,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>New Credit</Value>
+                              <Value>الحساب الجديد</Value>
                               <Style>
                                 <FontFamily>Rockwell</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -175,14 +101,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox48">
+                    <Textbox Name="Textbox46">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Type</Value>
+                              <Value>الحساب القديم</Value>
                               <Style>
                                 <FontFamily>Rockwell</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -195,7 +121,81 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox47</rd:DefaultName>
+                      <rd:DefaultName>Textbox45</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>قيمة الدفع</Value>
+                              <Style>
+                                <FontFamily>Rockwell</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox42">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>الإسم</Value>
+                              <Style>
+                                <FontFamily>Rockwell</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox41</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -213,144 +213,8 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.74552cm</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="DealerName">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!DealerName.Value</Value>
-                              <Style>
-                                <FontFamily>Franklin Gothic Medium</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>DealerName</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Amount">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Amount.Value</Value>
-                              <Style>
-                                <FontFamily>Franklin Gothic Medium</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Amount</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="OldCredit">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!OldCredit.Value</Value>
-                              <Style>
-                                <FontFamily>Franklin Gothic Medium</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>OldCredit</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="NewCredit">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!NewCredit.Value</Value>
-                              <Style>
-                                <FontFamily>Franklin Gothic Medium</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>NewCredit</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="TypeName">
@@ -372,6 +236,142 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>TypeName</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="NewCredit1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!NewCredit.Value</Value>
+                              <Style>
+                                <FontFamily>Franklin Gothic Medium</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>NewCredit1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="OldCredit1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!OldCredit.Value</Value>
+                              <Style>
+                                <FontFamily>Franklin Gothic Medium</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>OldCredit1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Amount1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Amount.Value</Value>
+                              <Style>
+                                <FontFamily>Franklin Gothic Medium</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Amount1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="DealerName1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!DealerName.Value</Value>
+                              <Style>
+                                <FontFamily>Franklin Gothic Medium</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>DealerName1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -410,9 +410,9 @@
         </TablixRowHierarchy>
         <DataSetName>JournalModDataSet</DataSetName>
         <Top>0.17639cm</Top>
-        <Left>0.21167cm</Left>
-        <Height>1.49104cm</Height>
-        <Width>19.37326cm</Width>
+        <Left>0.47033cm</Left>
+        <Height>1.2cm</Height>
+        <Width>18.80233cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -420,10 +420,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.7465in</Height>
+    <Height>0.64234in</Height>
     <Style />
   </Body>
-  <Width>19.79659cm</Width>
+  <Width>19.74299cm</Width>
   <Page>
     <PageHeader>
       <Height>1.973cm</Height>
@@ -435,7 +435,7 @@
           <Value>ID4514513609_invoicepngpictureinvoicesiconclipartremovebgpreview</Value>
           <Sizing>FitProportional</Sizing>
           <Top>0.30353cm</Top>
-          <Left>0.53128cm</Left>
+          <Left>17.93028cm</Left>
           <Height>1.5cm</Height>
           <Width>1.47883cm</Width>
           <Style>
@@ -466,7 +466,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>0.30353cm</Top>
-          <Left>8.09818cm</Left>
+          <Left>8.07138cm</Left>
           <Height>0.94967cm</Height>
           <Width>3.60023cm</Width>
           <ZIndex>1</ZIndex>
@@ -487,16 +487,10 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Date</Value>
+                  <Value>:التاريخ</Value>
                   <Style>
                     <FontFamily>Rockwell</FontFamily>
                     <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-                <TextRun>
-                  <Value>:</Value>
-                  <Style>
-                    <FontFamily>Rockwell</FontFamily>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -507,9 +501,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox26</rd:DefaultName>
           <Top>0.58928cm</Top>
-          <Left>15.87609cm</Left>
+          <Left>2.57761cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.20884cm</Width>
+          <Width>1.45344cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -532,12 +526,14 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.58928cm</Top>
-          <Left>17.08493cm</Left>
+          <Left>0.07761cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>
@@ -559,7 +555,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.06891cm</Height>
+      <Height>0.91384cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -582,10 +578,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
-          <Top>0.14111cm</Top>
-          <Left>15.28576cm</Left>
+          <Top>0.07056cm</Top>
+          <Left>0.07761cm</Left>
           <Height>0.6cm</Height>
-          <Width>4.29916cm</Width>
+          <Width>4.15318cm</Width>
           <Style>
             <Border>
               <Style>None</Style>

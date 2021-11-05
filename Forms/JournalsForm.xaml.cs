@@ -41,16 +41,16 @@ namespace WPFCashier
             {
                 var client = ClientTextBox.Text;
                 var date = DateTextBox.Text;
-                var type = TypeTextBox.Text;
+                var type = TypeTextBox.SelectedValue.ToString().StringtoInt();
                 var amount = AmountTextBox.Text;
                 var receipt = ReceiptTextBox.Text;
 
-                if (!string.IsNullOrEmpty(client) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount))
+                if (!string.IsNullOrEmpty(client) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(amount))
                 {
                     var clientCredit = context.Clients.Single(x => x.Id == ClientTextBox.SelectedValue.ToString().StringtoInt()).Credit;
                     decimal newClientCredit = 0;
 
-                    if (type.Equals("payment"))
+                    if (type == 0)
                         newClientCredit = clientCredit - amount.StringtoDecimal();
                     else
                         newClientCredit = clientCredit + amount.StringtoDecimal();
@@ -85,8 +85,9 @@ namespace WPFCashier
 
                 var result = from j in context.Journals
                              join c in context.Clients on j.DealerId equals c.Id
+                             join t in Entities.receiptType on j.Type equals t.Index
                              where j.DealerType == 0
-                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit};
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
                 ClientTextBox.ItemsSource = ClientListName;
@@ -111,8 +112,9 @@ namespace WPFCashier
 
                 var result = from j in DbJournals
                              join c in context.Clients on j.DealerId equals c.Id
-                             where j.DealerId == c.Id && j.DealerType == 0
-                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+                             join t in Entities.receiptType on j.Type equals t.Index
+                             where j.DealerType == 0
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
             }
@@ -126,11 +128,11 @@ namespace WPFCashier
                 var selectedJournal = ItemList.SelectedItem as JournalMod;
                 var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
                 var date = DateTextBox.Text;
-                var type = TypeTextBox.Text;
+                var type = TypeTextBox.SelectedValue.ToString().StringtoInt();
                 var amount = AmountTextBox.Text;
                 var receipt = ReceiptTextBox.Text;
 
-                if (!String.IsNullOrEmpty(ClientTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount))
+                if (!String.IsNullOrEmpty(ClientTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(amount))
                 {
                     Journal journal = context.Journals.Find(selectedJournal.Id);
 
@@ -139,7 +141,7 @@ namespace WPFCashier
                     journal.Type = type;
                     journal.Amount = amount.StringtoDecimal();
 
-                    if (type.Equals("payment"))
+                    if (type == 0)
                         journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
                     else
                         journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
@@ -161,7 +163,7 @@ namespace WPFCashier
                 {
                     Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
 
-                    if (journal.Type.Equals("payment"))
+                    if (journal.Type == 0)
                         context.Clients.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit + journal.Amount;
                     else
                         context.Clients.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit - journal.Amount;
@@ -194,6 +196,37 @@ namespace WPFCashier
             }
         }
 
+        public Task Print()
+        {
+            if (ItemList.SelectedItem != null)
+            {
+                Client client = new Client();
+                AppSettings appsetting = new AppSettings();
+                using (DatabaseContext context = new DatabaseContext())
+                {
+
+                    var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
+
+
+                    if (!String.IsNullOrEmpty(ClientTextBox.Text))
+                    {
+
+                        client = context.Clients.Find(clientId);
+                    }
+
+                    appsetting = context.AppSettings.Single(x => x.Id == 1);
+                }
+                PrintPreview printReport = new PrintPreview(0);
+                var q = ItemList.SelectedItem as JournalMod;
+                printReport.Printedjournal.Add(q);
+                printReport.Clientdetails.Add(client);
+                printReport.AppDetails.Add(appsetting);
+                printReport.Show();
+            }
+
+            return Task.CompletedTask;
+        }
+
         private async void ReadButton_Click(object sender, RoutedEventArgs e)
         {
             await Read();
@@ -218,6 +251,8 @@ namespace WPFCashier
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             ItemList.SelectedItem = null;
+            SupplierItemList.SelectedItem = null;
+            ExpencesItemList.SelectedItem = null;
             //ItemList.Items.Clear();
         }
 
@@ -234,33 +269,9 @@ namespace WPFCashier
             await Create();
         }
 
-        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        private async void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            if(ItemList.SelectedItem != null)
-            {
-                Client client = new Client();
-                AppSettings appsetting = new AppSettings();
-                using (DatabaseContext context = new DatabaseContext())
-                {
-
-                    var clientId = ClientTextBox.SelectedValue.ToString().StringtoInt();
-
-
-                    if (!String.IsNullOrEmpty(ClientTextBox.Text))
-                    {
-
-                        client = context.Clients.Find(clientId);
-                    }
-
-                    appsetting = context.AppSettings.Single(x => x.Id == 1);
-                }
-                PrintPreview printReport = new PrintPreview();
-                var q = ItemList.SelectedItem as JournalMod;
-                printReport.Printedjournal.Add(q);
-                printReport.Clientdetails.Add(client);
-                printReport.AppDetails.Add(appsetting);
-                printReport.Show();
-            }
+            await Print();
         }
 
         #endregion
@@ -372,16 +383,16 @@ namespace WPFCashier
             {
                 var supplier = SupplierTextBox.Text;
                 var date = SupplierDateTextBox.Text;
-                var type = SupplierTypeTextBox.Text;
+                var type = SupplierTypeTextBox.SelectedValue.ToString().StringtoInt();
                 var amount = SupplierAmountTextBox.Text;
                 var receipt = SupplierReceiptTextBox.Text;
 
-                if (!string.IsNullOrEmpty(supplier) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(amount))
+                if (!string.IsNullOrEmpty(supplier) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(amount))
                 {
                     var supplierCredit = context.Suppliers.Single(x => x.Id == SupplierTextBox.SelectedValue.ToString().StringtoInt()).Credit;
                     decimal newSupplierCredit = 0;
 
-                    if (type.Equals("payment"))
+                    if (type == 0)
                         newSupplierCredit = supplierCredit - amount.StringtoDecimal();
                     else
                         newSupplierCredit = supplierCredit + amount.StringtoDecimal();
@@ -416,8 +427,9 @@ namespace WPFCashier
 
                 var result = from j in context.Journals
                              join c in context.Suppliers on j.DealerId equals c.Id
+                             join t in Entities.receiptType on j.Type equals t.Index
                              where j.DealerType == 1
-                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
                 SupplierTextBox.ItemsSource = SupplierListName;
@@ -442,8 +454,9 @@ namespace WPFCashier
 
                 var result = from j in DbJournals
                              join c in context.Suppliers on j.DealerId equals c.Id
-                             where j.DealerId == c.Id && j.DealerType == 1
-                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, Type = j.Type, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+                             join t in Entities.receiptType on j.Type equals t.Index
+                             where j.DealerType == 1
+                             select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
             }
@@ -469,11 +482,11 @@ namespace WPFCashier
                 var selectedJournal = SupplierItemList.SelectedItem as JournalMod;
                 var supplierId = SupplierTextBox.SelectedValue.ToString().StringtoInt();
                 var date = SupplierDateTextBox.Text;
-                var type = SupplierTypeTextBox.Text;
+                var type = SupplierTypeTextBox.SelectedValue.ToString().StringtoInt();
                 var amount = SupplierAmountTextBox.Text;
                 var receipt = SupplierReceiptTextBox.Text;
 
-                if (!String.IsNullOrEmpty(SupplierTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(type) && !String.IsNullOrEmpty(amount))
+                if (!String.IsNullOrEmpty(SupplierTextBox.Text) && !String.IsNullOrEmpty(date) && !String.IsNullOrEmpty(amount))
                 {
                     Journal journal = context.Journals.Find(selectedJournal.Id);
 
@@ -482,7 +495,7 @@ namespace WPFCashier
                     journal.Type = type;
                     journal.Amount = amount.StringtoDecimal();
 
-                    if (type.Equals("payment"))
+                    if (type == 0)
                         journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
                     else
                         journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
@@ -503,6 +516,11 @@ namespace WPFCashier
                 if (selectedJournal != null)
                 {
                     Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
+
+                    if (journal.Type == 0)
+                        context.Suppliers.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit - journal.Amount;
+                    else
+                        context.Suppliers.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit + journal.Amount;
 
                     context.Remove(journal);
 
