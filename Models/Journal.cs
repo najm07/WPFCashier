@@ -15,7 +15,7 @@ namespace WPFCashier
 
         public string Date { get; set; }
 
-        public string Type { get; set; }
+        public int Type { get; set; }
 
         public decimal Amount { get; set; }
 
@@ -34,7 +34,9 @@ namespace WPFCashier
 
         public string Date { get; set; }
 
-        public string Type { get; set; }
+        public int TypeIndex { get; set; }
+
+        public string TypeName { get; set; }
 
         public int ReceiptNumber { get; set; }
 

@@ -23,24 +23,39 @@ namespace WPFCashier
         public SettingsForm()
         {
             InitializeComponent();
-
-            
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RightToLeftLayout();
+            await Read();
+        }
+
+        public Task Read()
         {
             using (DatabaseContext context = new DatabaseContext())
             {
-
-                this.RightToLeftLayout();
-
                 LanguagesTextBox.ItemsSource = Entities.Languages;
 
                 LanguagesTextBox.SelectedIndex = context.AppSettings.Single(x => x.Id == 1).LangIndex;
+
+                AppSettings appSettings = context.AppSettings.Single(x => x.Id == 1);
+
+                 NameTextBox.Text = appSettings.Name;
+                 LastNameTextBox.Text = appSettings.LastName;
+                 CompanyNameTextBox.Text = appSettings.CompanyName;
+                 CompanyAddressTextBox.Text = appSettings.CompanyAddress;
+                 CompanyPhoneTextBox.Text = appSettings.CompanyPhone;
+                 CompanyCommercialRegisterTextBox.Text = appSettings.CompanyCommercialRegister;
+                 StatisticalNumberTextBox.Text = appSettings.CompanyStatisticalNumber;
+                 TaxNumberTextBox.Text = appSettings.CompanyTaxNumber;
+                 BankAccountTextBox.Text = appSettings.CompanyBankAccount;
             }
+
+            return Task.CompletedTask;
         }
 
-        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        public async void Update()
         {
             using (DatabaseContext context = new DatabaseContext())
             {
@@ -62,6 +77,11 @@ namespace WPFCashier
 
                 await context.SaveChangesAsync();
             }
+        }
+
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Update();
 
             var res = MessageBox.Show(Properties.Resources.RestartMessage, Properties.Resources.RestartCaption, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
 
@@ -72,6 +92,7 @@ namespace WPFCashier
                     Application.Current.Shutdown();
                     break;
                 case MessageBoxResult.Cancel:
+                    await Read();
                     break;
             }
         }

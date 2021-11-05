@@ -13,7 +13,9 @@ namespace WPFCashier
         /// <summary>
         /// list of payment types
         /// </summary>
-        public static List<string> receiptType = new List<string>() { "payment", "loan" };
+        public static List<PaymentType> receiptType = new List<PaymentType>() { new PaymentType() { Index = 0, Name = Properties.Resources.Payment }, new PaymentType() { Index = 1, Name = Properties.Resources.Loan } };
+
+        public static List<ReportPath> reportPaths = new List<ReportPath>() { new ReportPath() { Index = 0, Path = Properties.Resources.JournalReport } };
 
         /// <summary>
         /// A list that contains the languages
@@ -77,5 +79,18 @@ namespace WPFCashier
         public int Index { get; set; }
         public string Code { get; set; }
         public string Language { get; set; }
+    }
+
+    public class PaymentType
+    {
+        public int Index { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class ReportPath
+    {
+        public int Index { get; set; }
+
+        public string Path { get; set; }
     }
 }

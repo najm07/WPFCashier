@@ -201,6 +201,9 @@
   <data name="Journal" xml:space="preserve">
     <value>Journal</value>
   </data>
+  <data name="JournalReport" xml:space="preserve">
+    <value>Reports/JournalReport.en-US.rdlc</value>
+  </data>
   <data name="JournalsFormTitle" xml:space="preserve">
     <value>Journals</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
+  </data>
+  <data name="Loan" xml:space="preserve">
+    <value>Loan</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>
@@ -221,6 +227,9 @@
   </data>
   <data name="Old" xml:space="preserve">
     <value>Old</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>

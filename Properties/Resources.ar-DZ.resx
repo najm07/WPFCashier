@@ -201,6 +201,9 @@
   <data name="Journal" xml:space="preserve">
     <value>السجل</value>
   </data>
+  <data name="JournalReport" xml:space="preserve">
+    <value>Reports/JournalReport.ar-DZ.rdlc</value>
+  </data>
   <data name="JournalsFormTitle" xml:space="preserve">
     <value>السجلات</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="LastName" xml:space="preserve">
     <value>اللقب</value>
+  </data>
+  <data name="Loan" xml:space="preserve">
+    <value>قرض</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>الصندوق</value>
@@ -221,6 +227,9 @@
   </data>
   <data name="Old" xml:space="preserve">
     <value>قديم</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>دفع</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>الهاتف</value>

@@ -2,39 +2,39 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix5">
+      <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.70227cm</Width>
+              <Width>3.87465cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.87465cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.70227cm</Width>
+              <Width>3.87465cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.70227cm</Width>
+              <Width>3.87465cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.70227cm</Width>
+              <Width>3.87465cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.68467cm</Height>
+              <Height>0.74552cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox41">
+                    <Textbox Name="Textbox42">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dealer Name</Value>
+                              <Value>Name</Value>
                               <Style>
                                 <FontFamily>Rockwell</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -64,7 +64,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox1">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -101,7 +101,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox45">
+                    <Textbox Name="Textbox46">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -138,7 +138,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox43">
+                    <Textbox Name="Textbox44">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -175,7 +175,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox47">
+                    <Textbox Name="Textbox48">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -213,7 +213,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.68467cm</Height>
+              <Height>0.74552cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -285,40 +285,6 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="NewCredit">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!NewCredit.Value</Value>
-                              <Style>
-                                <FontFamily>Franklin Gothic Medium</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>NewCredit</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
                     <Textbox Name="OldCredit">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -353,14 +319,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Type">
+                    <Textbox Name="NewCredit">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Type.Value</Value>
+                              <Value>=Fields!NewCredit.Value</Value>
                               <Style>
                                 <FontFamily>Franklin Gothic Medium</FontFamily>
                               </Style>
@@ -371,7 +337,41 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Type</rd:DefaultName>
+                      <rd:DefaultName>NewCredit</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TypeName">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!TypeName.Value</Value>
+                              <Style>
+                                <FontFamily>Franklin Gothic Medium</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TypeName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -404,14 +404,15 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="Details" />
+              <Group Name="Details1" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>JournalDataSet</DataSetName>
-        <Top>0.72787cm</Top>
-        <Height>1.36934cm</Height>
-        <Width>17.30908cm</Width>
+        <DataSetName>JournalModDataSet</DataSetName>
+        <Top>0.17639cm</Top>
+        <Left>0.21167cm</Left>
+        <Height>1.49104cm</Height>
+        <Width>19.37326cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -419,10 +420,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.025in</Height>
+    <Height>0.7465in</Height>
     <Style />
   </Body>
-  <Width>17.30908cm</Width>
+  <Width>19.79659cm</Width>
   <Page>
     <PageHeader>
       <Height>1.973cm</Height>
@@ -465,7 +466,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>0.30353cm</Top>
-          <Left>6.85443cm</Left>
+          <Left>8.09818cm</Left>
           <Height>0.94967cm</Height>
           <Width>3.60023cm</Width>
           <ZIndex>1</ZIndex>
@@ -506,7 +507,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox26</rd:DefaultName>
           <Top>0.58928cm</Top>
-          <Left>12.92925cm</Left>
+          <Left>15.87609cm</Left>
           <Height>0.6cm</Height>
           <Width>1.20884cm</Width>
           <ZIndex>2</ZIndex>
@@ -527,7 +528,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!Date.Value, "JournalDataSet")</Value>
+                  <Value>=First(Fields!Date.Value, "JournalModDataSet")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -536,7 +537,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.58928cm</Top>
-          <Left>14.49643cm</Left>
+          <Left>17.08493cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>3</ZIndex>
@@ -558,7 +559,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.75683cm</Height>
+      <Height>1.06891cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -581,10 +582,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
-          <Top>0.57842cm</Top>
-          <Left>13.43325cm</Left>
+          <Top>0.14111cm</Top>
+          <Left>15.28576cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.87583cm</Width>
+          <Width>4.29916cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -624,55 +625,6 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="JournalDataSet">
-      <Query>
-        <DataSourceName>WPFCashier</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Amount">
-          <DataField>Amount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Date">
-          <DataField>Date</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DealerId">
-          <DataField>DealerId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DealerName">
-          <DataField>DealerName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="NewCredit">
-          <DataField>NewCredit</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="OldCredit">
-          <DataField>OldCredit</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="ReceiptNumber">
-          <DataField>ReceiptNumber</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Type">
-          <DataField>Type</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>WPFCashier</rd:DataSetName>
-        <rd:TableName>JournalMod</rd:TableName>
-        <rd:ObjectDataSourceType>WPFCashier.JournalMod, WPFCashier, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
     <DataSet Name="ClientDataSet">
       <Query>
         <DataSourceName>WPFCashier</DataSourceName>
@@ -773,6 +725,59 @@
         <rd:DataSetName>WPFCashier</rd:DataSetName>
         <rd:TableName>AppSettings</rd:TableName>
         <rd:ObjectDataSourceType>WPFCashier.AppSettings, WPFCashier, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="JournalModDataSet">
+      <Query>
+        <DataSourceName>WPFCashier</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DealerId">
+          <DataField>DealerId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DealerName">
+          <DataField>DealerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NewCredit">
+          <DataField>NewCredit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="OldCredit">
+          <DataField>OldCredit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptNumber">
+          <DataField>ReceiptNumber</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TypeIndex">
+          <DataField>TypeIndex</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TypeName">
+          <DataField>TypeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>WPFCashier</rd:DataSetName>
+        <rd:TableName>JournalMod</rd:TableName>
+        <rd:ObjectDataSourceType>WPFCashier.JournalMod, WPFCashier, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
