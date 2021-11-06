@@ -537,7 +537,7 @@ namespace WPFCashier
         private async void SupplierUpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (SupplierItemList.SelectedItem == null)
-                await Create();
+                await CreateSupplier();
             else
                 await UpdateSupplier();
 

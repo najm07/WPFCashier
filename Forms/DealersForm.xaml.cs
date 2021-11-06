@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFCashier.Forms;
 
 namespace WPFCashier
 {
@@ -107,24 +108,33 @@ namespace WPFCashier
             }
         }
 
-        private async void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Create();
-        }
+        /*   private async void CreateButton_Click(object sender, RoutedEventArgs e)
+           {
+               await Create();
+           }
 
-        private async void ReadButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Read();
-        }
+           private async void ReadButton_Click(object sender, RoutedEventArgs e)
+           {
+               await Read();
+           }*/
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            await Update();
+
+            if (ItemList.SelectedItem == null)
+                await Create();
+            else
+                await Update();
+
+            await Read();
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            await Delete();
+            if (ItemList.SelectedItem != null)
+                await Delete();
+
+            await Read();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -228,24 +238,32 @@ namespace WPFCashier
             }
         }
 
-        private async void SuppliersReadButton_Click(object sender, RoutedEventArgs e)
-        {
-            await ReadSuppliers();
-        }
+        /*  private async void SuppliersReadButton_Click(object sender, RoutedEventArgs e)
+          {
+              await ReadSuppliers();
+          }
 
-        private async void SuppliersCreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            await CreateSuppliers();
-        }
+          private async void SuppliersCreateButton_Click(object sender, RoutedEventArgs e)
+          {
+              await CreateSuppliers();
+          }*/
 
         private async void SuppliersUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            await UpdateSuppliers();
+            if (SuppliersItemList.SelectedItem == null)
+                await CreateSuppliers();
+            else
+                await UpdateSuppliers();
+
+            await ReadSuppliers();
         }
 
         private async void SuppliersDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            await DeleteSuppliers();
+            if (SuppliersItemList.SelectedItem != null)
+                await DeleteSuppliers();
+
+            await ReadSuppliers();
         }
 
         private void SuppliersMenuItem_Click(object sender, RoutedEventArgs e)
@@ -268,6 +286,26 @@ namespace WPFCashier
             this.RightToLeftLayout();
             await Read();
             await ReadSuppliers();
+        }
+
+        private void ItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ItemList.SelectedItem != null)
+            {
+                var client = ItemList.SelectedItem as Client;
+                DetailsForm detailsForm = new DetailsForm(client);
+                detailsForm.Show();
+            }
+        }
+
+        private void SuppliersItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ItemList.SelectedItem != null)
+            {
+                var supplier = ItemList.SelectedItem as Supplier;
+                DetailsForm detailsForm = new DetailsForm(supplier);
+                detailsForm.Show();
+            }
         }
     }
 }

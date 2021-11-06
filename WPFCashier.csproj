@@ -278,6 +278,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\DetailsForm.xaml.cs">
+      <DependentUpon>DetailsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Forms\PrintPreview.xaml.cs">
@@ -292,6 +295,10 @@
       <DependentUpon>SettingsForm.xaml</DependentUpon>
     </Compile>
     <Page Include="Forms\DealersForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DetailsForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

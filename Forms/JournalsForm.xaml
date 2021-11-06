@@ -27,7 +27,7 @@
                             </StackPanel>
                         </Button>
                     </Grid>
-                    <ListView Name="ItemList" Margin="5" Height="195" VerticalAlignment="Center" Grid.Row="1" UseLayoutRounding="False">
+                    <ListView Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center" Grid.Row="1" UseLayoutRounding="False">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
@@ -96,7 +96,7 @@
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
                         <TextBox Name="SupplierSearchTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="250" Height="26" VerticalAlignment="Top" TextChanged="SearchTextBox_TextChanged" VerticalContentAlignment="Center"/>
                     </Grid>
-                    <ListView Grid.Row="1" Name="SupplierItemList" Margin="5" Height="195" VerticalAlignment="Center">
+                    <ListView Grid.Row="1" Name="SupplierItemList" Margin="0" Height="195" VerticalAlignment="Center">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
