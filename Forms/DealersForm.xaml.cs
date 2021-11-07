@@ -156,6 +156,16 @@ namespace WPFCashier
             journalsForm.Show();
         }
 
+        private void ItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ItemList.SelectedItem != null)
+            {
+                var client = ItemList.SelectedItem as Client;
+                DetailsForm detailsForm = new DetailsForm(client);
+                detailsForm.Show();
+            }
+        }
+
         #endregion
 
         #region Supplier
@@ -279,25 +289,6 @@ namespace WPFCashier
                 await ReadSuppliers(SuppliersSearchTextBox.Text);
         }
 
-        #endregion
-
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.RightToLeftLayout();
-            await Read();
-            await ReadSuppliers();
-        }
-
-        private void ItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (ItemList.SelectedItem != null)
-            {
-                var client = ItemList.SelectedItem as Client;
-                DetailsForm detailsForm = new DetailsForm(client);
-                detailsForm.Show();
-            }
-        }
-
         private void SuppliersItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (ItemList.SelectedItem != null)
@@ -307,5 +298,18 @@ namespace WPFCashier
                 detailsForm.Show();
             }
         }
+
+        #endregion
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RightToLeftLayout();
+            await Read();
+            await ReadSuppliers();
+        }
+
+       
+
+        
     }
 }

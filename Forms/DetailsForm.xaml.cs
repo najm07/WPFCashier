@@ -81,25 +81,60 @@ namespace WPFCashier.Forms
             return Task.CompletedTask;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private  void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RightToLeftLayout();
+            SelectClientorSupplier();
+
+        }
+
+        private async void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Print();
+        }
+
+        public Task Print()
+        {
+            if (ItemList.SelectedItem != null)
+            {
+               // Client client = new Client();
+                AppSettings appsetting = new AppSettings();
+                using (DatabaseContext context = new DatabaseContext())
+                {
+
+                   
+
+                    appsetting = context.AppSettings.Single(x => x.Id == 1);
+                }
+                PrintPreview printReport = new PrintPreview(0);
+                var q = ItemList.SelectedItem as JournalMod;
+                printReport.Printedjournal.Add(q);
+                printReport.Clientdetails.Add(client);
+                printReport.AppDetails.Add(appsetting);
+                printReport.Show();
+            }
+
+            return Task.CompletedTask;
+        }
+        public async void SelectClientorSupplier()
         {
             if (client != null)
             {
-                
+
                 LabelName.Content = client.Name;
                 LabelAddress.Content = client.Address;
                 LabelPhone.Content = client.Phone;
-               await ShowClient();
+                await ShowClient();
             }
             else
             {
-                
+
                 LabelName.Content = supplier.Name;
                 LabelAddress.Content = supplier.Address;
                 LabelPhone.Content = supplier.Phone;
                 await ShowSupplier();
             }
-
+           
         }
     }
 }
