@@ -21,7 +21,7 @@
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="10, 0"   VerticalAlignment="Center"/>
                         <TextBox Name="SearchTextBox" HorizontalAlignment="Left"  Margin="70, 0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SearchTextBox_TextChanged"/>
                     </Grid>
-                    <ListView Grid.Row="1" Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                    <ListView Grid.Row="1" Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center" Grid.ColumnSpan="2" MouseDoubleClick="ItemList_MouseDoubleClick">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="MenuItem_Click"/>
@@ -34,7 +34,7 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="{x:Static p:Resources.Id}" Width="30"  DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.Id}" Width="50"  DisplayMemberBinding="{Binding Id}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Name}" Width="150" DisplayMemberBinding="{Binding Name}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Address}" Width="150" DisplayMemberBinding="{Binding Address}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Phone}" Width="150" DisplayMemberBinding="{Binding Phone}"/>
@@ -82,7 +82,7 @@
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="10,0"   VerticalAlignment="Center"/>
                         <TextBox Name="SuppliersSearchTextBox" HorizontalAlignment="Left"  Margin="70,0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SuppliersSearchTextBox_TextChanged"/>
                     </Grid>
-                    <ListView Grid.Row="1" Name="SuppliersItemList" Margin="0" Height="195" VerticalAlignment="Center">
+                    <ListView Grid.Row="1" Name="SuppliersItemList" Margin="0" Height="195" VerticalAlignment="Center" MouseDoubleClick="SuppliersItemList_MouseDoubleClick">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" Click="SuppliersMenuItem_Click"/>
@@ -95,7 +95,7 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="{x:Static p:Resources.Id}" Width="30"  DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.Id}" Width="50"  DisplayMemberBinding="{Binding Id}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Name}" Width="150" DisplayMemberBinding="{Binding Name}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Address}" Width="150" DisplayMemberBinding="{Binding Address}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Phone}" Width="150" DisplayMemberBinding="{Binding Phone}"/>
