@@ -291,9 +291,9 @@ namespace WPFCashier
 
         private void SuppliersItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (ItemList.SelectedItem != null)
+            if (SuppliersItemList.SelectedItem != null)
             {
-                var supplier = ItemList.SelectedItem as Supplier;
+                var supplier = SuppliersItemList.SelectedItem as Supplier;
                 DetailsForm detailsForm = new DetailsForm(supplier);
                 detailsForm.Show();
             }
@@ -307,9 +307,5 @@ namespace WPFCashier
             await Read();
             await ReadSuppliers();
         }
-
-       
-
-        
     }
 }
