@@ -21,7 +21,6 @@ namespace WPFCashier.Forms
     {
         public Client client { get; private set; }
         public Supplier supplier { get; private set; }
-        public List<Journal> DbJournals { get; private set; }
 
 
         public DetailsForm(Client client)
@@ -35,49 +34,26 @@ namespace WPFCashier.Forms
             InitializeComponent();
         }
 
-        public Task ShowClient()
+        public Task ShowDealerDetails(int id, string name, string address, string phone, decimal credit)
         {
-            DbJournals = new List<Journal>();
             using (DatabaseContext context = new DatabaseContext())
             {
-                var journals = context.Journals.Where(x => x.DealerId == client.Id && x.DealerType == 0).ToList();
-                foreach (Journal journal in journals)
-                   DbJournals.Add(journal);
-
-
-
-            var result = from j in DbJournals
-                         join c in context.Clients on j.DealerId equals c.Id
-                         join t in Entities.receiptType on j.Type equals t.Index
-                         where j.DealerType == 0
-                         select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
-
-            ItemList.ItemsSource = result.ToList();
-
-            }
-            return Task.CompletedTask;
-        }
-
-        public Task ShowSupplier()
-        {
-            DbJournals = new List<Journal>();
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                var journals = context.Journals.Where(x => x.DealerId == supplier.Id && x.DealerType == 1).ToList();
-                foreach (Journal journal in journals)
-                    DbJournals.Add(journal);
-
-
-
-                var result = from j in DbJournals
-                             join c in context.Suppliers on j.DealerId equals c.Id
+                var journals = context.Journals.Where(x => x.DealerId == id && x.DealerType == 0).ToList();
+                var result = from j in journals
+                             join c in (context.Clients || context.Suppliers) on j.DealerId equals c.Id
                              join t in Entities.receiptType on j.Type equals t.Index
-                             where j.DealerType == 1
+                             where j.DealerType == 0
                              select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
 
             }
+
+            LabelName.Content = name;
+            LabelAddress.Content = address;
+            LabelPhone.Content = phone;
+            LabelCredit.Content = credit;
+
             return Task.CompletedTask;
         }
 
@@ -101,17 +77,14 @@ namespace WPFCashier.Forms
                 AppSettings appsetting = new AppSettings();
                 using (DatabaseContext context = new DatabaseContext())
                 {
-
-                   
-
                     appsetting = context.AppSettings.Single(x => x.Id == 1);
+                    PrintPreview printReport = new PrintPreview(0);
+                    var q = ItemList.SelectedItem as JournalMod;
+                    printReport.Printedjournal.Add(q);
+                    printReport.Clientdetails.Add(client);
+                    printReport.AppDetails.Add(appsetting);
+                    printReport.Show();
                 }
-                PrintPreview printReport = new PrintPreview(0);
-                var q = ItemList.SelectedItem as JournalMod;
-                printReport.Printedjournal.Add(q);
-                printReport.Clientdetails.Add(client);
-                printReport.AppDetails.Add(appsetting);
-                printReport.Show();
             }
 
             return Task.CompletedTask;
@@ -119,23 +92,9 @@ namespace WPFCashier.Forms
         public async void SelectClientorSupplier()
         {
             if (client != null)
-            {
-
-                LabelName.Content = client.Name;
-                LabelAddress.Content = client.Address;
-                LabelPhone.Content = client.Phone;
-                LabelCredit.Content = client.Credit;
-                await ShowClient();
-            }
+                await ShowDealerDetails(client.Id, client.Name, client.Address, client.Phone, client.Credit);
             else
-            {
-
-                LabelName.Content = supplier.Name;
-                LabelAddress.Content = supplier.Address;
-                LabelPhone.Content = supplier.Phone;
-                LabelCredit.Content = supplier.Credit;
-                await ShowSupplier();
-            }
+                await ShowDealerDetails(supplier.Id, supplier.Name, supplier.Address, supplier.Phone, supplier.Credit);
            
         }
 
