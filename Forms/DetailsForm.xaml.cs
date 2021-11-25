@@ -22,31 +22,48 @@ namespace WPFCashier.Forms
         public Client client { get; private set; }
         public Supplier supplier { get; private set; }
 
+        private int dealerType;
+        private int dealerId;
+
 
         public DetailsForm(Client client)
         {
             this.client = client;
+            this.dealerType = 0;
+            this.dealerId = client.Id;
             InitializeComponent();
         }
         public DetailsForm(Supplier supplier)
         {
             this.supplier = supplier;
+            this.dealerType = 1;
+            this.dealerId = supplier.Id;
             InitializeComponent();
         }
 
-        public Task ShowDealerDetails(int id, string name, string address, string phone, decimal credit)
+        public Task ShowDealerDetails(string name, string address, string phone, decimal credit)
         {
             using (DatabaseContext context = new DatabaseContext())
             {
-                var journals = context.Journals.Where(x => x.DealerId == id && x.DealerType == 0).ToList();
-                var result = from j in journals
-                             join c in (context.Clients || context.Suppliers) on j.DealerId equals c.Id
+                var journals = context.Journals.Where(x => x.DealerId == dealerId && x.DealerType == dealerType).ToList();
+                if (dealerType == 0)
+                {
+                    var result = from j in journals
+                             join c in context.Clients on j.DealerId equals c.Id
                              join t in Entities.receiptType on j.Type equals t.Index
-                             where j.DealerType == 0
+                             where j.DealerType == dealerType
                              select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
-
-                ItemList.ItemsSource = result.ToList();
-
+                    ItemList.ItemsSource = result.ToList();
+                }
+                else
+                {
+                    var result = from j in journals
+                                 join c in context.Suppliers on j.DealerId equals c.Id
+                                 join t in Entities.receiptType on j.Type equals t.Index
+                                 where j.DealerType == dealerType
+                                 select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+                    ItemList.ItemsSource = result.ToList();
+                }
             }
 
             LabelName.Content = name;
@@ -92,9 +109,9 @@ namespace WPFCashier.Forms
         public async void SelectClientorSupplier()
         {
             if (client != null)
-                await ShowDealerDetails(client.Id, client.Name, client.Address, client.Phone, client.Credit);
+                await ShowDealerDetails(client.Name, client.Address, client.Phone, client.Credit);
             else
-                await ShowDealerDetails(supplier.Id, supplier.Name, supplier.Address, supplier.Phone, supplier.Credit);
+                await ShowDealerDetails(supplier.Name, supplier.Address, supplier.Phone, supplier.Credit);
            
         }
 
@@ -102,9 +119,33 @@ namespace WPFCashier.Forms
         {
             if(DateFrom.SelectedDate.HasValue && DateTo.SelectedDate.HasValue)
             {
-                var list = ItemList.ItemsSource as List<JournalMod>;
-                var res = list.Where(x => DateTime.Parse(x.Date) >= DateFrom.SelectedDate && DateTime.Parse(x.Date) <= DateTo.SelectedDate);
-                ItemList.ItemsSource = res;
+                using (DatabaseContext context = new DatabaseContext())
+                {
+                    if (dealerType.IsClient())
+                    {
+                        var journals = context.Journals.Where(x => x.DealerId == dealerId && x.DealerType == dealerType).ToList();
+                        var list = from j in journals
+                                   join c in context.Clients on j.DealerId equals c.Id
+                                   join t in Entities.receiptType on j.Type equals t.Index
+                                   where j.DealerType == dealerType
+                                   select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+
+                        var res = list.Where(x => DateTime.Parse(x.Date) >= DateFrom.SelectedDate && DateTime.Parse(x.Date) <= DateTo.SelectedDate);
+                        ItemList.ItemsSource = res;
+                    }
+                    else
+                    {
+                        var journals = context.Journals.Where(x => x.DealerId == dealerId && x.DealerType == dealerType).ToList();
+                        var list = from j in journals
+                                     join c in context.Suppliers on j.DealerId equals c.Id
+                                     join t in Entities.receiptType on j.Type equals t.Index
+                                     where j.DealerType == dealerType
+                                     select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+
+                        var res = list.Where(x => DateTime.Parse(x.Date) >= DateFrom.SelectedDate && DateTime.Parse(x.Date) <= DateTo.SelectedDate);
+                        ItemList.ItemsSource = res;
+                    }
+                }
             }
         }
     }

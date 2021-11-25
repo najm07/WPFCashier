@@ -72,6 +72,14 @@ namespace WPFCashier
                 return false;
             }
         }
+
+        public static bool IsClient(this int dealertype)
+        {
+            if (dealertype == 0)
+                return true;
+
+            return false;
+        }
     }
 
     public class Lang
