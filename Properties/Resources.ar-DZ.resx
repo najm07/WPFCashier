@@ -129,6 +129,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>العربية</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>الغاء التحديد</value>
+  </data>
   <data name="Client" xml:space="preserve">
     <value>الزبون</value>
   </data>

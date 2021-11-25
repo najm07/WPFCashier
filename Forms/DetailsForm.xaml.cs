@@ -147,5 +147,10 @@ namespace WPFCashier.Forms
                 }
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ItemList.SelectedItem = null;
+        }
     }
 }

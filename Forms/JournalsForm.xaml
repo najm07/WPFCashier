@@ -30,7 +30,7 @@
                     <ListView Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center" Grid.Row="1" UseLayoutRounding="False">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Clear" Click="MenuItem_Click"/>
+                                <MenuItem Header="{x:Static p:Resources.Clear}" Click="MenuItem_Click"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.ItemContainerStyle>
@@ -99,7 +99,7 @@
                     <ListView Grid.Row="1" Name="SupplierItemList" Margin="0" Height="195" VerticalAlignment="Center">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Clear" Click="MenuItem_Click"/>
+                                <MenuItem Header="{x:Static p:Resources.Clear}" Click="MenuItem_Click"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.ItemContainerStyle>
@@ -175,7 +175,7 @@
                     <ListView Grid.Row="1" Name="ExpencesItemList" Margin="0" Height="195" VerticalAlignment="Center">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Clear" Click="MenuItem_Click"/>
+                                <MenuItem Header="{x:Static p:Resources.Clear}" Click="MenuItem_Click"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.ItemContainerStyle>

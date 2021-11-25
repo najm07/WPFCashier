@@ -24,7 +24,7 @@
             <Label Name="LabelCredit"  HorizontalAlignment="Right"  Margin="0,30,93,0" Width="250" Height="26" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="1">
-            <GroupBox Header="History" Margin="5">
+            <GroupBox Header="{x:Static p:Resources.History}" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
@@ -51,7 +51,7 @@
                     <ListView Name="ItemList" Margin="0" Grid.Row="1">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Clear" />
+                                <MenuItem Header="{x:Static p:Resources.Clear}" Click="MenuItem_Click" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.ItemContainerStyle>
