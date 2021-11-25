@@ -35,6 +35,7 @@
                         <Label HorizontalAlignment="Left" Width="55" Height="25" Margin="5" Content="{x:Static p:Resources.Filter}" />
                         <DatePicker x:Name="DateFrom" Width="200" Height="25" HorizontalAlignment="Left" Margin="65, 0" />
                         <DatePicker x:Name="DateTo" Width="200" Height="25" HorizontalAlignment="Left" Margin="280, 0" />
+                        <CheckBox x:Name="SelectAllItems" Width="70" Height="25" Margin="100,0,100,5" Content="{x:Static p:Resources.SelectAll}" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Bottom" Checked="SelectAllItems_Checked" Unchecked="MenuItem_Click"/>
                         <Button x:Name="FilterButton" Height="30" Width="65" Grid.Row="2" Margin="5" Click="FilterButton_Click" HorizontalAlignment="Right" >
                             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
                                 <Path Stretch="Uniform" Data="M480.159,45.81H31.841C14.284,45.81,0,60.093,0,77.65v37.472c0,17.557,14.284,31.841,31.841,31.841h14.907L211.305,311.52
@@ -48,7 +49,7 @@
                             </StackPanel>
                         </Button>
                     </Grid>
-                    <ListView Name="ItemList" Margin="0" Grid.Row="1">
+                    <ListView Name="ItemList" Margin="0" Grid.Row="1" SelectionMode="Extended">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static p:Resources.Clear}" Click="MenuItem_Click" />
