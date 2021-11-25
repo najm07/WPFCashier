@@ -20,15 +20,35 @@
             <Label Name="LabelAddress"  HorizontalAlignment="Left"  Margin="93,30,0,0" Width="250" Height="26" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
             <Label Content="{x:Static p:Resources.Phone}" HorizontalAlignment="Center" Margin="20,0,0,0"   VerticalAlignment="Top" FontWeight="Bold"/>
             <Label Name="LabelPhone"  HorizontalAlignment="Right"  Margin="0,0,93,0" Width="250" Height="26" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
+            <Label Content="{x:Static p:Resources.Credit}" HorizontalAlignment="Center" Margin="20,30,0,0"   VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Name="LabelCredit"  HorizontalAlignment="Right"  Margin="0,30,93,0" Width="250" Height="26" VerticalAlignment="Top"  VerticalContentAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="1">
             <GroupBox Header="History" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <ListView Name="ItemList" Margin="0" >
+                    <Grid>
+                        <Label HorizontalAlignment="Left" Width="55" Height="25" Margin="5" Content="{x:Static p:Resources.Filter}" />
+                        <DatePicker x:Name="DateFrom" Width="200" Height="25" HorizontalAlignment="Left" Margin="65, 0" />
+                        <DatePicker x:Name="DateTo" Width="200" Height="25" HorizontalAlignment="Left" Margin="280, 0" />
+                        <Button x:Name="FilterButton" Height="30" Width="65" Grid.Row="2" Margin="5" Click="FilterButton_Click" HorizontalAlignment="Right" >
+                            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                                <Path Stretch="Uniform" Data="M480.159,45.81H31.841C14.284,45.81,0,60.093,0,77.65v37.472c0,17.557,14.284,31.841,31.841,31.841h14.907L211.305,311.52
+			v144.056c0,4.293,2.586,8.163,6.552,9.806c1.313,0.543,2.692,0.808,4.059,0.808c2.763,0,5.478-1.078,7.508-3.109l68.559-68.56
+			c1.99-1.991,3.109-4.69,3.109-7.505v-75.498l164.554-164.555h14.514c17.557,0,31.841-14.284,31.841-31.841V77.65
+			C512,60.093,497.716,45.81,480.159,45.81z M282.968,299.621c-2.096,2.096-3.128,4.85-3.104,7.597v75.404l-47.332,47.332V307.156
+			c0.007-2.727-1.027-5.455-3.107-7.536L76.768,146.963h358.857L282.968,299.621z M490.773,115.122
+			c0,5.852-4.761,10.614-10.614,10.614H31.841c-5.852,0-10.614-4.761-10.614-10.614V77.65c0-5.852,4.761-10.614,10.614-10.614
+			h448.319c5.852,0,10.614,4.761,10.614,10.614V115.122" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                                <Label Content="{x:Static p:Resources.Filter}" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                    <ListView Name="ItemList" Margin="0" Grid.Row="1">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Clear" />
@@ -50,7 +70,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="PrintButton" Height="30" Grid.Row="1" Margin="20,0,0,0" IsEnabled="{Binding ElementName=ItemList,Path=SelectedItem}" Click="PrintButton_Click" HorizontalAlignment="Left" >
+                    <Button x:Name="PrintButton" Height="30" Grid.Row="2" Margin="5" IsEnabled="{Binding ElementName=ItemList,Path=SelectedItem}" Click="PrintButton_Click" HorizontalAlignment="Right" >
                         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
                             <Path Stretch="Uniform" Data="M31.75,8 C33.4830315,8 34.8992459,9.35645477 34.9948552,11.0655761 L35,11.25 L35,14 L36.75,14 C39.6494949,14 42,16.3505051 42,19.25 L42,32.75 C42,34.5449254 40.5449254,36 38.75,36 L35,36 L35,37.75 C35,39.5449254 33.5449254,41 31.75,41 L16.25,41 C14.4550746,41 13,39.5449254 13,37.75 L13,36 L9.25,36 C7.45507456,36 6,34.5449254 6,32.75 L6,19.25 C6,16.3505051 8.35050506,14 11.25,14 L13,14 L13,11.25 C13,9.51696854 14.3564548,8.10075407 16.0655761,8.00514479 L16.25,8 L31.75,8 Z M15.5,37.75 C15.5,38.1642136 15.8357864,38.5 16.25,38.5 L31.75,38.5 C32.1642136,38.5 32.5,38.1642136 32.5,37.75 L32.5,29.25 C32.5,28.8357864 32.1642136,28.5 31.75,28.5 L16.25,28.5 C15.8357864,28.5 15.5,28.8357864 15.5,29.25 L15.5,37.75 Z M31.75,10.5 L16.25,10.5 C15.8703042,10.5 15.556509,10.7821539 15.5068466,11.1482294 L15.5,11.25 L15.5,14 L32.5,14 L32.5,11.25 C32.5,10.8703042 32.2178461,10.556509 31.8517706,10.5068466 L31.75,10.5 Z" Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
                             <Label Content="{x:Static p:Resources.Print}" Margin="0"/>

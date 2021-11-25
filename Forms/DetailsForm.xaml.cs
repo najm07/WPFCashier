@@ -124,6 +124,7 @@ namespace WPFCashier.Forms
                 LabelName.Content = client.Name;
                 LabelAddress.Content = client.Address;
                 LabelPhone.Content = client.Phone;
+                LabelCredit.Content = client.Credit;
                 await ShowClient();
             }
             else
@@ -132,9 +133,20 @@ namespace WPFCashier.Forms
                 LabelName.Content = supplier.Name;
                 LabelAddress.Content = supplier.Address;
                 LabelPhone.Content = supplier.Phone;
+                LabelCredit.Content = supplier.Credit;
                 await ShowSupplier();
             }
            
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(DateFrom.SelectedDate.HasValue && DateTo.SelectedDate.HasValue)
+            {
+                var list = ItemList.ItemsSource as List<JournalMod>;
+                var res = list.Where(x => DateTime.Parse(x.Date) >= DateFrom.SelectedDate && DateTime.Parse(x.Date) <= DateTo.SelectedDate);
+                ItemList.ItemsSource = res;
+            }
         }
     }
 }
