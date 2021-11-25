@@ -19,25 +19,26 @@ namespace WPFCashier.Forms
     /// </summary>
     public partial class DetailsForm : Window
     {
-        public Client client { get; private set; }
-        public Supplier supplier { get; private set; }
+        public Client Client { get; private set; }
+        public Supplier Supplier { get; private set; }
 
-        private int dealerType;
-        private int dealerId;
+        private readonly int dealerType;
+        private readonly int dealerId;
 
 
         public DetailsForm(Client client)
         {
-            this.client = client;
-            this.dealerType = 0;
-            this.dealerId = client.Id;
+            Client = client;
+            dealerType = 0;
+            dealerId = client.Id;
             InitializeComponent();
         }
+
         public DetailsForm(Supplier supplier)
         {
-            this.supplier = supplier;
-            this.dealerType = 1;
-            this.dealerId = supplier.Id;
+            Supplier = supplier;
+            dealerType = 1;
+            dealerId = supplier.Id;
             InitializeComponent();
         }
 
@@ -74,11 +75,10 @@ namespace WPFCashier.Forms
             return Task.CompletedTask;
         }
 
-        private  void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.RightToLeftLayout();
             SelectClientorSupplier();
-
         }
 
         private async void PrintButton_Click(object sender, RoutedEventArgs e)
@@ -98,7 +98,7 @@ namespace WPFCashier.Forms
                     PrintPreview printReport = new PrintPreview(0);
                     var q = ItemList.SelectedItem as JournalMod;
                     printReport.Printedjournal.Add(q);
-                    printReport.Clientdetails.Add(client);
+                    printReport.Clientdetails.Add(Client);
                     printReport.AppDetails.Add(appsetting);
                     printReport.Show();
                 }
@@ -108,11 +108,10 @@ namespace WPFCashier.Forms
         }
         public async void SelectClientorSupplier()
         {
-            if (client != null)
-                await ShowDealerDetails(client.Name, client.Address, client.Phone, client.Credit);
+            if (Client != null)
+                await ShowDealerDetails(Client.Name, Client.Address, Client.Phone, Client.Credit);
             else
-                await ShowDealerDetails(supplier.Name, supplier.Address, supplier.Phone, supplier.Credit);
-           
+                await ShowDealerDetails(Supplier.Name, Supplier.Address, Supplier.Phone, Supplier.Credit);
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -137,10 +136,10 @@ namespace WPFCashier.Forms
                     {
                         var journals = context.Journals.Where(x => x.DealerId == dealerId && x.DealerType == dealerType).ToList();
                         var list = from j in journals
-                                     join c in context.Suppliers on j.DealerId equals c.Id
-                                     join t in Entities.receiptType on j.Type equals t.Index
-                                     where j.DealerType == dealerType
-                                     select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
+                                   join c in context.Suppliers on j.DealerId equals c.Id
+                                   join t in Entities.receiptType on j.Type equals t.Index
+                                   where j.DealerType == dealerType
+                                   select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                         var res = list.Where(x => DateTime.Parse(x.Date) >= DateFrom.SelectedDate && DateTime.Parse(x.Date) <= DateTo.SelectedDate);
                         ItemList.ItemsSource = res;
