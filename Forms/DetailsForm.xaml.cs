@@ -31,7 +31,7 @@ namespace WPFCashier.Forms
         public DetailsForm(Client client)
         {
             Client = client;
-            dealerType = 0;
+            dealerType = Entities.Client;
             dealerId = client.Id;
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace WPFCashier.Forms
         public DetailsForm(Supplier supplier)
         {
             Supplier = supplier;
-            dealerType = 1;
+            dealerType = Entities.Supplier;
             dealerId = supplier.Id;
             InitializeComponent();
         }
@@ -49,7 +49,7 @@ namespace WPFCashier.Forms
             using (DatabaseContext context = new DatabaseContext())
             {
                 var journals = context.Journals.Where(x => x.DealerId == dealerId && x.DealerType == dealerType).ToList();
-                if (dealerType == 0)
+                if (dealerType.IsClient())
                 {
                     var result = from j in journals
                              join c in context.Clients on j.DealerId equals c.Id

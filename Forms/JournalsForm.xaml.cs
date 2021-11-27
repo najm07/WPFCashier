@@ -50,7 +50,7 @@ namespace WPFCashier
                     var clientCredit = context.Clients.Single(x => x.Id == ClientTextBox.SelectedValue.ToString().StringtoInt()).Credit;
                     decimal newClientCredit = 0;
 
-                    if (type == 0)
+                    if (type.IsPayment())
                         newClientCredit = clientCredit - amount.StringtoDecimal();
                     else
                         newClientCredit = clientCredit + amount.StringtoDecimal();
@@ -58,7 +58,7 @@ namespace WPFCashier
                     context.Journals.Add(new Journal()
                     {
                         DealerId = ClientTextBox.SelectedValue.ToString().StringtoInt(),
-                        DealerType = 0,
+                        DealerType = Entities.Client,
                         Date = date,
                         Type = type,
                         Amount = amount.StringtoDecimal(),
@@ -86,7 +86,7 @@ namespace WPFCashier
                 var result = from j in context.Journals
                              join c in context.Clients on j.DealerId equals c.Id
                              join t in Entities.receiptType on j.Type equals t.Index
-                             where j.DealerType == 0
+                             where j.DealerType == Entities.Client
                              select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
@@ -104,7 +104,7 @@ namespace WPFCashier
                 
                 foreach (Client client in DbClient)
                 {
-                    var journals = context.Journals.Where(x => x.DealerId == client.Id && x.DealerType == 0).ToList();
+                    var journals = context.Journals.Where(x => x.DealerId == client.Id && x.DealerType == Entities.Client).ToList();
                     foreach (Journal journal in journals)
                         DbJournals.Add(journal);
                 }
@@ -113,7 +113,7 @@ namespace WPFCashier
                 var result = from j in DbJournals
                              join c in context.Clients on j.DealerId equals c.Id
                              join t in Entities.receiptType on j.Type equals t.Index
-                             where j.DealerType == 0
+                             where j.DealerType == Entities.Client
                              select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 ItemList.ItemsSource = result.ToList();
@@ -141,7 +141,7 @@ namespace WPFCashier
                     journal.Type = type;
                     journal.Amount = amount.StringtoDecimal();
 
-                    if (type == 0)
+                    if (type.IsPayment())
                         journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
                     else
                         journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
@@ -163,7 +163,7 @@ namespace WPFCashier
                 {
                     Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
 
-                    if (journal.Type == 0)
+                    if (journal.Type.IsPayment())
                         context.Clients.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit + journal.Amount;
                     else
                         context.Clients.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit - journal.Amount;
@@ -258,7 +258,7 @@ namespace WPFCashier
 
         private async void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (SearchTextBox.Text.Length == 0)
+            if (SearchTextBox.Text.IsEmpty())
                 await Read();
             else
                 await Read(SearchTextBox.Text);
@@ -392,7 +392,7 @@ namespace WPFCashier
                     var supplierCredit = context.Suppliers.Single(x => x.Id == SupplierTextBox.SelectedValue.ToString().StringtoInt()).Credit;
                     decimal newSupplierCredit = 0;
 
-                    if (type == 0)
+                    if (type.IsPayment())
                         newSupplierCredit = supplierCredit - amount.StringtoDecimal();
                     else
                         newSupplierCredit = supplierCredit + amount.StringtoDecimal();
@@ -400,7 +400,7 @@ namespace WPFCashier
                     context.Journals.Add(new Journal()
                     {
                         DealerId = SupplierTextBox.SelectedValue.ToString().StringtoInt(),
-                        DealerType = 1,
+                        DealerType = Entities.Supplier,
                         Date = date,
                         Type = type,
                         Amount = amount.StringtoDecimal(),
@@ -428,7 +428,7 @@ namespace WPFCashier
                 var result = from j in context.Journals
                              join c in context.Suppliers on j.DealerId equals c.Id
                              join t in Entities.receiptType on j.Type equals t.Index
-                             where j.DealerType == 1
+                             where j.DealerType == Entities.Supplier
                              select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
@@ -446,7 +446,7 @@ namespace WPFCashier
 
                 foreach (Supplier supplier in DbSupplier)
                 {
-                    var journals = context.Journals.Where(x => x.DealerId == supplier.Id && x.DealerType == 1).ToList();
+                    var journals = context.Journals.Where(x => x.DealerId == supplier.Id && x.DealerType == Entities.Supplier).ToList();
                     foreach (Journal journal in journals)
                         DbJournals.Add(journal);
                 }
@@ -455,7 +455,7 @@ namespace WPFCashier
                 var result = from j in DbJournals
                              join c in context.Suppliers on j.DealerId equals c.Id
                              join t in Entities.receiptType on j.Type equals t.Index
-                             where j.DealerType == 1
+                             where j.DealerType == Entities.Supplier
                              select new JournalMod { Id = j.Id, DealerId = j.DealerId, DealerName = c.Name, Date = j.Date, TypeIndex = j.Type, TypeName = t.Name, ReceiptNumber = j.ReceiptNumber, Amount = j.Amount, OldCredit = j.OldCredit, NewCredit = j.NewCredit };
 
                 SupplierItemList.ItemsSource = result.ToList();
@@ -495,7 +495,7 @@ namespace WPFCashier
                     journal.Type = type;
                     journal.Amount = amount.StringtoDecimal();
 
-                    if (type == 0)
+                    if (type.IsPayment())
                         journal.NewCredit = journal.OldCredit + amount.StringtoDecimal();
                     else
                         journal.NewCredit = journal.OldCredit - amount.StringtoDecimal();
@@ -517,7 +517,7 @@ namespace WPFCashier
                 {
                     Journal journal = context.Journals.Single(x => x.Id == selectedJournal.Id);
 
-                    if (journal.Type == 0)
+                    if (journal.Type.IsPayment())
                         context.Suppliers.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit - journal.Amount;
                     else
                         context.Suppliers.Single(x => x.Id == journal.DealerId).Credit = journal.NewCredit + journal.Amount;
@@ -557,7 +557,7 @@ namespace WPFCashier
 
         private async void SupplierSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (SupplierSearchTextBox.Text.Length == 0)
+            if (SupplierSearchTextBox.Text.IsEmpty())
                 await ReadSupplier();
             else
                 await ReadSupplier(SupplierSearchTextBox.Text);
