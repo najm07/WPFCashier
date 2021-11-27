@@ -511,7 +511,7 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SelectAll.
+        ///   Looks up a localized string similar to Select all.
         /// </summary>
         public static string SelectAll {
             get {

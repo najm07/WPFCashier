@@ -155,11 +155,14 @@ namespace WPFCashier.Forms
                     }
                 }
             }
+            
+            SelectAllItems.IsChecked = false;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             ItemList.SelectedItem = null;
+            SelectAllItems.IsChecked = false;
         }
 
         private void SelectAllItems_Checked(object sender, RoutedEventArgs e)
