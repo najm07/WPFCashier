@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace WPFCashier.Forms
     {
         public Client Client { get; private set; }
         public Supplier Supplier { get; private set; }
+        public ObservableCollection<JournalMod> SomeListViewList { get; set; }
 
         private readonly int dealerType;
         private readonly int dealerId;
@@ -29,7 +31,7 @@ namespace WPFCashier.Forms
         public DetailsForm(Client client)
         {
             Client = client;
-            dealerType = 0;
+            dealerType = Entities.Client;
             dealerId = client.Id;
             InitializeComponent();
         }
@@ -37,7 +39,7 @@ namespace WPFCashier.Forms
         public DetailsForm(Supplier supplier)
         {
             Supplier = supplier;
-            dealerType = 1;
+            dealerType = Entities.Supplier;
             dealerId = supplier.Id;
             InitializeComponent();
         }
@@ -47,7 +49,7 @@ namespace WPFCashier.Forms
             using (DatabaseContext context = new DatabaseContext())
             {
                 var journals = context.Journals.Where(x => x.DealerId == dealerId && x.DealerType == dealerType).ToList();
-                if (dealerType == 0)
+                if (dealerType.IsClient())
                 {
                     var result = from j in journals
                              join c in context.Clients on j.DealerId equals c.Id
@@ -96,8 +98,15 @@ namespace WPFCashier.Forms
                 {
                     appsetting = context.AppSettings.Single(x => x.Id == 1);
                     PrintPreview printReport = new PrintPreview(0);
-                    var q = ItemList.SelectedItem as JournalMod;
-                    printReport.Printedjournal.Add(q);
+                    foreach (var item in ItemList.SelectedItems )
+                    {
+                        var s = item as JournalMod;
+                        printReport.Printedjournal.Add(s);
+
+                    }
+                        
+                   // var q = ItemList.SelectedItem as JournalMod;
+                   // printReport.Printedjournal.Add(q);
                     printReport.Clientdetails.Add(Client);
                     printReport.AppDetails.Add(appsetting);
                     printReport.Show();
@@ -152,5 +161,12 @@ namespace WPFCashier.Forms
         {
             ItemList.SelectedItem = null;
         }
+
+        private void SelectAllItems_Checked(object sender, RoutedEventArgs e)
+        {
+            ItemList.SelectAll();
+        }
+
+        
     }
 }
