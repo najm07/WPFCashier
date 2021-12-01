@@ -12,43 +12,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFCashier.Forms;
 
-namespace WPFCashier
+namespace WPFCashier.Forms
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        
-        public MainWindow()
+        public MainPage()
         {
-            
             InitializeComponent();
-            NavigationFrame.Navigate(new MainPage());
-
         }
-
-        private void ClientsButton_Click(object sender, RoutedEventArgs e)
+        private void DealersButton_Click(object sender, RoutedEventArgs e)
         {
-            DealersForm clientsForm = new DealersForm();
-            clientsForm.Show();
+           /* DealersForm clientsForm = new DealersForm();
+            clientsForm.Show();*/
+            NavigationService.Navigate(new DealersPage());
         }
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
         {
-            JournalsForm journalsForm = new JournalsForm();
-            journalsForm.Show();
+           /* JournalsForm journalsForm = new JournalsForm();
+            journalsForm.Show();*/
+            NavigationService.Navigate(new JournalsPage());
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            SettingsForm settings = new SettingsForm();
-            settings.Show();
-        }
+            Entities.OpenNewOrRestoreWindow<SettingsForm>();
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        }   
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             this.RightToLeftLayout();
         }

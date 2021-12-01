@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WPFCashier
 {
@@ -69,6 +70,14 @@ namespace WPFCashier
                     window.FlowDirection = FlowDirection.RightToLeft;
             }
         }
+        public static void RightToLeftLayout(this Page page)
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                if (context.AppSettings.Single(x => x.Id == 1).LangIndex == 1)
+                    page.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
 
         public static bool IsArabic(this Window window)
         {
@@ -104,6 +113,46 @@ namespace WPFCashier
 
             return false;
         }
+
+       public static void OpenNewOrRestoreWindow<T>() where T : Window, new()
+        {
+            bool isWindowOpen = false;
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is T)
+                {
+                    isWindowOpen = true;
+                    w.Activate();
+                    break;
+                }
+            }
+
+            if (!isWindowOpen)
+            {
+                T newwindow = new T();
+                newwindow.Show();
+            }
+        }
+
+        public static bool CheckWindow<T>() where T : Window
+        {
+            bool isWindowOpen = false;
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is T)
+                {
+                    isWindowOpen = true;
+                    w.Activate();
+                    break;
+                }
+            }
+
+            return isWindowOpen;
+        }
+
+
     }
 
     public class Lang

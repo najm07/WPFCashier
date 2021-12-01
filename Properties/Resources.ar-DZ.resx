@@ -201,6 +201,9 @@
   <data name="History" xml:space="preserve">
     <value>السجل</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>المعين</value>
   </data>

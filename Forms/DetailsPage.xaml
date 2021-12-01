@@ -1,20 +1,22 @@
-﻿<Window x:Class="WPFCashier.Forms.DetailsForm"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:p = "clr-namespace:WPFCashier.Properties"
-        xmlns:local="clr-namespace:WPFCashier.Forms"
-        mc:Ignorable="d"
-        Title="DetailsForm" Height="450" Width="800" Loaded="Window_Loaded" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
-    <Window.Resources>
+﻿<Page x:Class="WPFCashier.Forms.DetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p = "clr-namespace:WPFCashier.Properties"
+      xmlns:local="clr-namespace:WPFCashier.Forms"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DetailsPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
         <DataTemplate x:Key="FirstCell">
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding Path=IsSelected, 
                     RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
             </StackPanel>
         </DataTemplate>
-    </Window.Resources>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -90,4 +92,4 @@
             </GroupBox>
         </Grid>
     </Grid>
-</Window>
+</Page>
