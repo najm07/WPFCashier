@@ -40,8 +40,8 @@ namespace WPFCashier.Forms
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            Entities.OpenNewOrRestoreWindow<SettingsForm>();
-
+            //Entities.OpenNewOrRestoreWindow<SettingsForm>();
+            NavigationService.Navigate(new SettingsPage());
         }   
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

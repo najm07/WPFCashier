@@ -8,6 +8,6 @@
         xmlns:p = "clr-namespace:WPFCashier.Properties"
         Title="{x:Static p:Resources.MainFormTitle}" Height="450" Width="800" Loaded="Window_Loaded" Background="#FFEFEDF2">
     <DockPanel>
-        <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" />
+        <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
     </DockPanel>
 </Window>
