@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFCashier.Forms
+namespace WPFCashier
 {
     /// <summary>
     /// Interaction logic for JournalsPage.xaml

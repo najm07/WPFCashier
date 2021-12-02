@@ -129,6 +129,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>العربية</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>الغاء التحديد</value>
   </data>
@@ -185,6 +188,12 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
+  </data>
+  <data name="DiscardCaption" xml:space="preserve">
+    <value>لم يتم حفظ التغييرات</value>
+  </data>
+  <data name="DiscardMessage" xml:space="preserve">
+    <value>هل انت متأكد من العودة بدون حفظ التغييرات؟</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>تعديل</value>

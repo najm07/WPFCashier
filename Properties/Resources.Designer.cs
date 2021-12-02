@@ -97,6 +97,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
         public static string Clear {
@@ -264,6 +273,24 @@ namespace WPFCashier.Properties {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes not saved.
+        /// </summary>
+        public static string DiscardCaption {
+            get {
+                return ResourceManager.GetString("DiscardCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to leave without saving?.
+        /// </summary>
+        public static string DiscardMessage {
+            get {
+                return ResourceManager.GetString("DiscardMessage", resourceCulture);
             }
         }
         

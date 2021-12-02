@@ -129,6 +129,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>Arabic</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
   </data>
@@ -185,6 +188,12 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="DiscardCaption" xml:space="preserve">
+    <value>Changes not saved</value>
+  </data>
+  <data name="DiscardMessage" xml:space="preserve">
+    <value>Are you sure you want to leave without saving?</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>

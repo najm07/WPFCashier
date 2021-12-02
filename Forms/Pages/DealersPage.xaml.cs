@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFCashier.Forms
+namespace WPFCashier
 {
     /// <summary>
     /// Interaction logic for DealersPage.xaml
@@ -161,7 +161,7 @@ namespace WPFCashier.Forms
             if (ItemList.SelectedItem != null)
             {
                 var client = ItemList.SelectedItem as Client;
-               var result= Entities.CheckWindow<DetailsForm>();
+               var result = Entities.CheckWindow<DetailsForm>();
                 if (!result)
                 {
                     DetailsForm detailsForm = new DetailsForm(client);

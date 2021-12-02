@@ -93,8 +93,24 @@ namespace WPFCashier
                     break;
                 case MessageBoxResult.Cancel:
                     await Read();
+                    NavigationService.Navigate(new MainPage());
                     break;
             }
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            var res = MessageBox.Show(Properties.Resources.DiscardMessage, Properties.Resources.DiscardCaption, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+
+            switch (res)
+            {
+                case MessageBoxResult.OK:
+                    NavigationService.Navigate(new MainPage());
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
+            }
+            
         }
     }
 }
