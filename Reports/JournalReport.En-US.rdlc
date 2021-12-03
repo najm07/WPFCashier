@@ -6,24 +6,27 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.74765cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.74765cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.74765cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.74765cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87465cm</Width>
+              <Width>3.74765cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.373cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.74552cm</Height>
+              <Height>0.6926cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -210,10 +213,47 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Date</Value>
+                              <Style>
+                                <FontFamily>Rockwell</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.74552cm</Height>
+              <Height>0.6926cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -385,12 +425,47 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Date">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Date.Value</Value>
+                              <Style>
+                                <FontFamily>Franklin Gothic Medium</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Date</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -409,10 +484,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>JournalModDataSet</DataSetName>
-        <Top>0.17639cm</Top>
-        <Left>0.21167cm</Left>
-        <Height>1.49104cm</Height>
-        <Width>19.37326cm</Width>
+        <Top>0.25545cm</Top>
+        <Left>0.27517cm</Left>
+        <Height>1.38521cm</Height>
+        <Width>21.11125cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -423,10 +498,10 @@
     <Height>0.7465in</Height>
     <Style />
   </Body>
-  <Width>19.79659cm</Width>
+  <Width>21.66159cm</Width>
   <Page>
     <PageHeader>
-      <Height>1.973cm</Height>
+      <Height>1.99417cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -480,77 +555,6 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox27">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Date</Value>
-                  <Style>
-                    <FontFamily>Rockwell</FontFamily>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-                <TextRun>
-                  <Value>:</Value>
-                  <Style>
-                    <FontFamily>Rockwell</FontFamily>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Right</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>0.58928cm</Top>
-          <Left>15.87609cm</Left>
-          <Height>0.6cm</Height>
-          <Width>1.20884cm</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox3">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!Date.Value, "JournalModDataSet")</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>0.58928cm</Top>
-          <Left>17.08493cm</Left>
-          <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -559,7 +563,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.06891cm</Height>
+      <Height>0.96308cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -582,7 +586,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
-          <Top>0.14111cm</Top>
+          <Top>0.18154cm</Top>
           <Left>15.28576cm</Left>
           <Height>0.6cm</Height>
           <Width>4.29916cm</Width>

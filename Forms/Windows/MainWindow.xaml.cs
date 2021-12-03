@@ -23,9 +23,10 @@ namespace WPFCashier
         
         public MainWindow()
         {
-            InitializeComponent();
-
             
+            InitializeComponent();
+            NavigationFrame.Navigate(new MainPage());
+
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)

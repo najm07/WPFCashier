@@ -8,8 +8,20 @@
         xmlns:p = "clr-namespace:WPFCashier.Properties"
         Title="{x:Static p:Resources.JournalsFormTitle}" Height="450" Width="800" Loaded="Window_Loaded" Background="#FFEFEDF2">
     <Grid>
-        <TabControl>
-            <TabItem Header="{x:Static p:Resources.ClientsHistory}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" VerticalAlignment="Top" Margin="0,2,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20,0">
+                
+                <Button Content="Home" />
+            </StackPanel>
+        </Grid>
+        <TabControl Grid.Row="0">
+    
+            <TabItem Header="{x:Static p:Resources.ClientsHistory}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
@@ -223,6 +235,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
+                
         </TabControl>
     </Grid>
 </Window>

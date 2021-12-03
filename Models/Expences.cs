@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPFCashier
 {
-    class Expences
+    public class Expences
     {
         [Key]
         public int Id { get; set; }

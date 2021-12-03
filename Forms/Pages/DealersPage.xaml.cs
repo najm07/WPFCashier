@@ -10,20 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFCashier.Forms;
 
 namespace WPFCashier
 {
     /// <summary>
-    /// Interaction logic for ClientsForm.xaml
+    /// Interaction logic for DealersPage.xaml
     /// </summary>
-    public partial class DealersForm : Window
+    public partial class DealersPage : Page
     {
         public List<Client> DbClient { get; private set; }
         public List<Supplier> DbSupplier { get; private set; }
 
-        public DealersForm()
+        public DealersPage()
         {
             InitializeComponent();
         }
@@ -161,8 +161,13 @@ namespace WPFCashier
             if (ItemList.SelectedItem != null)
             {
                 var client = ItemList.SelectedItem as Client;
-                DetailsForm detailsForm = new DetailsForm(client);
-                detailsForm.Show();
+               var result = Entities.CheckWindow<DetailsForm>();
+                if (!result)
+                {
+                    DetailsForm detailsForm = new DetailsForm(client);
+                    detailsForm.Show();
+                }
+                
             }
         }
 
@@ -293,16 +298,30 @@ namespace WPFCashier
         {
             if (SuppliersItemList.SelectedItem != null)
             {
-                var supplier = SuppliersItemList.SelectedItem as Supplier;
-                DetailsForm detailsForm = new DetailsForm(supplier);
-                detailsForm.Show();
+                var supplier = SuppliersItemList.SelectedItem as Supplier;              
+                var result = Entities.CheckWindow<DetailsForm>();
+                if (!result)
+                {
+                    DetailsForm detailsForm = new DetailsForm(supplier);
+                    detailsForm.Show();
+                }
+                /*  DetailsForm detailsForm = new DetailsForm(supplier);
+                   detailsForm.Show();*/
+
             }
         }
 
         #endregion
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new MainPage());
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
             this.RightToLeftLayout();
             await Read();
             await ReadSuppliers();

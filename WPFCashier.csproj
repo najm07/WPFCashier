@@ -278,12 +278,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Forms\DetailsForm.xaml.cs">
+    <Compile Include="Data\TempDatabaseContext.cs" />
+    <Compile Include="Forms\Pages\DealersPage.xaml.cs">
+      <DependentUpon>DealersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Windows\DetailsForm.xaml.cs">
       <DependentUpon>DetailsForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Pages\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pages\JournalsPage.xaml.cs">
+      <DependentUpon>JournalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Windows\ProductsForm.xaml.cs">
+      <DependentUpon>ProductsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AppSettings.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
-    <Compile Include="Forms\PrintPreview.xaml.cs">
+    <Compile Include="Forms\Windows\PrintPreview.xaml.cs">
       <DependentUpon>PrintPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.en-US.Designer.cs">
@@ -291,22 +311,38 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Forms\SettingsForm.xaml.cs">
+    <Compile Include="Forms\Windows\SettingsForm.xaml.cs">
       <DependentUpon>SettingsForm.xaml</DependentUpon>
     </Compile>
-    <Page Include="Forms\DealersForm.xaml">
+    <Page Include="Forms\Windows\DealersForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\DetailsForm.xaml">
+    <Page Include="Forms\Pages\DealersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\JournalsForm.xaml">
+    <Page Include="Forms\Windows\DetailsForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\MainWindow.xaml">
+    <Page Include="Forms\Pages\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\JournalsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Pages\JournalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -315,25 +351,33 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Client.cs" />
-    <Compile Include="Forms\DealersForm.xaml.cs">
+    <Compile Include="Forms\Windows\DealersForm.xaml.cs">
       <DependentUpon>DealersForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Entities.cs" />
     <Compile Include="Models\Expences.cs" />
     <Compile Include="Models\Journal.cs" />
-    <Compile Include="Forms\JournalsForm.xaml.cs">
+    <Compile Include="Forms\Windows\JournalsForm.xaml.cs">
       <DependentUpon>JournalsForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainWindow.xaml.cs">
+    <Compile Include="Forms\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Forms\SettingsForm.xaml">
+    <Page Include="Forms\Pages\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Windows\ProductsForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\PrintPreview.xaml">
+    <Page Include="Forms\Windows\SettingsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Windows\PrintPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -129,6 +129,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>Arabic</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
   </data>
@@ -186,6 +189,12 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DiscardCaption" xml:space="preserve">
+    <value>Changes not saved</value>
+  </data>
+  <data name="DiscardMessage" xml:space="preserve">
+    <value>Are you sure you want to leave without saving?</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -200,6 +209,9 @@
   </data>
   <data name="History" xml:space="preserve">
     <value>History</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="IconUpdate" xml:space="preserve">
     <value>M 405.625 587.625 L 403.8125 594.3125 L 410.5 592.53125 L 408.96875 591 C 411.62184 589.56391 415.0078 589.94525 417.25 592.1875 L 418.65625 590.78125 C 415.62765 587.75259 410.97718 587.34026 407.5 589.53125 L 405.625 587.625 z M 418.6875 597.03125 L 412 598.84375 L 413.53125 600.375 C 410.87815 601.811 407.49225 601.39855 405.25 599.15625 L 403.84375 600.5625 C 406.87241 603.5912 411.5229 604.03475 415 601.84375 L 416.90625 603.71875 L 418.6875 597.03125 z</value>
@@ -268,7 +280,7 @@
     <value>Search</value>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>SelectAll</value>
+    <value>Select all</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>

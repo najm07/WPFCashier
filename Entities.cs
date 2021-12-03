@@ -1,9 +1,15 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WPFCashier
 {
@@ -69,6 +75,14 @@ namespace WPFCashier
                     window.FlowDirection = FlowDirection.RightToLeft;
             }
         }
+        public static void RightToLeftLayout(this Page page)
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                if (context.AppSettings.Single(x => x.Id == 1).LangIndex == 1)
+                    page.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
 
         public static bool IsArabic(this Window window)
         {
@@ -104,6 +118,110 @@ namespace WPFCashier
 
             return false;
         }
+
+       public static void OpenNewOrRestoreWindow<T>() where T : Window, new()
+        {
+            bool isWindowOpen = false;
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is T)
+                {
+                    isWindowOpen = true;
+                    w.Activate();
+                    break;
+                }
+            }
+
+            if (!isWindowOpen)
+            {
+                T newwindow = new T();
+                newwindow.Show();
+            }
+        }
+
+        public static bool CheckWindow<T>() where T : Window
+        {
+            bool isWindowOpen = false;
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is T)
+                {
+                    isWindowOpen = true;
+                    w.Activate();
+                    break;
+                }
+            }
+
+            return isWindowOpen;
+        }
+
+        public static async void CopyDataBase(this TempDatabaseContext tempcontext, DatabaseContext context)
+        {
+            
+            var dbSets = context.GetType().GetProperties().Where(p => p.PropertyType.Name.StartsWith("DbSet")); //get Dbset<T>
+
+            foreach (var dbSetProps in dbSets)
+            {
+                var dbSet = dbSetProps.GetValue(context, null);
+                var dbSetType = dbSet.GetType().GetGenericArguments().First();
+
+                //Console.WriteLine(dbSet.ToString());
+
+                if (dbSet != null)
+                {
+                    try
+                    {
+                        var contents = ((IEnumerable)dbSet).Cast<object>().ToList();//Get The Contents of table
+                        await tempcontext.AddRangeAsync(contents);
+                        Console.WriteLine(contents.Count);
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+        }
+
+        public static async void CopyDataBase(this DatabaseContext context, TempDatabaseContext tempcontext)
+        {
+            var dbSets = tempcontext.GetType().GetProperties().Where(p => p.PropertyType.Name.StartsWith("DbSet")); //get Dbset<T>
+
+            foreach (var dbSetProps in dbSets)
+            {
+                var dbSet = dbSetProps.GetValue(tempcontext, null);
+                var dbSetType = dbSet.GetType().GetGenericArguments().First();
+
+                //Console.WriteLine(dbSet.ToString());
+
+                if (dbSet != null)
+                {
+                    try
+                    {
+                        var contents = ((IEnumerable)dbSet).Cast<object>().ToList();//Get The Contents of table
+                        await context.AddRangeAsync(contents);
+                        Console.WriteLine(contents.Count);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+        }
+
+        public static async void CreateDataBaseAsync(this DatabaseContext context)
+        {
+            DatabaseFacade facade = new DatabaseFacade(new DatabaseContext());
+            if (await facade.EnsureCreatedAsync())
+            {
+                context.AppSettings.Add(new AppSettings() { Code = "en-US", Language = "English" });
+                context.SaveChanges();
+            }
+        }
+
     }
 
     public class Lang
