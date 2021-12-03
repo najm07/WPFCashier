@@ -14,7 +14,7 @@ namespace WPFCashier
     /// </summary>
     public partial class App : Application
     {
-        bool ContextChanged = true;
+        bool ContextChanged = false;
         protected override async void OnStartup(StartupEventArgs e)
         {
             if(ContextChanged)
