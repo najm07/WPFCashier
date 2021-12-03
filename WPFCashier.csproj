@@ -278,6 +278,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\TempDatabaseContext.cs" />
     <Compile Include="Forms\Pages\DealersPage.xaml.cs">
       <DependentUpon>DealersPage.xaml</DependentUpon>
     </Compile>
@@ -296,7 +297,11 @@
     <Compile Include="Forms\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Windows\ProductsForm.xaml.cs">
+      <DependentUpon>ProductsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AppSettings.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Forms\Windows\PrintPreview.xaml.cs">
       <DependentUpon>PrintPreview.xaml</DependentUpon>
@@ -363,6 +368,10 @@
     <Page Include="Forms\Pages\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Windows\ProductsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\Windows\SettingsForm.xaml">
       <SubType>Designer</SubType>

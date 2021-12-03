@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -152,6 +157,70 @@ namespace WPFCashier
             return isWindowOpen;
         }
 
+        public static async void CopyDataBase(this TempDatabaseContext tempcontext, DatabaseContext context)
+        {
+            
+            var dbSets = context.GetType().GetProperties().Where(p => p.PropertyType.Name.StartsWith("DbSet")); //get Dbset<T>
+
+            foreach (var dbSetProps in dbSets)
+            {
+                var dbSet = dbSetProps.GetValue(context, null);
+                var dbSetType = dbSet.GetType().GetGenericArguments().First();
+
+                //Console.WriteLine(dbSet.ToString());
+
+                if (dbSet != null)
+                {
+                    try
+                    {
+                        var contents = ((IEnumerable)dbSet).Cast<object>().ToList();//Get The Contents of table
+                        await tempcontext.AddRangeAsync(contents);
+                        Console.WriteLine(contents.Count);
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+        }
+
+        public static async void CopyDataBase(this DatabaseContext context, TempDatabaseContext tempcontext)
+        {
+            var dbSets = tempcontext.GetType().GetProperties().Where(p => p.PropertyType.Name.StartsWith("DbSet")); //get Dbset<T>
+
+            foreach (var dbSetProps in dbSets)
+            {
+                var dbSet = dbSetProps.GetValue(tempcontext, null);
+                var dbSetType = dbSet.GetType().GetGenericArguments().First();
+
+                //Console.WriteLine(dbSet.ToString());
+
+                if (dbSet != null)
+                {
+                    try
+                    {
+                        var contents = ((IEnumerable)dbSet).Cast<object>().ToList();//Get The Contents of table
+                        await context.AddRangeAsync(contents);
+                        Console.WriteLine(contents.Count);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+        }
+
+        public static async void CreateDataBaseAsync(this DatabaseContext context)
+        {
+            DatabaseFacade facade = new DatabaseFacade(new DatabaseContext());
+            if (await facade.EnsureCreatedAsync())
+            {
+                context.AppSettings.Add(new AppSettings() { Code = "en-US", Language = "English" });
+                context.SaveChanges();
+            }
+        }
 
     }
 

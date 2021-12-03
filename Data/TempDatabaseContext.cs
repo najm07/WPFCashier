@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace WPFCashier
 {
-    public class DatabaseContext : DbContext
+    public class TempDatabaseContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = db.db");
+            optionsBuilder.UseSqlite("Data Source = tempdb.db");
         }
 
         public DbSet<Client> Clients { get; set; }

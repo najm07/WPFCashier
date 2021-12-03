@@ -48,5 +48,11 @@ namespace WPFCashier
         {
             this.RightToLeftLayout();
         }
+
+        private void ProductsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsForm productsForm = new ProductsForm();
+            productsForm.Show();
+        }
     }
 }
