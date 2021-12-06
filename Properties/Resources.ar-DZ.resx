@@ -234,6 +234,9 @@
   <data name="Loan" xml:space="preserve">
     <value>قرض</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>الدخول</value>
+  </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>الصندوق</value>
   </data>
@@ -245,6 +248,9 @@
   </data>
   <data name="Old" xml:space="preserve">
     <value>قديم</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة السر</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>دفع</value>
@@ -285,6 +291,9 @@
   <data name="SettingsFormTitle" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
   <data name="Supplier" xml:space="preserve">
     <value>الممون</value>
   </data>
@@ -299,5 +308,8 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>تحديث</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>اسم المستخدم</value>
   </data>
 </root>

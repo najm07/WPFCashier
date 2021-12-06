@@ -55,6 +55,7 @@ namespace WPFCashier
                     using (DatabaseContext context = new DatabaseContext())
                     {
                         context.AppSettings.Add(new AppSettings() { Code = "en-US", Language = "English" });
+                        context.Users.Add(new User() { Username = "Admin", Password = "1234", Role = 0 });
                         context.SaveChanges();
                     }
                 }

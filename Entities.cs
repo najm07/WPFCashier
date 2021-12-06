@@ -23,6 +23,10 @@ namespace WPFCashier
 
         public static List<ReportPath> reportPaths = new List<ReportPath>() { new ReportPath() { Index = 0, Path = Properties.Resources.JournalReport } };
 
+        public static int Admin = 0;
+
+        public static int Seller = 1;
+
         public static int Client = 0;
 
         public static int Supplier = 1;

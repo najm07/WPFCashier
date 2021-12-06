@@ -27,5 +27,7 @@ namespace WPFCashier
         public DbSet<AppSettings> AppSettings { get; set; }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

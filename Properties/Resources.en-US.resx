@@ -234,6 +234,9 @@
   <data name="Loan" xml:space="preserve">
     <value>Loan</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>
   </data>
@@ -245,6 +248,9 @@
   </data>
   <data name="Old" xml:space="preserve">
     <value>Old</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Payment</value>
@@ -285,6 +291,9 @@
   <data name="SettingsFormTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
   <data name="Supplier" xml:space="preserve">
     <value>Supplier</value>
   </data>
@@ -299,5 +308,8 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>
