@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddProduct" xml:space="preserve">
+    <value>أضف منتج</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>العنوان</value>
   </data>
@@ -129,8 +132,14 @@
   <data name="Arabic" xml:space="preserve">
     <value>العربية</value>
   </data>
+  <data name="BuyPrice" xml:space="preserve">
+    <value>سعر البيع</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>إلغاء</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>نوع</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>الغاء التحديد</value>
@@ -189,11 +198,17 @@
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="Designation" xml:space="preserve">
+    <value>وصف</value>
+  </data>
   <data name="DiscardCaption" xml:space="preserve">
     <value>لم يتم حفظ التغييرات</value>
   </data>
   <data name="DiscardMessage" xml:space="preserve">
     <value>هل انت متأكد من العودة بدون حفظ التغييرات؟</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>تخفيض</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>تعديل</value>
@@ -255,6 +270,9 @@
   <data name="Print" xml:space="preserve">
     <value>طباعة</value>
   </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>كمية</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>قراءة</value>
   </data>
@@ -270,6 +288,9 @@
   <data name="RestartMessage" xml:space="preserve">
     <value>هل تود اعادة تشغيل البرنامج؟</value>
   </data>
+  <data name="RetailSellPrice" xml:space="preserve">
+    <value>سعر البيع بالتجزئة</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
   </data>
@@ -278,6 +299,9 @@
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>تحديد الكل</value>
+  </data>
+  <data name="SellPrice" xml:space="preserve">
+    <value>سعر الشراء</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>إعدادات</value>

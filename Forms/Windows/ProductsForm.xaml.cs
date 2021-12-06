@@ -38,5 +38,7 @@ namespace WPFCashier
         {
             await Read();
         }
+
+        
     }
 }
