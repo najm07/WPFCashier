@@ -22,7 +22,6 @@ namespace WPFCashier
         public LoginForm()
         {
             InitializeComponent();
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
         Task Read()

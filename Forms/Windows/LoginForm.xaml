@@ -9,7 +9,7 @@
         Title="LoginForm" Height="500" Width="400"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent" Loaded="Window_Loaded">
+        Background="Transparent" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />

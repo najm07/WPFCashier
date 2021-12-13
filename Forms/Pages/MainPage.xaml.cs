@@ -51,8 +51,9 @@ namespace WPFCashier
 
         private void ProductsButton_Click(object sender, RoutedEventArgs e)
         {
-            ProductsForm productsForm = new ProductsForm();
-            productsForm.Show();
+            //NavigationService.Navigate(new OrdersPage());
+            OrdersForm ordersForm = new OrdersForm();
+            ordersForm.Show();
         }
     }
 }

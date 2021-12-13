@@ -35,6 +35,10 @@ namespace WPFCashier
 
         public static int Loan = 1;
 
+        public static int SellOrder = 0;
+
+        public static int BuyOrder = 1;
+
         /// <summary>
         /// A list that contains the languages
         /// </summary>
