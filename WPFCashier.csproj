@@ -285,12 +285,6 @@
     <Compile Include="Forms\Pages\DealersPage.xaml.cs">
       <DependentUpon>DealersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Pages\OrdersPage.xaml.cs">
-      <DependentUpon>OrdersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Pages\SingleOrderPage.xaml.cs">
-      <DependentUpon>SingleOrderPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Windows\DetailsForm.xaml.cs">
       <DependentUpon>DetailsForm.xaml</DependentUpon>
     </Compile>
@@ -334,14 +328,6 @@
     <Compile Include="Views\OrdersListView.xaml.cs">
       <DependentUpon>OrdersListView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Forms\Pages\OrdersPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Forms\Pages\SingleOrderPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Forms\Windows\DealersForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

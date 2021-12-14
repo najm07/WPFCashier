@@ -40,6 +40,8 @@ namespace WPFCashier
                             using (DatabaseContext context = new DatabaseContext())
                             {
                                 context.CopyDataBase(tempContext);
+                                if(context.Users.Count() == 0)
+                                    context.Users.Add(new User() { Username = "Admin", Password = "1234", Role = 0 });
                                 await context.SaveChangesAsync();
                                 await tempContext.Database.EnsureDeletedAsync();
                             }
