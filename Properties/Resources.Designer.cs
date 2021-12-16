@@ -475,6 +475,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Min Quantity.
+        /// </summary>
+        public static string MinQuantity {
+            get {
+                return ResourceManager.GetString("MinQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -678,6 +687,24 @@ namespace WPFCashier.Properties {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit.
+        /// </summary>
+        public static string Unit {
+            get {
+                return ResourceManager.GetString("Unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Quantity.
+        /// </summary>
+        public static string UnitQuantity {
+            get {
+                return ResourceManager.GetString("UnitQuantity", resourceCulture);
             }
         }
         

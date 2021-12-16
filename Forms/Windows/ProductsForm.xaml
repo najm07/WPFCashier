@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:WPFCashier.Properties"
-        Title="Products" Height="450" Width="900" Loaded="Window_Loaded">
+        Title="Products" Height="450" Width="1145" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -17,7 +17,7 @@
         <Grid Margin="2" Grid.Row="0" VerticalAlignment="Center">
             <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Center"/>
             <TextBox Name="SearchTextBox" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="250" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="AddProductButton" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" >
+            <Button x:Name="AddProductButton" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Click="AddProductButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Path Stretch="Uniform" Data="M208.489,0C93.343,0,0,93.343,0,208.489c0,115.146,93.343,208.489,208.489,208.489s208.49-93.344,208.49-208.489
 		C416.979,93.343,323.635,0,208.489,0z M329.006,235.1c0,6.299-5.105,11.404-11.404,11.404h-71.099v71.1
@@ -28,7 +28,7 @@
                 </StackPanel>
             </Button>
         </Grid>
-        <ListView Name="ItemList" Margin="0"  Grid.Row="1" UseLayoutRounding="False">
+        <ListView Name="ItemList" Margin="0"  Grid.Row="1" UseLayoutRounding="False" MouseDoubleClick="ItemList_MouseDoubleClick">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="{x:Static p:Resources.Clear}"/>
@@ -45,6 +45,9 @@
                     <GridViewColumn Header="{x:Static p:Resources.Name}" Width="100" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="{x:Static p:Resources.Category}" Width="100" DisplayMemberBinding="{Binding Category}"/>
                     <GridViewColumn Header="{x:Static p:Resources.Quantity}" Width="80" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.MinQuantity}" Width="80" DisplayMemberBinding="{Binding MinQuantity}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.Unit}" Width="80" DisplayMemberBinding="{Binding Unit}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.UnitQuantity}" Width="80" DisplayMemberBinding="{Binding UnitQuantity}"/>
                     <GridViewColumn Header="{x:Static p:Resources.BuyPrice}" Width="80" DisplayMemberBinding="{Binding BuyPrice}"/>
                     <GridViewColumn Header="{x:Static p:Resources.SellPrice}" Width="120" DisplayMemberBinding="{Binding SellPrice}"/>
                     <GridViewColumn Header="{x:Static p:Resources.RetailSellPrice}" Width="120" DisplayMemberBinding="{Binding RetailSellPrice}"/>
@@ -55,7 +58,7 @@
         </ListView>
 
         <Grid Grid.Row="2"  Margin="0"  HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Button x:Name="EditButton" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Top" >
+            <Button x:Name="EditButton" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Top" Click="EditButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Path Stretch="Uniform" Data="M427.137,0H32.865C14.743,0,0,14.743,0,32.865v394.272c0,18.122,14.743,32.865,32.865,32.865c3.087,0,390.415,0,394.272,0
 			c18.122,0,32.865-14.743,32.865-32.865V32.865C460.001,14.743,445.258,0,427.137,0z M382.993,430.001h-29.999V309.673H107.007
@@ -65,7 +68,7 @@
                     <Label Content="{x:Static p:Resources.Edit}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="DeleteButton" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" >
+            <Button x:Name="DeleteButton" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Click="DeleteButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Path Stretch="Uniform" Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
                     <Label Content="{x:Static p:Resources.Delete}"/>

@@ -255,6 +255,9 @@
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>
   </data>
+  <data name="MinQuantity" xml:space="preserve">
+    <value>Min Quantity</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -323,6 +326,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="UnitQuantity" xml:space="preserve">
+    <value>Unit Quantity</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>

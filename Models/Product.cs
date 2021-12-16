@@ -12,7 +12,7 @@ namespace WPFCashier
         [Key]
         public int Id { get; set; }
 
-        public int Name { get; set; }
+        public String Name { get; set; }
 
         public int Designation { get; set; }
 
