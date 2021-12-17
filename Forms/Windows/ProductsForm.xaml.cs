@@ -56,11 +56,13 @@ namespace WPFCashier
             await Read();
         }
 
-        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        private async void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
             ProductDetailsForm productDetailsForm = new ProductDetailsForm();
             productDetailsForm.WindowParent = (Window)this;
-            productDetailsForm.Show();
+            productDetailsForm.ShowDialog();
+            if (productDetailsForm.DialogResult == true)
+                await Read();
         }
 
         private void ItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)

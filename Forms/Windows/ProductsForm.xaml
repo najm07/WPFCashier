@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
         xmlns:p = "clr-namespace:WPFCashier.Properties"
-        Title="Products" Height="450" Width="1145" Loaded="Window_Loaded">
+        Title="Products" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -37,22 +37,30 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <UniformGrid Columns="1">
+                                <TextBlock Text="{Binding CodigoDeBarras}"/>
+                                <TextBlock Text="{Binding Descripcion}"/>
+                                <TextBlock Text="{Binding AnyOtherProperty}"/>
+                            </UniformGrid>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="{x:Static p:Resources.Id}" Width="50"  DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.Id}" Width="25"  DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="{x:Static p:Resources.Name}" Width="100" DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="{x:Static p:Resources.Category}" Width="100" DisplayMemberBinding="{Binding Category}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.Quantity}" Width="80" DisplayMemberBinding="{Binding Quantity}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.MinQuantity}" Width="80" DisplayMemberBinding="{Binding MinQuantity}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.Unit}" Width="80" DisplayMemberBinding="{Binding Unit}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.UnitQuantity}" Width="80" DisplayMemberBinding="{Binding UnitQuantity}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.Quantity}" Width="30" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.MinQuantity}" Width="30" DisplayMemberBinding="{Binding MinQuantity}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.Unit}" Width="30" DisplayMemberBinding="{Binding Unit}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.UnitQuantity}" Width="30" DisplayMemberBinding="{Binding UnitQuantity}"/>
                     <GridViewColumn Header="{x:Static p:Resources.BuyPrice}" Width="80" DisplayMemberBinding="{Binding BuyPrice}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.SellPrice}" Width="120" DisplayMemberBinding="{Binding SellPrice}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.RetailSellPrice}" Width="120" DisplayMemberBinding="{Binding RetailSellPrice}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.Discount}" Width="120" DisplayMemberBinding="{Binding Discount}"/>
-                    <GridViewColumn Header="{x:Static p:Resources.Date}" Width="120" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.SellPrice}" Width="80" DisplayMemberBinding="{Binding SellPrice}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.RetailSellPrice}" Width="100" DisplayMemberBinding="{Binding RetailSellPrice}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.Discount}" Width="50" DisplayMemberBinding="{Binding Discount}"/>
                 </GridView>
             </ListView.View>
         </ListView>

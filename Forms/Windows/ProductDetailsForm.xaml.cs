@@ -79,24 +79,20 @@ namespace WPFCashier
                 await Create();
             else
                 await Update();
-
-            this.Close();
-           
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ProductsForm newWindow = new ProductsForm();
+
             //  Application.Current.MainWindow = newWindow;
             // var myWindow = Window.GetWindow(this);
             // myWindow.Close();
-            WindowParent.Close();
-            newWindow.Show();
+            this.DialogResult = true;
         }
     }
 }
