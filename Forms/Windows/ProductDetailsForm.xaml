@@ -16,28 +16,27 @@
             <Label Content="{x:Static p:Resources.Name}" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.Category}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.Quantity}" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="NameTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Address,Mode=OneWay}" HorizontalAlignment="Left" Margin="90,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="CategoryTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Phone,Mode=OneWay}" HorizontalAlignment="Left" Margin="340,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="QuantityTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Credit,Mode=OneWay}" HorizontalAlignment="Left" Margin="340,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="NameTextBox" HorizontalAlignment="Left" Margin="90,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="CategoryTextBox" HorizontalAlignment="Left" Margin="340,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="QuantityTextBox" Text="0" HorizontalAlignment="Left" Margin="340,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
            
             <Label Content="{x:Static p:Resources.BuyPrice}" HorizontalAlignment="Left" Margin="3,40,0,0"   VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.SellPrice}" HorizontalAlignment="Left" Margin="3,80,0,0" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.RetailSellPrice}" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.Designation}" HorizontalAlignment="Left" Margin="250,120,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="BuyPriceTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Name,Mode=OneWay}" HorizontalAlignment="Left"  Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="SellPriceTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Address,Mode=OneWay}" HorizontalAlignment="Left" Margin="90,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="RetailSellPriceTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Phone,Mode=OneWay}" HorizontalAlignment="Left" Margin="340,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="DesignationTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Credit,Mode=OneWay}" HorizontalAlignment="Left" Margin="340,120,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.Date}" HorizontalAlignment="Left" Margin="3,120,0,0" VerticalAlignment="Top"/>
+            <TextBox Name="BuyPriceTextBox" Text="0" HorizontalAlignment="Left"  Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="SellPriceTextBox" Text="0" HorizontalAlignment="Left" Margin="90,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="RetailSellPriceTextBox" Text="0" HorizontalAlignment="Left" Margin="340,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="DesignationTextBox" HorizontalAlignment="Left" Margin="340,120,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            
             <Label Content="{x:Static p:Resources.Discount}" HorizontalAlignment="Left" Margin="3,160,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="DateTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Name,Mode=OneWay}" HorizontalAlignment="Left"  Margin="90,120,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="DiscountTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Address,Mode=OneWay}" HorizontalAlignment="Left" Margin="90,160,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="DiscountTextBox" Text="0" HorizontalAlignment="Left" Margin="90,160,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.MinQuantity}" HorizontalAlignment="Left" Margin="250,160,0,0" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.Unit}" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="MinQuantityTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Name,Mode=OneWay}" HorizontalAlignment="Left"  Margin="340,160,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="UnitTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Address,Mode=OneWay}" HorizontalAlignment="Left" Margin="340,200,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="MinQuantityTextBox" Text="0" HorizontalAlignment="Left"  Margin="340,160,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="UnitTextBox" HorizontalAlignment="Left" Margin="340,200,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
             <Label Content="{x:Static p:Resources.UnitQuantity}" HorizontalAlignment="Left" Margin="3,200,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="UnitQuantityTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Name,Mode=OneWay}" HorizontalAlignment="Left"  Margin="90,200,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="UnitQuantityTextBox" Text="0" HorizontalAlignment="Left"  Margin="90,200,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
 
         </Grid>
 
