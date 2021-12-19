@@ -9,38 +9,70 @@
         Title="ProductDetailsForm" Height="450" Width="800" Closed="Window_Closed" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0"  Margin="0,20"  HorizontalAlignment="Left" VerticalAlignment="Top" >
-            <Label Content="{x:Static p:Resources.Name}" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.Category}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.Quantity}" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="NameTextBox" HorizontalAlignment="Left" Margin="90,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="CategoryTextBox" HorizontalAlignment="Left" Margin="340,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="QuantityTextBox" Text="0" HorizontalAlignment="Left" Margin="340,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-           
-            <Label Content="{x:Static p:Resources.BuyPrice}" HorizontalAlignment="Left" Margin="3,40,0,0"   VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.SellPrice}" HorizontalAlignment="Left" Margin="3,80,0,0" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.RetailSellPrice}" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.Designation}" HorizontalAlignment="Left" Margin="250,120,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="BuyPriceTextBox" Text="0" HorizontalAlignment="Left"  Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="SellPriceTextBox" Text="0" HorizontalAlignment="Left" Margin="90,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="RetailSellPriceTextBox" Text="0" HorizontalAlignment="Left" Margin="340,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="DesignationTextBox" HorizontalAlignment="Left" Margin="340,120,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            
-            <Label Content="{x:Static p:Resources.Discount}" HorizontalAlignment="Left" Margin="3,160,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="DiscountTextBox" Text="0" HorizontalAlignment="Left" Margin="90,160,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.MinQuantity}" HorizontalAlignment="Left" Margin="250,160,0,0" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.Unit}" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="MinQuantityTextBox" Text="0" HorizontalAlignment="Left"  Margin="340,160,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <TextBox Name="UnitTextBox" HorizontalAlignment="Left" Margin="340,200,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-            <Label Content="{x:Static p:Resources.UnitQuantity}" HorizontalAlignment="Left" Margin="3,200,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="UnitQuantityTextBox" Text="0" HorizontalAlignment="Left"  Margin="90,200,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+        <GroupBox Grid.Row="0">
+            <Grid>
+                <Label Content="{x:Static p:Resources.Name}" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="NameTextBox" HorizontalAlignment="Left" Margin="90,10,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <Label Content="{x:Static p:Resources.Category}" HorizontalAlignment="Left" Margin="3,50,0,0" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="CategoryTextBox" HorizontalAlignment="Left" Margin="90,50,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
+                    <Button x:Name="AddCategoryButton" Width="26" Height="26" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF17314F">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Stretch="Uniform" Data="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
+	                		c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3
+		                	C349.7,238.1,344.2,232.7,337.4,232.7z" Fill="#FF17314F" Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        </Grid>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Label Content="{x:Static p:Resources.Designation}" HorizontalAlignment="Left" Margin="0,90,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="DesignationTextBox" HorizontalAlignment="Left" Margin="90,90,0,0" Width="343" Height="41" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1">
+            <Grid>
+                <Label Content="{x:Static p:Resources.BuyPrice}" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
+                <TextBox Name="BuyPriceTextBox" Text="0" HorizontalAlignment="Left"  Margin="90,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <Label Content="{x:Static p:Resources.SellPrice}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="SellPriceTextBox" Text="0" HorizontalAlignment="Left" Margin="90,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <Label Content="{x:Static p:Resources.RetailSellPrice}" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="RetailSellPriceTextBox" Text="0" HorizontalAlignment="Center" Margin="280,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <Label Content="{x:Static p:Resources.Discount}" HorizontalAlignment="Left" Margin="3,80,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="DiscountTextBox" Text="0" HorizontalAlignment="Left" Margin="90,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                
+            </Grid>
+        </GroupBox>
 
-        <Grid Grid.Row="1">
+        <GroupBox Grid.Row="2">
+            <Grid>
+                <Label Content="{x:Static p:Resources.Quantity}" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="QuantityTextBox" Text="0" HorizontalAlignment="Left" Margin="90,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <Label Content="{x:Static p:Resources.MinQuantity}" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="MinQuantityTextBox" Text="0" HorizontalAlignment="Center"  Margin="280,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <Label Content="{x:Static p:Resources.Unit}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="UnitTextBox" HorizontalAlignment="Left" Margin="90,40,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
+                    <Button x:Name="AddUnitButton" Width="26" Height="26" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF17314F">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Stretch="Uniform" Data="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
+			                c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3
+			                C349.7,238.1,344.2,232.7,337.4,232.7z" Fill="#FF17314F" Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Label Content="{x:Static p:Resources.UnitQuantity}" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="UnitQuantityTextBox" Text="0" HorizontalAlignment="Center"  Margin="280,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        
+
+        <Grid Grid.Row="3">
             <Button x:Name="SaveButton" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Top" Click="SaveButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Path Stretch="Uniform" Data="M 405.625 587.625 L 403.8125 594.3125 L 410.5 592.53125 L 408.96875 591 C 411.62184 589.56391 415.0078 589.94525 417.25 592.1875 L 418.65625 590.78125 C 415.62765 587.75259 410.97718 587.34026 407.5 589.53125 L 405.625 587.625 z M 418.6875 597.03125 L 412 598.84375 L 413.53125 600.375 C 410.87815 601.811 407.49225 601.39855 405.25 599.15625 L 403.84375 600.5625 C 406.87241 603.5912 411.5229 604.03475 415 601.84375 L 416.90625 603.71875 L 418.6875 597.03125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>

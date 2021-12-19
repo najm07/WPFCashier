@@ -94,5 +94,7 @@ namespace WPFCashier
             // myWindow.Close();
             this.DialogResult = true;
         }
+
+        
     }
 }

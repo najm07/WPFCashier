@@ -304,11 +304,13 @@
       <DependentUpon>ProductsForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AppSettings.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Forms\Windows\PrintPreview.xaml.cs">
       <DependentUpon>PrintPreview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Properties\Resources.en-US.Designer.cs">
       <DependentUpon>Resources.en-US.resx</DependentUpon>
       <AutoGen>True</AutoGen>
