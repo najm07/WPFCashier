@@ -60,18 +60,19 @@ namespace WPFCashier
                 }
             }
 
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                var code = context.AppSettings.Single(x => x.Id == 1).Code;
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
-            }
+            
         }
 
 
 
         private App()
         {
-            
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                var code = context.AppSettings.Single(x => x.Id == 1).Code;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+                Console.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture);
+            }
         }
     }
 }
