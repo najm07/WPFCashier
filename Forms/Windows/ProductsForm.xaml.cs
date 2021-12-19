@@ -34,9 +34,57 @@ namespace WPFCashier
             return Task.CompletedTask;
         }
 
+        public async Task Delete()
+        {
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                Product selectedProduct = ItemList.SelectedItem as Product;
+
+                if (selectedProduct != null)
+                {
+                    Product product = context.Products.Single(x => x.Id == selectedProduct.Id);
+
+                    context.Remove(product);
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await Read();
+        }
+
+        private async void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProductDetailsForm productDetailsForm = new ProductDetailsForm();
+            productDetailsForm.WindowParent = (Window)this;
+            productDetailsForm.ShowDialog();
+            if (productDetailsForm.DialogResult == true)
+                await Read();
+        }
+
+        private void ItemList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Product selectedProduct = ItemList.SelectedItem as Product;
+            ProductDetailsForm productDetailsForm = new ProductDetailsForm(selectedProduct);
+            productDetailsForm.WindowParent = (Window)this;
+            productDetailsForm.Show();
+        }
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Delete();
+            await Read();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Product selectedProduct = ItemList.SelectedItem as Product;
+            ProductDetailsForm productDetailsForm = new ProductDetailsForm(selectedProduct);
+            productDetailsForm.WindowParent = (Window)this;
+            productDetailsForm.Show();
         }
     }
 }

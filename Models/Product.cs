@@ -12,11 +12,17 @@ namespace WPFCashier
         [Key]
         public int Id { get; set; }
 
-        public int Name { get; set; }
+        public String Name { get; set; }
 
         public int Designation { get; set; }
 
         public int Quantity { get; set; }
+
+        public int MinQuantity { get; set; }
+
+        public string Unit { get; set; }
+
+        public int UnitQuantity { get; set; }
 
         public string AddedDate { get; set; }
 
@@ -29,5 +35,7 @@ namespace WPFCashier
         public decimal RetailSellPrice { get; set; }
 
         public decimal Discount { get; set; }
+
+        public string Barcode { get; set; }
     }
 }

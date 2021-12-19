@@ -297,6 +297,9 @@
     <Compile Include="Forms\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Windows\ProductDetailsForm.xaml.cs">
+      <DependentUpon>ProductDetailsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Windows\ProductsForm.xaml.cs">
       <DependentUpon>ProductsForm.xaml</DependentUpon>
     </Compile>
@@ -368,6 +371,10 @@
     <Page Include="Forms\Pages\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Windows\ProductDetailsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\Windows\ProductsForm.xaml">
       <SubType>Designer</SubType>
