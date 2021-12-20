@@ -26,9 +26,9 @@ namespace WPFCashier
             InitializeComponent();
         }
 
-        private void NewOrderButton_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            OrdersTabControl.Items.Add("New Order");
+            SaleView.Navigate(new OrdersView(0));
         }
     }
 }

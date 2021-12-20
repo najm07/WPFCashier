@@ -325,8 +325,8 @@
     <Compile Include="Forms\Windows\SettingsForm.xaml.cs">
       <DependentUpon>SettingsForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OrdersListView.xaml.cs">
-      <DependentUpon>OrdersListView.xaml</DependentUpon>
+    <Compile Include="Views\OrdersView.xaml.cs">
+      <DependentUpon>OrdersView.xaml</DependentUpon>
     </Compile>
     <Page Include="Forms\Windows\DealersForm.xaml">
       <SubType>Designer</SubType>
@@ -403,7 +403,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\OrdersListView.xaml">
+    <Page Include="Views\OrdersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

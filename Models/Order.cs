@@ -14,7 +14,9 @@ namespace WPFCashier
 
         public int Number { get; set; }
 
-        public string DealerId { get; set; }
+        public int DealerId { get; set; }
+
+        public string Date { get; set; }
 
         public int Type { get; set; }
 
