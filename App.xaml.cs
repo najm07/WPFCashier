@@ -15,12 +15,24 @@ namespace WPFCashier
     public partial class App : Application
     {
         bool ContextChanged = false;
-        protected override async void OnStartup(StartupEventArgs e)
+
+        private App()
         {
-            if(ContextChanged)
+            Task.Run(() => Initialize()).Wait();
+
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                var code = context.AppSettings.Single(x => x.Id == 1).Code;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+            }
+        }
+
+        private async Task Initialize()
+        {
+            if (ContextChanged)
             {
                 DatabaseFacade tempfacade = new DatabaseFacade(new TempDatabaseContext());
-                if(await tempfacade.EnsureCreatedAsync())
+                if (await tempfacade.EnsureCreatedAsync())
                 {
                     using (TempDatabaseContext tempContext = new TempDatabaseContext())
                     {
@@ -58,20 +70,6 @@ namespace WPFCashier
                         context.SaveChanges();
                     }
                 }
-            }
-
-            
-        }
-
-
-
-        private App()
-        {
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                var code = context.AppSettings.Single(x => x.Id == 1).Code;
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
-                Console.WriteLine(System.Threading.Thread.CurrentThread.CurrentUICulture);
             }
         }
     }

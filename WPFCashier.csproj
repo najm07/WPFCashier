@@ -426,6 +426,12 @@
     <EmbeddedResource Include="Reports\JournalReport.en-US.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MultiJournalReport.en-US.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MultiJournalReport.ar-DZ.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AppSettings.datasource" />
     <None Include="Properties\DataSources\Client.datasource" />

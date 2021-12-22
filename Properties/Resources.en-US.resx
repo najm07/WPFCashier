@@ -255,6 +255,9 @@
   <data name="MinQuantity" xml:space="preserve">
     <value>Min Quantity</value>
   </data>
+  <data name="MultiJournalReport" xml:space="preserve">
+    <value>Reports/MultiJournalReport.en-US.rdlc</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>

@@ -67,9 +67,9 @@
                                 <GridViewColumn Header="{x:Static p:Resources.Date}" Width="100" DisplayMemberBinding="{Binding Date}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Type}" Width="80" DisplayMemberBinding="{Binding TypeName}"/>
                                 <GridViewColumn Header="{x:Static p:Resources.Receipt}" Width="80" DisplayMemberBinding="{Binding ReceiptNumber}"/>
-                                <GridViewColumn Header="{x:Static p:Resources.Amount}" Width="120" DisplayMemberBinding="{Binding Amount}"/>
-                                <GridViewColumn Header="{x:Static p:Resources.Old}" Width="120" DisplayMemberBinding="{Binding OldCredit}"/>
-                                <GridViewColumn Header="{x:Static p:Resources.New}" Width="120" DisplayMemberBinding="{Binding NewCredit}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.Amount}" Width="120" DisplayMemberBinding="{Binding Amount, StringFormat='##0.00'}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.Old}" Width="120" DisplayMemberBinding="{Binding OldCredit, StringFormat='##0.00'}"/>
+                                <GridViewColumn Header="{x:Static p:Resources.New}" Width="120" DisplayMemberBinding="{Binding NewCredit, StringFormat='##0.00'}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

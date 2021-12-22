@@ -255,6 +255,9 @@
   <data name="MinQuantity" xml:space="preserve">
     <value>اقل كمية</value>
   </data>
+  <data name="MultiJournalReport" xml:space="preserve">
+    <value>Reports/MultiJournalReport.ar-DZ.rdlc</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>

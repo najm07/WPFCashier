@@ -97,6 +97,7 @@ namespace WPFCashier
                 {
                     appsetting = context.AppSettings.Single(x => x.Id == 1);
                     PrintPreview printReport = new PrintPreview(0);
+                    Console.WriteLine(ItemList.SelectedItems.Count);
                     foreach (var item in ItemList.SelectedItems)
                     {
                         var s = item as JournalMod;

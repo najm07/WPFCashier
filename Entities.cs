@@ -21,7 +21,7 @@ namespace WPFCashier
         /// </summary>
         public static List<PaymentType> receiptType = new List<PaymentType>() { new PaymentType() { Index = 0, Name = Properties.Resources.Payment }, new PaymentType() { Index = 1, Name = Properties.Resources.Loan } };
 
-        public static List<ReportPath> reportPaths = new List<ReportPath>() { new ReportPath() { Index = 0, Path = Properties.Resources.JournalReport } };
+        public static List<ReportPath> reportPaths = new List<ReportPath>() { new ReportPath() { Index = 0, Path = Properties.Resources.JournalReport }, new ReportPath() { Index = 1, Path = Properties.Resources.MultiJournalReport } };
 
         public static int Client = 0;
 

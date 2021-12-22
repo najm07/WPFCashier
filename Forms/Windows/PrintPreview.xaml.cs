@@ -46,13 +46,17 @@ namespace WPFCashier
             rs.Name = "JournalModDataSet";
             rs.Value = Printedjournal;
             reportviewer.LocalReport.DataSources.Add(rs);
-            ReportDataSource cl = new ReportDataSource();
-            cl.Name = "ClientDataSet";
-            cl.Value = Clientdetails;
+            ReportDataSource cl = new ReportDataSource
+            {
+                Name = "ClientDataSet",
+                Value = Clientdetails
+            };
             reportviewer.LocalReport.DataSources.Add(cl);
-            ReportDataSource app = new ReportDataSource();
-            app.Name = "SettingsDataSet";
-            app.Value = AppDetails;
+            ReportDataSource app = new ReportDataSource
+            {
+                Name = "SettingsDataSet",
+                Value = AppDetails
+            };
             reportviewer.LocalReport.DataSources.Add(app);
             string Path;
 

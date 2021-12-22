@@ -484,6 +484,15 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reports/MultiJournalReport.en-US.rdlc.
+        /// </summary>
+        public static string MultiJournalReport {
+            get {
+                return ResourceManager.GetString("MultiJournalReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
