@@ -469,8 +469,8 @@
                 <TextRun>
                   <Value>=First(Fields!CompanyName.Value, "SettingsDataSet")</Value>
                   <Style>
-                    <FontFamily>Rockwell</FontFamily>
-                    <FontSize>12pt</FontSize>
+                    <FontFamily>Arabic Typesetting</FontFamily>
+                    <FontSize>16pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>

@@ -250,7 +250,7 @@ namespace WPFCashier.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Credit.
+        ///   Looks up a localized string similar to Balance.
         /// </summary>
         public static string Credit {
             get {
