@@ -14,7 +14,7 @@ namespace WPFCashier
     /// </summary>
     public partial class App : Application
     {
-        bool ContextChanged = false;
+        bool ContextChanged = true;
 
         private App()
         {
@@ -80,13 +80,6 @@ namespace WPFCashier
                 var code = context.AppSettings.Single(x => x.Id == 1).Code;
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
             }
-        }
-
-
-
-        private App()
-        {
-            
         }
     }
 }

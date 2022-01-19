@@ -273,6 +273,15 @@
   <data name="Old" xml:space="preserve">
     <value>Old</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="OrderNumber" xml:space="preserve">
+    <value>Order number :</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -282,8 +291,17 @@
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="Print" xml:space="preserve">
     <value>Print</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>
@@ -323,6 +341,9 @@
   </data>
   <data name="SettingsFormTitle" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Stock</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
