@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -129,8 +132,14 @@
   <data name="Arabic" xml:space="preserve">
     <value>Arabic</value>
   </data>
+  <data name="BuyPrice" xml:space="preserve">
+    <value>Buy Price</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
@@ -172,7 +181,7 @@
     <value>Create</value>
   </data>
   <data name="Credit" xml:space="preserve">
-    <value>Credit</value>
+    <value>Balance</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
@@ -189,11 +198,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Designation" xml:space="preserve">
+    <value>Designation</value>
+  </data>
   <data name="DiscardCaption" xml:space="preserve">
     <value>Changes not saved</value>
   </data>
   <data name="DiscardMessage" xml:space="preserve">
     <value>Are you sure you want to leave without saving?</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -240,6 +255,12 @@
   <data name="MainFormTitle" xml:space="preserve">
     <value>Cashier</value>
   </data>
+  <data name="MinQuantity" xml:space="preserve">
+    <value>Min Quantity</value>
+  </data>
+  <data name="MultiJournalReport" xml:space="preserve">
+    <value>Reports/MultiJournalReport.en-US.rdlc</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -261,6 +282,9 @@
   <data name="Print" xml:space="preserve">
     <value>Print</value>
   </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>Read</value>
   </data>
@@ -276,6 +300,9 @@
   <data name="RestartMessage" xml:space="preserve">
     <value>Do you want to restart the application?</value>
   </data>
+  <data name="RetailSellPrice" xml:space="preserve">
+    <value>Retail Sell Price</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -284,6 +311,9 @@
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>Select all</value>
+  </data>
+  <data name="SellPrice" xml:space="preserve">
+    <value>Sell Price</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -305,6 +335,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="UnitQuantity" xml:space="preserve">
+    <value>Unit Quantity</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>

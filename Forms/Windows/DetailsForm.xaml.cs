@@ -90,7 +90,7 @@ namespace WPFCashier
 
         public Task Print()
         {
-            if (ItemList.SelectedItem != null)
+            if (ItemList.SelectedItems.Count == 1)
             {
                // Client client = new Client();
                 AppSettings appsetting = new AppSettings();
@@ -101,6 +101,28 @@ namespace WPFCashier
                     appsetting = context.AppSettings.Single(x => x.Id == 1);
                     PrintPreview printReport = new PrintPreview(0);
                     foreach (var item in ItemList.SelectedItems )
+                    {
+                        var s = item as JournalMod;
+                        sortlist.Add(s);
+                    }
+
+                    var ascendingOrder = sortlist.OrderBy(i => i.Id);
+                    printReport.Printedjournal.AddRange(ascendingOrder);
+                    printReport.Clientdetails.Add(Client);
+                    printReport.AppDetails.Add(appsetting);
+                    printReport.Show();
+                }
+            }
+            else if(ItemList.SelectedItems.Count > 1)
+            {
+                AppSettings appsetting = new AppSettings();
+                List<JournalMod> sortlist = new List<JournalMod>();
+
+                using (DatabaseContext context = new DatabaseContext())
+                {
+                    appsetting = context.AppSettings.Single(x => x.Id == 1);
+                    PrintPreview printReport = new PrintPreview(1);
+                    foreach (var item in ItemList.SelectedItems)
                     {
                         var s = item as JournalMod;
                         sortlist.Add(s);
@@ -162,7 +184,7 @@ namespace WPFCashier
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            ItemList.SelectedItem = null;
+            ItemList.SelectedItems.Clear();
             SelectAllItems.IsChecked = false;
         }
 
@@ -173,14 +195,12 @@ namespace WPFCashier
 
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            HitTestResult r = VisualTreeHelper.HitTest(this, e.GetPosition(this));
+            /*HitTestResult r = VisualTreeHelper.HitTest(this, e.GetPosition(this));
             if (r.VisualHit.GetType() != typeof(ListViewItem))
             {
                 ItemList.SelectedItems.Clear();
                 SelectAllItems.IsChecked = false;
-            }
-               
-        }    
-
+            }*/
+        }
     }
 }

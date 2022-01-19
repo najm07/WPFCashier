@@ -10,7 +10,7 @@
         Title="PrintReport" Height="600" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-        <WindowsFormsHost Name="windowsFormsHost" Margin="0,0,-0.4,0" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <WindowsFormsHost Name="windowsFormsHost" Margin="5" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <rv:ReportViewer x:Name="reportviewer" />
         </WindowsFormsHost>
     </Grid>

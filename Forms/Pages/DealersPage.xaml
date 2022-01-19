@@ -38,7 +38,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="0" Grid.ColumnSpan="2">
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="10, 0"   VerticalAlignment="Center"/>
-                        <TextBox Name="SearchTextBox" HorizontalAlignment="Left"  Margin="70, 0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SearchTextBox_TextChanged"/>
+                        <TextBox Name="SearchTextBox" HorizontalAlignment="Left" VerticalContentAlignment="Center"  Margin="70, 0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SearchTextBox_TextChanged"/>
                     </Grid>
                     <ListView Grid.Row="1" Name="ItemList" Margin="0" Height="195" VerticalAlignment="Center" Grid.ColumnSpan="2" MouseDoubleClick="ItemList_MouseDoubleClick">
                         <ListView.ContextMenu>
@@ -69,10 +69,10 @@
                         <Label Content="{x:Static p:Resources.Address}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Phone}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Credit}" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top"/>
-                        <TextBox Name="NameTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Name,Mode=OneWay}" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <TextBox Name="AddressTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Address,Mode=OneWay}" HorizontalAlignment="Left" Margin="70,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <TextBox Name="PhoneTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Phone,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <TextBox Name="CreditTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Credit,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="NameTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Name,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="AddressTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Address,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="70,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="PhoneTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Phone,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="CreditTextBox" Text="{Binding ElementName=ItemList ,Path=SelectedItem.Credit,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                         <Button x:Name="UpdateButton" HorizontalAlignment="Right" Click="UpdateButton_Click" Margin="10, 0" VerticalAlignment="Top" >
                             <StackPanel Orientation="Horizontal">
                                 <Path Stretch="Uniform" Data="M 405.625 587.625 L 403.8125 594.3125 L 410.5 592.53125 L 408.96875 591 C 411.62184 589.56391 415.0078 589.94525 417.25 592.1875 L 418.65625 590.78125 C 415.62765 587.75259 410.97718 587.34026 407.5 589.53125 L 405.625 587.625 z M 418.6875 597.03125 L 412 598.84375 L 413.53125 600.375 C 410.87815 601.811 407.49225 601.39855 405.25 599.15625 L 403.84375 600.5625 C 406.87241 603.5912 411.5229 604.03475 415 601.84375 L 416.90625 603.71875 L 418.6875 597.03125 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
@@ -99,7 +99,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="0">
                         <Label Content="{x:Static p:Resources.Search}" HorizontalAlignment="Left" Margin="10,0"   VerticalAlignment="Center"/>
-                        <TextBox Name="SuppliersSearchTextBox" HorizontalAlignment="Left"  Margin="70,0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SuppliersSearchTextBox_TextChanged"/>
+                        <TextBox Name="SuppliersSearchTextBox" HorizontalAlignment="Left" VerticalContentAlignment="Center"  Margin="70,0" Width="250" Height="26" VerticalAlignment="Center" TextChanged="SuppliersSearchTextBox_TextChanged"/>
                     </Grid>
                     <ListView Grid.Row="1" Name="SuppliersItemList" Margin="0" Height="195" VerticalAlignment="Center" MouseDoubleClick="SuppliersItemList_MouseDoubleClick">
                         <ListView.ContextMenu>
@@ -130,10 +130,10 @@
                         <Label Content="{x:Static p:Resources.Address}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Phone}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top"/>
                         <Label Content="{x:Static p:Resources.Credit}" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top"/>
-                        <TextBox Name="SuppliersNameTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Name,Mode=OneWay}" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Top" />
-                        <TextBox Name="SuppliersAddressTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Address,Mode=OneWay}" HorizontalAlignment="Left" Margin="70,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <TextBox Name="SuppliersPhoneTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Phone,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
-                        <TextBox Name="SuppliersCreditTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Credit,Mode=OneWay}" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="SuppliersNameTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Name,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="26" VerticalAlignment="Top" />
+                        <TextBox Name="SuppliersAddressTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Address,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="70,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="SuppliersPhoneTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Phone,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="320,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                        <TextBox Name="SuppliersCreditTextBox" Text="{Binding ElementName=SuppliersItemList ,Path=SelectedItem.Credit,Mode=OneWay}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="320,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
 
                         <Button x:Name="SuppliersUpdateButton" HorizontalAlignment="Right"  Margin="10,0" VerticalAlignment="Top" Click="SuppliersUpdateButton_Click" >
                             <StackPanel Orientation="Horizontal">

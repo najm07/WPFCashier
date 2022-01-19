@@ -11,7 +11,7 @@ namespace WPFCashier
 
         public int DealerType { get; set; }
 
-        public int ReceiptNumber { get; set; }
+        public string ReceiptNumber { get; set; }
 
         public string Date { get; set; }
 
@@ -38,7 +38,7 @@ namespace WPFCashier
 
         public string TypeName { get; set; }
 
-        public int ReceiptNumber { get; set; }
+        public string ReceiptNumber { get; set; }
 
         public decimal Amount { get; set; }
 

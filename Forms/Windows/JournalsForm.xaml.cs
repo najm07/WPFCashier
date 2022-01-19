@@ -62,7 +62,7 @@ namespace WPFCashier
                         Date = date,
                         Type = type,
                         Amount = amount.StringtoDecimal(),
-                        ReceiptNumber = receipt.StringtoInt(),
+                        ReceiptNumber = receipt,
                         OldCredit = clientCredit,
                         NewCredit = newClientCredit
                     });
@@ -404,7 +404,7 @@ namespace WPFCashier
                         Date = date,
                         Type = type,
                         Amount = amount.StringtoDecimal(),
-                        ReceiptNumber = receipt.StringtoInt(),
+                        ReceiptNumber = receipt,
                         OldCredit = supplierCredit,
                         NewCredit = newSupplierCredit
                     });
