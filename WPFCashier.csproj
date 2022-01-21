@@ -282,6 +282,9 @@
     <Compile Include="Forms\Pages\DealersPage.xaml.cs">
       <DependentUpon>DealersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Windows\AddForm.xaml.cs">
+      <DependentUpon>AddForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Windows\DetailsForm.xaml.cs">
       <DependentUpon>DetailsForm.xaml</DependentUpon>
     </Compile>
@@ -311,6 +314,7 @@
       <DependentUpon>PrintPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Unit.cs" />
+    <Compile Include="NumericValidationRule.cs" />
     <Compile Include="Properties\Resources.en-US.Designer.cs">
       <DependentUpon>Resources.en-US.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -319,6 +323,10 @@
     <Compile Include="Forms\Windows\SettingsForm.xaml.cs">
       <DependentUpon>SettingsForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\Windows\AddForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\Windows\DealersForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

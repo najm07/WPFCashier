@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -30,6 +31,10 @@ namespace WPFCashier
         public static int Payment = 0;
 
         public static int Loan = 1;
+
+        public static int Category = 1;
+        
+        public static int Unit = 0;
 
         /// <summary>
         /// A list that contains the languages
@@ -223,6 +228,8 @@ namespace WPFCashier
         }
 
     }
+
+   
 
     public class Lang
     {

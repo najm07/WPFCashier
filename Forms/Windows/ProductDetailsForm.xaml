@@ -6,7 +6,7 @@
         xmlns:p = "clr-namespace:WPFCashier.Properties"
         xmlns:local="clr-namespace:WPFCashier"
         mc:Ignorable="d"
-        Title="ProductDetailsForm" Height="450" Width="800" Closed="Window_Closed" Closing="Window_Closing">
+        Title="ProductDetailsForm" Height="450" Width="800"  Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -20,8 +20,8 @@
                 <TextBox Name="NameTextBox" HorizontalAlignment="Left" Margin="90,10,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                 <Label Content="{x:Static p:Resources.Category}" HorizontalAlignment="Left" Margin="3,50,0,0" VerticalAlignment="Top"/>
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox Name="CategoryTextBox" HorizontalAlignment="Left" Margin="90,50,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
-                    <Button x:Name="AddCategoryButton" Width="26" Height="26" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF17314F">
+                    <ComboBox Name="CategoryComboBox" SelectedValue="{Binding Name}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="90,50,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
+                    <Button x:Name="AddCategoryButton" Width="26" Height="26" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF17314F" Click="AddCategoryButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Path Stretch="Uniform" Data="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
 	                		c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3
@@ -43,7 +43,15 @@
                 <Label Content="{x:Static p:Resources.RetailSellPrice}" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top"/>
                 <TextBox Name="RetailSellPriceTextBox" Text="0" HorizontalAlignment="Center" Margin="280,40,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                 <Label Content="{x:Static p:Resources.Discount}" HorizontalAlignment="Left" Margin="3,80,0,0" VerticalAlignment="Top"/>
-                <TextBox Name="DiscountTextBox" Text="0" HorizontalAlignment="Left" Margin="90,80,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
+                <TextBox Name="DiscountTextBox"  HorizontalAlignment="Left" Margin="90,80,0,0" Width="150" Height="26" VerticalAlignment="Top">
+                    <TextBox.Text>
+                        <Binding Path="Discount" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" >
+                            <Binding.ValidationRules>
+                                <local:NumericValidationRule ValidationType="Int" ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 
             </Grid>
         </GroupBox>
@@ -56,8 +64,8 @@
                 <TextBox Name="MinQuantityTextBox" Text="0" HorizontalAlignment="Center"  Margin="280,0,0,0" Width="150" Height="26" VerticalAlignment="Top"/>
                 <Label Content="{x:Static p:Resources.Unit}" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top"/>
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox Name="UnitTextBox" HorizontalAlignment="Left" Margin="90,40,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
-                    <Button x:Name="AddUnitButton" Width="26" Height="26" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF17314F">
+                    <ComboBox Name="UnitComboBox" SelectedValue="{Binding Name}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="90,40,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
+                    <Button x:Name="AddUnitButton" Width="26" Height="26" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF17314F" Click="AddUnitButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Path Stretch="Uniform" Data="M337.4,232.7h-80.3v-80.3c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3v80.3h-80.3c-6.8,0-12.3,5.5-12.3,12.2
 			                c0,6.8,5.5,12.3,12.3,12.3h80.3v80.3c0,6.8,5.5,12.3,12.3,12.3s12.3-5.5,12.3-12.3v-80.3h80.3c6.8,0,12.3-5.5,12.3-12.3

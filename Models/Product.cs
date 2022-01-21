@@ -14,7 +14,7 @@ namespace WPFCashier
 
         public String Name { get; set; }
 
-        public int Designation { get; set; }
+        public string Designation { get; set; }
 
         public int Quantity { get; set; }
 
@@ -26,7 +26,7 @@ namespace WPFCashier
 
         public string AddedDate { get; set; }
 
-        public int Category { get; set; }
+        public string Category { get; set; }
 
         public decimal BuyPrice { get; set; }
 
